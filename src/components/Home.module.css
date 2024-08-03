@@ -1,0 +1,39 @@
+.homeContainer{
+    display: flex;
+    height: 100vh;
+
+}
+.col1{
+    width: 50%;
+    text-align: left;
+    align-self: flex-start;
+    padding-top: 30px;
+    position: relative;
+    top: 40px;
+    left: 60px;
+    
+}
+.col1>h1{
+    font-size: 60px;
+}
+.col1>h1>span{
+    font-size: 60px;
+    color:#f9004d;
+}
+.col1>h4{
+    font-size: 30px;
+}
+.col1>h2{
+    font-size: 40px;
+}
+.col2{
+    width: 50%;
+}
+.iconsContainer{
+    display: flex;
+    gap:10px;
+}
+.icon{
+    font-size: 30px;
+    display: inline-block ;
+}

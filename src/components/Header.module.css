@@ -1,0 +1,27 @@
+.header{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0px;
+}
+.navigation{
+    list-style-type: none;
+    display: flex;
+    gap:10px;
+    margin-right: 20px;
+}
+.navigation>li{
+    cursor: pointer;
+    font-size: 20px;
+}
+.navigation>li:hover{
+    color:#f9004d;
+}
+.title{
+    font-size: 40px;
+}
+.title>span{
+    color:#f9004d;
+
+}

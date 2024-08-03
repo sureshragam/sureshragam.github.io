@@ -1,0 +1,31 @@
+.aboutContainer{
+    display: flex;
+    height: 100vh;
+
+}
+.col1{
+flex-basis: 50%;
+
+}
+.col1>img{
+    height: 80%;
+    width: 70%;
+}
+.col2{
+    flex-basis: 50%;
+    text-align: start;
+}
+.buttonContainer{
+    display: flex;
+    gap:20px;
+    
+}
+.buttonContainer>button{
+    background-color: transparent;
+    border-style: none;
+    color: white;
+    font-size: 20px;
+}
+.buttonContainer>button:hover{
+    color:#f9004d;
+}

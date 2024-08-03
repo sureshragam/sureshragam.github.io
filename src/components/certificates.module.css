@@ -1,0 +1,23 @@
+.certificatesContainer{
+    height: 100vh;
+    padding: auto;
+}
+.title{
+    color: white;
+    text-align: start;
+}
+.certificates{
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding-left: 0px;
+}
+.certificate{
+    height: 300px;
+    width: 300px;
+    background-color: aqua;
+    flex-grow: 0;
+    flex-shrink: 0;
+}

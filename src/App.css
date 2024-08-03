@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  padding: 10px 30px;
+  font-family: "Josefin Sans", "sans-serif";
+}

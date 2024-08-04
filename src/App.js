@@ -1,8 +1,8 @@
-import Header from './components/Header.tsx';
+import Header from './components/Header/Header.tsx';
 import './App.css';
-import Home from './components/Home.tsx';
-import About from './components/About.tsx';
-import Certificates from './components/certificates.tsx';
+import Home from './components/Home/Home.tsx';
+import About from './components/About/About.tsx';
+import Certificates from './components/Certificates/certificates.tsx';
 
 function App() {
   return (

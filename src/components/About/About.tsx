@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import pic2 from "../assets/images/pic2.jpg"
+import pic2 from "../../assets/images/pic2.jpg"
 import classes from "./About.module.css"
 
 const skills ={

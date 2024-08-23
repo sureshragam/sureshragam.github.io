@@ -1,0 +1,58 @@
+.contactContainer{
+    display: flex;
+    height: 100vh;
+    text-align: start;
+}
+.col1{
+    flex-basis: 40%;
+    font-size: 1.3rem;
+}
+.col1>h1{
+    font-size: 3rem;
+    margin-top: 0;
+}
+.col2{
+    flex-basis: 60%;
+}
+.iconsContainer{
+    display: flex;
+    gap:10px;
+}
+.icon{
+    font-size: 30px;
+    display: inline-block ;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap:0.7rem;
+}
+.inputField{
+    height: 2.0em;
+    background-color: rgb(38, 38, 38);
+    border-style: none;
+    padding-left: 1rem;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+}
+.textField{
+    background-color: rgb(38, 38, 38);
+    height: 10rem;
+    border-style: none;
+    padding-left: 1rem;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+}
+.submitButton{
+    width: 15rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: rgb(255, 0, 79);
+    color:white;
+    font-weight: 400;
+    font-size: 1rem;
+    border-style: none;
+}

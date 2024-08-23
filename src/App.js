@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home/Home.tsx';
 import About from './components/About/About.tsx';
 import Certificates from './components/Certificates/certificates.tsx';
+import Contact from './components/Contact/Contact.tsx';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     <Home/>
     <About/>
     <Certificates/>
+    <Contact/>
     </div>
   );
 }

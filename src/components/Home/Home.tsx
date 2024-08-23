@@ -21,7 +21,7 @@ const Home = () =>{
                 setRole(rolesData[newIndex])
                 return(newIndex)
             })
-        },5000)
+        },2000)
         return ()=> clearInterval(interval)
     },[])
 

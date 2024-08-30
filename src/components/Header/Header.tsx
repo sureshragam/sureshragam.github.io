@@ -6,10 +6,10 @@ const Header = () =>{
         <header className={classes.header}>
             <h1 className={classes.title}>Portfo<span>lio</span></h1>
             <ul className={classes.navigation}>
-                <li>Home</li>
-                <li>About</li>
-                <li>Certificates</li>
-                <li>Contact</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </header>
     )

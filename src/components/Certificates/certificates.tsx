@@ -30,7 +30,7 @@ const certificatesData = [
 
 const Certificates = () =>{
     return (
-        <div className={classes.certificatesContainer}>
+        <div id="certificates" className={classes.certificatesContainer}>
             <h1 className={classes.title}>My Certificates</h1>
             <ul className={classes.certificates}>
                 {certificatesData.map(eachCertificate =>{

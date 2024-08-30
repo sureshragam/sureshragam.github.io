@@ -59,7 +59,7 @@ const About = () =>{
     }
 
     return(
-        <div className={classes.aboutContainer}>
+        <div id="about" className={classes.aboutContainer}>
             <div className={classes.col1}>
                 <img src={pic2} alt="pic2"/>
             </div>

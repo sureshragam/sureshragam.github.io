@@ -13,7 +13,7 @@ const Contact = () =>{
     }
 
     return (
-        <div className={classes.contactContainer}>
+        <div id="contact" className={classes.contactContainer}>
             <div className={classes.col1}>
                 <h1>Contact Me</h1>
                 <p><span>suresh.ragam@icloud.com</span></p>

@@ -9,13 +9,20 @@ const skills ={
     backendFramework:"Express",
     databases:'sqlite,'
 }
-const experience = [{
-    company:'TCS',
+const experience = [
+    {
+        company:'Refining Design',
+        designation:"Civil Enginner",
+        role:'Site Engineer',
+        period:"2021 - 2022"
+    
+    },
+    {
+    company:'Tata Consutancy Services',
     designation:"Assistant System Engineer",
     role:'React Developer',
     period:"2022 - Current"
-
-},
+    },
 ]
 
 
@@ -25,15 +32,27 @@ const About = () =>{
     const generateAboutData =(value) =>{
         if(value==1){
             return(
-                <div>
-                    <h1>option1</h1>
+                <div style={
+                    {display:'flex'}
+                }>
+                    {experience.map(obj =>{
+                        return <div style={
+                            {borderColor:"gray",borderStyle:"solid",width:"200px",boxShadow:'1px 0.5px 1px 0px white',padding:'5px'}
+                            }>
+                                    <p>{obj.role}</p>
+                                    <p>{obj.designation}</p>
+                                    <p>{obj.company}</p>
+                                    <p>{obj.period}</p>
+                                </div>
+                    })
+                    }
                 </div>
             )
         }
         else if(value==2){
             return(
                 <div>
-                    <h1>option2</h1>
+                    <h2>option-3</h2>
                 </div>
             )
         }else{

@@ -1,7 +1,6 @@
 .aboutContainer{
     display: flex;
     height: 100vh;
-
 }
 .col1{
 flex-basis: 50%;
@@ -28,4 +27,17 @@ flex-basis: 50%;
 }
 .buttonContainer>button:hover{
     color:#f9004d;
+}
+.buttonContainer>button::after{
+    content: "";
+    height: 2px;
+    width: 0px;
+    background-color: white;
+    transition: width linear 0.2s;
+    display: block;
+}
+.buttonContainer>button:hover::after{
+    content: "";
+    width: 100%;
+    background-color: #f9004d;
 }

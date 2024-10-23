@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import classes from "./Contact.module.css"
 import { FaGithub,FaLinkedin } from "react-icons/fa";
+import Footer from "../Footer/Footer"
 
 const Contact = () =>{
 
@@ -13,6 +14,7 @@ const Contact = () =>{
     }
 
     return (
+        <>
         <div id="contact" className={classes.contactContainer}>
             <div className={classes.col1}>
                 <h1>Contact Me</h1>
@@ -31,6 +33,8 @@ const Contact = () =>{
                 </form>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

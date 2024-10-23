@@ -1,0 +1,9 @@
+.footer{
+    text-align: center;
+    height:40px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+.footer>p>span{
+    color: rgb(255, 0, 79);;
+}

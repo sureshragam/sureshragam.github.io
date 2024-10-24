@@ -5,8 +5,9 @@
     align-items: center;
     position: fixed;
     z-index: 1;
-    background-color: black;
     width: 97vw;
+    height:100px;
+    background-color:black
 }
 .navigation{
     list-style-type: none;
@@ -18,8 +19,28 @@
     cursor: pointer;
     font-size: 20px;
 }
-.navigation>li:hover{
+.navigation>li>a{
+    color:white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+.navigation>li>a:hover{
     color:#f9004d;
+    /* font-size: 1.6rem; */
+}
+.navigation>li>a::after{
+    content: "";
+    background-color: white;
+    height:2px;
+    width: 0%;
+    display: block;
+    transition: width linear 0.2s;
+}
+.navigation>li>a:hover::after{
+    content: "";
+    background-color: #f9004d;
+    width: 100%;
+
 }
 .title{
     font-size: 40px;

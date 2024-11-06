@@ -5,5 +5,5 @@
     font-size: 1.3rem;
 }
 .footer>p>span{
-    color: rgb(255, 0, 79);;
+    color: var(--primaryColor,#f9004d)
 }

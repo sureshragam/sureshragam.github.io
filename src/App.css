@@ -1,7 +1,18 @@
+/* --variableName: value */
+/* var(--variableName,fallbackValue) */
+
+
+:root{
+  /* --primaryColor:#f9004d; */
+  --primaryColor:#c220ba;
+  --backgroundColor:black;
+  --textColor:white
+}
+
 .App {
   text-align: center;
-  background-color: black;
-  color: white;
+  background-color: var(--backgroundColor,black);
+  color: var(--textColor,white);
   min-height: 100vh;
   padding: 0px 30px;
   font-family: "Josefin Sans", "sans-serif";

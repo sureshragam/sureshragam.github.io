@@ -11,6 +11,12 @@
     font-size: 3rem;
     margin-top: 0;
 }
+.col1>a{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
 .col2{
     flex-basis: 60%;
 }
@@ -50,9 +56,13 @@
     height: 2.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
-    background-color: rgb(255, 0, 79);
+    background-color: var(--primaryColor,#f9004d);
     color:white;
     font-weight: 400;
     font-size: 1rem;
     border-style: none;
+    transition: transform 0.2s ease-in;
+}
+[type='submit']:hover{
+    transform: scale(1.04);
 }

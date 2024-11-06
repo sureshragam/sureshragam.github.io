@@ -21,7 +21,7 @@
 }
 .col1>h1>span{
     font-size: 4rem;
-    color:#f9004d;
+    color:var(--primaryColor,#f9004d);
 }
 .col1>h4{
     font-size: 30px;
@@ -32,6 +32,9 @@
 .col2{
     width: 50%;
 }
+.col2>img{
+    max-width: 100%;
+}
 .iconsContainer{
     display: flex;
     gap:10px;
@@ -40,6 +43,12 @@
 .icon{
     font-size: 30px;
     display: inline-block ;
+    cursor: pointer;
+    transition: transform 0.3s ease ,visibility 3s ease ;
+    position: relative;
+}
+.icon:hover{
+    transform: translateY(-0.5rem) scale(1.1);
 }
 
 

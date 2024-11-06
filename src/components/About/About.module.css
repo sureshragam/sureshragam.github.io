@@ -26,7 +26,7 @@ flex-basis: 50%;
     font-size: 20px;
 }
 .buttonContainer>button:hover{
-    color:#f9004d;
+    color:var(--primaryColor,#f9004d);
 }
 .buttonContainer>button::after{
     content: "";
@@ -39,5 +39,5 @@ flex-basis: 50%;
 .buttonContainer>button:hover::after{
     content: "";
     width: 100%;
-    background-color: #f9004d;
+    background-color: var(--primaryColor,#f9004d);
 }

@@ -4,7 +4,7 @@ import Home from './components/Home/Home.tsx';
 import About from './components/About/About.tsx';
 import Certificates from './components/Certificates/certificates.tsx';
 import Contact from './components/Contact/Contact.tsx';
-import MobileAlert from './components/MobileAlert.tsx';
+import MobileAlert from './component-lib/MobileAlert.tsx';
 
 function App() {
   

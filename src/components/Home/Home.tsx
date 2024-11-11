@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
-import pic1 from "../../assets/images/pic1.jpg"
+import photo2 from "../../assets/images/photo2.png"
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import classes from './Home.module.css'
+import { socialLinks } from "../../utils/dummyData.ts";
 
 const rolesData = [
     "FullStack Web Developer",
@@ -33,14 +34,14 @@ const Home = () =>{
                 <h1>Suresh <span>Ragam</span></h1>
                 <h2 className={classes.role}>{role}</h2>
                 <div className={classes.iconsContainer}>
-                <FaGithub className={classes.icon} href=""/>
-                <FaLinkedin className={classes.icon}/>
+                    <a href={socialLinks.github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
+                    <a href={socialLinks.linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
             </div>
             <div className={classes.col2}>
-                <img src={pic1} alt="profile"/>
+                <img src={photo2} alt="profile"/>   
+                <p>oops</p>
             </div>
-
         </div>
     )
 }

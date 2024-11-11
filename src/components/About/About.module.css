@@ -1,18 +1,19 @@
 .aboutContainer{
     display: flex;
-    height: 100vh;
 }
 .col1{
 flex-basis: 50%;
+/* border: 1px solid blue; */
 
 }
 .col1>img{
-    height: 80%;
-    width: 70%;
+    width: 50%;
+    aspect-ratio: '2:3';
 }
 .col2{
     flex-basis: 50%;
     text-align: start;
+    /* border: 1px solid violet; */
 }
 .buttonContainer{
     display: flex;

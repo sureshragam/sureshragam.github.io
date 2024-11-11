@@ -3,10 +3,11 @@
 
 
 :root{
-  /* --primaryColor:#f9004d; */
-  --primaryColor:#c220ba;
+  --primaryColor:#f9004d;
+  /* --primaryColor:#c220ba; */
   --backgroundColor:black;
-  --textColor:white
+  --textColor:white;
+  --animationDuration:30s
 }
 
 .App {

@@ -1,20 +1,6 @@
-import React from "react"
-import {v4 as uuidv4} from 'uuid'
-import classes from './certificates.module.css'
-
-function Certificate (name:string,description:string,url:string,id:string) {  //Object constructor function
-    this.name=name;
-    this.description=description;
-    this.url=url;
-    this.id=id
-}
-
-const certificatesData = [
-    new Certificate("React","someting","",uuidv4()),
-    new Certificate("HTML","someting","",uuidv4()),
-    new Certificate("CSS","someting","",uuidv4()),
-    new Certificate("JAVASCRIPT","someting","",uuidv4())
-]
+import React from "react";
+import classes from './certificates.module.css';
+import { certificatesData } from "../../utils/dummyData.ts";
 
 const Certificates:React.FC = () =>{
     return (

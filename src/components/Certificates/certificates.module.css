@@ -1,7 +1,7 @@
 .certificatesContainer{
-    height: 100vh;
     padding: auto;
     overflow: auto;
+    margin-bottom: 8rem;
 } 
 .title{
     color: white;

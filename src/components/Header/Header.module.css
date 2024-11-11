@@ -1,5 +1,5 @@
 .header{
-    color: var(--textColor,white);
+    /* color: var(--textColor,white); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,7 +7,7 @@
     z-index: 1;
     width: 97vw;
     height:100px;
-    background-color:var(--backgroundColor,black)
+    background-color:var(--backgroundColor,black) 
 }
 .navigation{
     list-style-type: none;

@@ -2,19 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 .col1{
-    width: 50%;
+    flex-basis: 50%;
     text-align: left;
     /* align-self: flex-start; */
     /* padding-top: 30px; */
     /* position: relative;
     top: 40px;
     left: 60px; */
-    text-align: center;
-
-    
+    text-align: center;    
 }
 .col1>h1{
     font-size: clamp(1rem, 4rem, 10vw);
@@ -30,10 +28,20 @@
     font-size: 40px;
 }
 .col2{
-    width: 50%;
+    flex-basis: 50%;
+    align-self: flex-end;
 }
 .col2>img{
-    max-width: 100%;
+    display: block;
+    max-width: 50%;
+    aspect-ratio:'3:2';
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    transition: transform 0.4s ease-in;
+}
+.col2>img:hover{
+  transform: translate(-0.3rem, -0.3rem);
 }
 .iconsContainer{
     display: flex;
@@ -46,6 +54,7 @@
     cursor: pointer;
     transition: transform 0.3s ease ,visibility 3s ease ;
     position: relative;
+    color: var(--primaryColor);
 }
 .icon:hover{
     transform: translateY(-0.5rem) scale(1.1);

@@ -1,11 +1,12 @@
 name: cicd
-on: 
+on:
   push:
     branches:
       - release/main
   workflow_dispatch:
 jobs:
   test:
+    environment: DEV
     runs-on: ubuntu-latest
     steps:
       - name: get code

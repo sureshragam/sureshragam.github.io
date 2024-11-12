@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    environment: DEV
+    environment: PROD
     runs-on: ubuntu-latest
     steps:
       - name: get code

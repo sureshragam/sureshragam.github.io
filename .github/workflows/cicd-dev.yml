@@ -43,6 +43,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build artifacts
+      - name: show folder
+        run: ls
       - name: Deploy to github pages
         run: npm run deploy
         env:

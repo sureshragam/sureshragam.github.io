@@ -25,7 +25,7 @@ const Home = () =>{
         },2000)
         return ()=> clearInterval(interval)
     },[])
-
+    console.log(currentIndex)
 
     return(
         <div id="home" className={classes.homeContainer}>

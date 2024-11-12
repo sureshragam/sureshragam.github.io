@@ -1,8 +1,5 @@
 name: cicd-dev
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 jobs:
   test:

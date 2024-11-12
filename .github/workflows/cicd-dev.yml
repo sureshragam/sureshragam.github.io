@@ -47,6 +47,8 @@ jobs:
           name: build artifacts
       - name: show folder
         run: ls
+      - name: install dependencies
+        run: npm install gh-pages
       - name: Deploy to github pages
         run: npm run deploy
         env:

@@ -1,12 +1,9 @@
-name: cicd
+name: cicd-dev
 on:
-  push:
-    branches:
-      - release/main
   workflow_dispatch:
 jobs:
   test:
-    environment: PROD
+    environment: DEV
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -22,7 +19,6 @@ jobs:
   continuous-integration:
     runs-on: ubuntu-latest
     needs: test
-
     steps:
       - name: get code
         uses: actions/checkout@v4
@@ -32,6 +28,8 @@ jobs:
           node-version: 14
       - name: install dependencies
         run: npm ci
+      - name: build project
+        run: npm build
       - name: upload artifacts
         uses: actions/upload-artifact@v4
         with:

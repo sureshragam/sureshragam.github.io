@@ -10,7 +10,7 @@ const About = () =>{
     const [activeTab,setActiveTab] = useState<any>(0)
 
     const generateAboutData =(value) =>{
-        if(value==1){
+        if(value===1){
             return(
                 <div style={
                     {display:'flex'}
@@ -29,7 +29,7 @@ const About = () =>{
                 </div>
             )
         }
-        else if(value==2){
+        else if(value===2){
             return(
                 <div>
                     <h2>option-3</h2>

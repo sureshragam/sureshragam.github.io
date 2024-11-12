@@ -20,6 +20,7 @@ jobs:
         run: npm test
   continuous-integration:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: get code
         uses: actions/checkout@v4

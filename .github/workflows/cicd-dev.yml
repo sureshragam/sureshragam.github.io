@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    environment: DEV
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -17,6 +16,7 @@ jobs:
       - name: run tests
         run: npm test
   continuous-integration:
+    environment: DEV
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -38,6 +38,7 @@ jobs:
             build
             package.json
   continuous-deployment:
+    environment: DEV
     runs-on: ubuntu-latest
     needs: continuous-integration
     steps:

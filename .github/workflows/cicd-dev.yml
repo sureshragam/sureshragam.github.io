@@ -49,6 +49,10 @@ jobs:
         run: ls
       - name: install dependencies
         run: npm install gh-pages
+      - name: Set up Git identity
+        run: |
+          git config --global user.name "Suresh"
+          git config --global user.email "suresh.ragam@icloud.com"
       - name: Deploy to github pages
         run: npm run deploy
         env:

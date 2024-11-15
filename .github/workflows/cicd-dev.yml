@@ -73,6 +73,6 @@ jobs:
           git config --global user.name "Suresh"
           git config --global user.email "suresh.ragam@icloud.com"
       - name: Deploy to github pages
-        run: npm run predeploy
+        run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

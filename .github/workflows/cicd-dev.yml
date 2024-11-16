@@ -25,7 +25,9 @@ jobs:
       - name: Run tests
         run: npm test
   build-and-deploy:
+    environment: DEV
     runs-on: ubuntu-latest
+    needs: test
     steps:
       # Step 1: Check out the repository to ensure .git is initialized
       - name: Checkout Repository

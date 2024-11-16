@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sureshragam_personal-website&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sureshragam_personal-website)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sureshragam_personal-website&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sureshragam_personal-website) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sureshragam_personal-website&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sureshragam_personal-website) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sureshragam_personal-website&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=sureshragam_personal-website)
 
 ## Available Scripts
 

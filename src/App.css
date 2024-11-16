@@ -4,7 +4,6 @@
 
 :root{
   --primaryColor:#f9004d;
-  /* --primaryColor:#c220ba; */
   --backgroundColor:black;
   --textColor:white;
   --animationDuration:30s
@@ -16,5 +15,5 @@
   color: var(--textColor,white);
   min-height: 100vh;
   padding: 0px 30px;
-  font-family: "Josefin Sans", "sans-serif";
+  font-family: "Josefin Sans", sans-serif;
 }

@@ -2,14 +2,14 @@ import React from "react"
 import classes from "./ScrollComponent.module.css"
 import { IconType } from "react-icons/lib"
 
-interface skillData {
+interface SkillData {
     id?:string,
     name?:string,
     icon?:IconType
 }
 
 interface ScrollComponentProps {
-    data:skillData[],
+    data:SkillData[],
     animationDuration:number
 }
 

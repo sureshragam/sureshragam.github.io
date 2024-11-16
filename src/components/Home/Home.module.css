@@ -7,11 +7,6 @@
 .col1{
     flex-basis: 50%;
     text-align: left;
-    /* align-self: flex-start; */
-    /* padding-top: 30px; */
-    /* position: relative;
-    top: 40px;
-    left: 60px; */
     text-align: center;    
 }
 .col1>h1{
@@ -65,7 +60,7 @@
 @media screen and (max-width:600px){
     .col2{
         display:none
-    };
+    }
     .col1{
         display: none;
         width: 100%;

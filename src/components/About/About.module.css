@@ -3,7 +3,6 @@
 }
 .col1{
 flex-basis: 50%;
-/* border: 1px solid blue; */
 
 }
 .col1>img{
@@ -13,7 +12,6 @@ flex-basis: 50%;
 .col2{
     flex-basis: 50%;
     text-align: start;
-    /* border: 1px solid violet; */
 }
 .buttonContainer{
     display: flex;

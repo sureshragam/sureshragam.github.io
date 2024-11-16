@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import pic2 from "../../assets/images/pic2.jpg"
 import classes from "./About.module.css"
-import { about, experience,skills } from "../../utils/dummyData.ts"
+import { about, experience,skills,scrollSkillsData  } from "../../utils/dummyData.ts"
 import ScrollComponent from '../../component-lib/ScrollComponent.tsx'
-import { scrollSkillsData } from "../../utils/dummyData.ts"
 
 
 const About = () =>{
@@ -16,7 +15,7 @@ const About = () =>{
                     {display:'flex'}
                 }>
                     {experience.map(obj =>{
-                        return <div style={
+                        return <div key={obj.}style={
                             {borderColor:"gray",borderStyle:"solid",width:"200px",boxShadow:'1px 0.5px 1px 0px white',padding:'5px'}
                             }>
                                     <p>{obj.role}</p>

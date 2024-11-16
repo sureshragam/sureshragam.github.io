@@ -1,5 +1,4 @@
 .header{
-    /* color: var(--textColor,white); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +26,6 @@
 }
 .navigation>li>a:hover{
     color:var(--primaryColor,#f9004d);
-    /* font-size: 1.6rem; */
 }
 .navigation>li>a::after{
     content: "";

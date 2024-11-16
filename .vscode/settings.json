@@ -1,0 +1,9 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/sureshragam/Desktop/coding/personal-website/.github/worflows/test.yml"
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "sureshragam",
+        "projectKey": "sureshragam_personal-website"
+    }
+}

@@ -15,7 +15,7 @@ const About = () =>{
                     {display:'flex'}
                 }>
                     {experience.map(obj =>{
-                        return <div key={obj.}style={
+                        return <div key={obj.id}style={
                             {borderColor:"gray",borderStyle:"solid",width:"200px",boxShadow:'1px 0.5px 1px 0px white',padding:'5px'}
                             }>
                                     <p>{obj.role}</p>

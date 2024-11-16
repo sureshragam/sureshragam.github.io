@@ -65,7 +65,7 @@ jobs:
       - name: Show folder content
         run: |
           ls
-          ./build ls
+          ls ./build
       - name: install dependencies
         run: npm install gh-pages
       - name: Set up Git identity

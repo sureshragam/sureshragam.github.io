@@ -21,7 +21,9 @@ const Projects = () =>{
                     return <li key={eachProject.id} style={{backgroundImage:`url(${eachProject.image})`}}>
                         <h3>{eachProject.name}</h3>
                         <p>{eachProject.description}</p>
-                        <span className={classes.icon} role='button' onClick={() =>{handleClickIcon(eachProject.path)}}>
+                        <span className={classes.icon} role='button' onKeyDown={
+                            console.log("keyDown")
+                        } onClick={() =>{handleClickIcon(eachProject.path)}}>
                             <WiDirectionUpRight color='white' fontSize='4rem' />
                         </span>
                         

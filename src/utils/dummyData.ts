@@ -1,22 +1,27 @@
 import {v4 as uuidV4} from 'uuid';
 import { FaReact,FaHtml5,FaCss3,FaJava,FaPython } from "react-icons/fa";
 import { SiSqlite,SiJavascript } from "react-icons/si";
-
+import ugaooClone from '../assets/portfolio-images/desktop-view.png'
+import foodMunch from '../assets/portfolio-images/foodmunch.jpg'
 interface ObjectGeneratorProps {
   id?:string,
   name?:string,
   icon?:any,
   description?:string,
   url?:string,
+  image?:string,
+  path?:string
 }
 
 
-function ObjectGenerator ({id=uuidV4(),name,icon,description,url,}:ObjectGeneratorProps) {
+function ObjectGenerator ({id=uuidV4(),name,icon,description,url,image,path}:ObjectGeneratorProps) {
     this.id=id;
     this.name=name;
     this.icon=icon;
     this.description=description;
     this.url=url;
+    this.image=image
+    this.path=path
 }
 
 export const scrollSkillsData = [
@@ -31,10 +36,13 @@ export const scrollSkillsData = [
 
 
 export const certificatesData = [
-    new ObjectGenerator({name:"React",description:"someting"}),
-    new ObjectGenerator({name:"HTML",description:"someting"}),
-    new ObjectGenerator({name:"CSS",description:"someting"}),
-    new ObjectGenerator({name:"JAVASCRIPT",description:"someting"})
+    new ObjectGenerator({name:"Aws",description:"someting", image:''}),
+    new ObjectGenerator({name:"Python",description:"someting",image:''}),
+]
+
+export const  projectsData =[
+  new ObjectGenerator({name:'Ugaoo',path:"ugaoo-clone",description:'Ugaoo is an online plant nursery that sells a variety of plants, gardening supplies, and accessories:',image:ugaooClone}),
+  new ObjectGenerator({name:'Food Munch',path:"foodmunch",description:'something',image:foodMunch}),
 ]
 
 export const skills ={
@@ -69,5 +77,4 @@ export const socialLinks = {
 }
 
 export const about = {
-  description:'Accomplished AWS Certified Cloud Practitioner with a perfect score of 1000 out of 1000 marksFamiliar with React JS components, Forms, Events, Hooks, Router, context-API, Redux, and redux-toolkit.Knowledge of various technologies including React JS, Next JS, Java, Python, HTML, CSS, JavaScript, and SQL.Skilled in utilizing Git and GitHub for version control and collaboration.Looking for better exposure and gain knowledge. Good communication skills Ability to work under pressure as well as with team members and colleagues.'
-}
+  description:"AWS Certified Cloud Practitioner with a perfect score of 1000/1000, showcasing a strong foundation in cloud computing principles.\nExperienced React Developer and a key team member working in Agile methodology, proficient in building scalable and maintainable web applications. Successfully developed core functionalities from scratch, including file upload, download, updates, and implementing portal and central notifications.\nSkilled in modern front-end technologies and frameworks, including React JS, Next JS, and expertise with Forms, Events, Hooks, Router, Context API, Redux, and Redux Toolkit.\nBroad technical knowledge in Java, Python, HTML, CSS, JavaScript, and SQL. Adept at using Git and GitHub for version control and effective collaboration.\nDriven by a passion for continuous learning and professional growth. Recognized for strong communication skills, the ability to perform under pressure, and thriving in collaborative team environments."}

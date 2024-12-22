@@ -1,7 +1,5 @@
 .certificatesContainer{
-    padding: auto;
-    overflow: auto;
-    margin-bottom: 8rem;
+    display: block;
 } 
 .title{
     color: white;
@@ -15,7 +13,6 @@
     margin: auto;
     gap: 10px;
     overflow-x: scroll;
-    
 }
 .certificate{
     height: 300px;

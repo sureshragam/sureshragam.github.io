@@ -47,10 +47,10 @@ const Contact = () =>{
       
 
     return (
-        <>
-        <div id="contact" className={classes.contactContainer}>
+        <div id="contact" className={`${classes.contactContainer} scrollSection`}>
+          <div style={{display:'flex'}}>
             <div className={classes.col1}>
-                <h1>Contact Me</h1>
+                <h2>Contact Me</h2>
                 <a href="mailTo:sureshragam@icloud.com">want to send a mail click here.</a>
                 <div className={classes.iconsContainer}>
                   <a href={socialLinks.github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
@@ -65,9 +65,9 @@ const Contact = () =>{
                     <button type="submit" className={classes.submitButton}>Submit</button>
                 </form>
             </div>
+            </div>
+            <Footer/>
         </div>
-        <Footer/>
-        </>
     )
 }
 

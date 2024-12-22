@@ -28,11 +28,11 @@ const Home = () =>{
     console.log(currentIndex)
 
     return(
-        <div id="home" className={classes.homeContainer}>
+        <div id="home" className={`${classes.homeContainer} scrollSection`}>
             <div className={classes.col1}>
-                <h4>Hi, Im</h4>
-                <h1>Suresh <span>Ragam</span></h1>
-                <h2 className={classes.role}>{role}</h2>
+                <p>Hi, Im </p>
+                <p style={{fontSize: "clamp(1rem, 4rem, 10vw)"}}>Suresh <span style={{color:'var(--primaryColor)'}}>Ragam</span></p>
+                <p className={classes.role}>{role}</p>
                 <div className={classes.iconsContainer}>
                     <a href={socialLinks.github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
                     <a href={socialLinks.linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
@@ -40,7 +40,6 @@ const Home = () =>{
             </div>
             <div className={classes.col2}>
                 <img src={photo2} alt="profile"/>   
-                <p>oops</p>
             </div>
         </div>
     )

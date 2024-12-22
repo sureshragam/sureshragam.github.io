@@ -6,7 +6,8 @@
     z-index: 1;
     width: 97vw;
     height:100px;
-    background-color:var(--backgroundColor,black) 
+    background-color:var(--backgroundColor,black)  
+
 }
 .navigation{
     list-style-type: none;
@@ -47,4 +48,15 @@
 .title>span{
     color:var(--primaryColor,#f9004d);
 
+}
+
+@media screen and (max-width:600px) {
+    .navigation{
+        display: none;
+    }
+    .header{
+        display: block;
+        width: 90vw;
+        text-align: right;
+    }
 }

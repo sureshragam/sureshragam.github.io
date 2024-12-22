@@ -2,15 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
 }
 .col1{
     flex-basis: 50%;
     text-align: left;
     text-align: center;    
-}
-.col1>h1{
-    font-size: clamp(1rem, 4rem, 10vw);
 }
 .col1>h1>span{
     font-size: 4rem;
@@ -29,7 +27,6 @@
 .col2>img{
     display: block;
     max-width: 50%;
-    aspect-ratio:'3:2';
     bottom: 0;
     right: 0;
     position: absolute;
@@ -58,19 +55,27 @@
 
 /* //////// for small screen */
 @media screen and (max-width:600px){
+    .homeContainer{
+        width: 100vw;
+        display: block
+
+    }
     .col2{
-        display:none
+        width: 100%;
+    }
+    .col2>img{
+        display:block;
+        position: relative;
+        width: 100% ;
+        max-width: 100%;
+
     }
     .col1{
-        display: none;
         width: 100%;
         text-align: left;
         align-self: flex-start;
         padding-top: 10px;
-        position: absolute;
-        top: 40px;
-        left: 0px;
-        background-color: red;
-        
+        position: relative;
+        margin-top: 50px;
     }
 }

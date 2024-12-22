@@ -1,6 +1,6 @@
 .contactContainer{
-    display: flex;
-    text-align: start;
+    flex-direction: column;
+    height: 80vh;
 }
 .col1{
     flex-basis: 40%;
@@ -88,4 +88,11 @@
     align-items: center;
     gap:0.3rem;
     animation: scrollLeft var(--animationDuration) linear infinite;
+}
+
+@media  screen and (max-width:650px) {
+
+    .contactContainer>div{
+        flex-direction: column;
+    }
 }

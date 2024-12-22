@@ -1,9 +1,10 @@
 .footer{
-    text-align: center;
-    height:40px;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
 }
-.footer>p>span{
-    color: var(--primaryColor,#f9004d)
+@media  screen and (max-width:650px) {
+
+    .footer{
+        display: none;
+    }
 }

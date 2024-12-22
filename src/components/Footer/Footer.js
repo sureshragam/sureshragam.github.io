@@ -1,9 +1,11 @@
 import classes from './Footer.module.css'
+import ScrollComponent from '../../component-lib/ScrollComponent.tsx'
+import { scrollSkillsData } from '../../utils/dummyData.ts'
 
 const Footer =() =>{
     return(
-        <footer className={classes.footer}>
-            <p>Made in india with love <span>@Suresh Ragam</span></p>
+        <footer className={`${classes.footer}`}>
+            <ScrollComponent data={scrollSkillsData} animationDuration={30}/>
         </footer>
     )
 }

@@ -6,14 +6,43 @@
   --primaryColor:#f9004d;
   --backgroundColor:black;
   --textColor:white;
-  --animationDuration:30s
+  --animationDuration:30s;
+  --pageHeight:100vh;
+  --scrollAlign:start;
+  --scrollMarginTop:100px
 }
 
 .App {
   text-align: center;
   background-color: var(--backgroundColor,black);
   color: var(--textColor,white);
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   padding: 0px 30px;
   font-family: "Josefin Sans", sans-serif;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior:smooth
+}
+.scrollSection{
+    height: calc(100vh - 100px);
+    scroll-snap-align: var(--scrollAlign);
+    scroll-margin-top:var(--scrollMarginTop) ;
+    scroll-margin-bottom: -100px;
+    text-align: left;
+    display: flex;
+}
+p{
+  font-size: 1rem;
+  line-height: 2rem;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width:650px) {
+  .App{
+    scroll-snap-type: none;
+  }
+  .scrollSection{
+    height: fit-content;
+  }
 }

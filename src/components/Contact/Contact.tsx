@@ -10,6 +10,40 @@ const Contact = () =>{
         email:'',
         message:''
     })
+
+    const [errors, setErrors] = useState({
+      name: '',
+      email: '',
+      message: ''
+    });
+
+    const validateForm = () => {
+      const newErrors:{name:any,email:any,message:any} = {name:"",email:"",message:""};
+      let formIsValid = true;
+  
+      // Name validation
+      if (!formData.name) {
+        newErrors.name = 'Name is required';
+        formIsValid = false;
+      }
+  
+      // Email validation
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!formData.email || !emailRegex.test(formData.email)) {
+        newErrors.email = 'Please enter a valid email address';
+        formIsValid = false;
+      }
+  
+      // Message validation
+      if (!formData.message) {
+        newErrors.message = 'Message is required';
+        formIsValid = false;
+      }
+  
+      setErrors(newErrors);
+      return formIsValid;
+    };
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
         event.preventDefault()
         setFormData(prevData => ({
@@ -20,26 +54,32 @@ const Contact = () =>{
 
       const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!validateForm()) {
+          return;
+        }
       
         try {
-          const response = await fetch('https://script.google.com/macros/s/11xnw_9JMpOW3YWnnLmbDiP5xnh4pTgXuiXpReTysK9ltmXqA-r-anx_RE/exec', {
-            method: 'POST',
+          const response = await fetch(" https://zep1f7tlgb.execute-api.ap-south-1.amazonaws.com/contact", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json'
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              name: formData.name,
-              email: formData.email,
-              message: formData.message
-            })
+              name:formData.name,
+              email:formData.email,
+              message:formData.message,
+            }),
           });
-      
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-      
           const result = await response.json();
-          console.log('Form submitted successfully:', result);
+          if (response.ok) {
+            setFormData({
+              name: '',
+              email: '',
+              message: ''
+            });
+            alert("Your message has been sent successfully!");
+          }
+          console.log(result.message);
         } catch (error) {
           console.error('Error submitting form:', error);
         }
@@ -61,8 +101,11 @@ const Contact = () =>{
                 <form className={classes.form} onSubmit={(event) =>handleSubmit(event)}>
                     <input type="text" placeholder="Your Name" name="name" className={classes.inputField} onChange={handleChange} value={formData.name} required/>
                     <input type="mail" placeholder="Your Email" name="email" className={classes.inputField} onChange={handleChange} value={formData.email} required/>
-                    <textarea placeholder="Your Message" name="message" className={classes.textField} onChange={handleChange} value={formData.message} required/>
+                    <textarea placeholder="Your Message" name="message" className={classes.textField} onChange={handleChange} value={formData.message} required/>            
                     <button type="submit" className={classes.submitButton}>Submit</button>
+                    {errors.name && <p className={classes.errorText}>*{errors.name}</p>}
+                    {errors.email && <p className={classes.errorText}>*{errors.email}</p>}
+                    {errors.message && <p className={classes.errorText}>*{errors.message}</p>}
                 </form>
             </div>
             </div>

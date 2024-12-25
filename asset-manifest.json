@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.d69737c8.css",
-    "main.js": "/static/js/main.a9d666e0.js",
+    "main.css": "/static/css/main.3a285cbf.css",
+    "main.js": "/static/js/main.5106b8f8.js",
     "static/js/453.0437a03d.chunk.js": "/static/js/453.0437a03d.chunk.js",
     "static/media/desktop-view.png": "/static/media/desktop-view.31b3689df547f0954d5a.png",
-    "static/media/photo2.png": "/static/media/photo2.03b43c88be311c893359.png",
+    "static/media/home.png": "/static/media/home.03b43c88be311c893359.png",
     "static/media/foodmunch.jpg": "/static/media/foodmunch.140975cc7628fb1a421b.jpg",
-    "static/media/pic2.jpg": "/static/media/pic2.e4bd9c0710725d9065ea.jpg",
+    "static/media/about.jpg": "/static/media/about.e4bd9c0710725d9065ea.jpg",
+    "static/media/WhatsApp_icon.png": "/static/media/WhatsApp_icon.31d4b1d27126bcc1f665.png",
     "index.html": "/index.html",
-    "main.d69737c8.css.map": "/static/css/main.d69737c8.css.map",
-    "main.a9d666e0.js.map": "/static/js/main.a9d666e0.js.map",
+    "main.3a285cbf.css.map": "/static/css/main.3a285cbf.css.map",
+    "main.5106b8f8.js.map": "/static/js/main.5106b8f8.js.map",
     "453.0437a03d.chunk.js.map": "/static/js/453.0437a03d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d69737c8.css",
-    "static/js/main.a9d666e0.js"
+    "static/css/main.3a285cbf.css",
+    "static/js/main.5106b8f8.js"
   ]
 }

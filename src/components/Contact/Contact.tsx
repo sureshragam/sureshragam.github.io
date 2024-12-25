@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import classes from "./Contact.module.css";
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import Footer from "../Footer/Footer"
-import { socialLinks } from "../../utils/dummyData.ts";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const Contact = () =>{
     const  [formData,setFormData] = useState({
@@ -16,6 +16,8 @@ const Contact = () =>{
       email: '',
       message: ''
     });
+
+    const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn,REACT_APP_MAIL_ID:mailID} = process.env
 
     const validateForm = () => {
       const newErrors:{name:any,email:any,message:any} = {name:"",email:"",message:""};
@@ -91,10 +93,14 @@ const Contact = () =>{
           <div style={{display:'flex'}}>
             <div className={classes.col1}>
                 <h2>Contact Me</h2>
-                <a href="mailTo:sureshragam@icloud.com">want to send a mail click here.</a>
+                <a href={`mailTo:${mailID}`}>want to send a mail click here.</a>
                 <div className={classes.iconsContainer}>
-                  <a href={socialLinks.github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
-                  <a href={socialLinks.linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                  <a href={github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
+                  <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                </div>
+                <div style={{marginTop:"auto",display:'flex',alignItems:'center',justifyContent:'center'}} >
+                  <IoArrowBackOutline color="#f9004d"/>
+                  <a role="button" href='home' >Back to Home</a>
                 </div>
             </div>
             <div className={classes.col2}>

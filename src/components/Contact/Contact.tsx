@@ -100,7 +100,7 @@ const Contact = () =>{
                 </div>
                 <div style={{marginTop:"auto",display:'flex',alignItems:'center',justifyContent:'center'}} >
                   <IoArrowBackOutline color="#f9004d"/>
-                  <a role="button" href='home' >Back to Home</a>
+                  <a role="button" href='#home' >Back to Home</a>
                 </div>
             </div>
             <div className={classes.col2}>

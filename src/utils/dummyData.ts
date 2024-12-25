@@ -71,10 +71,6 @@ export const experience = [
   },
 ]
 
-export const socialLinks = {
-  github:"https://github.com/sureshragam",
-  linkedIn:"https://www.linkedin.com/in/suresh-ragam/"
-}
 
 export const about = {
   description:"AWS Certified Cloud Practitioner with a perfect score of 1000/1000, showcasing a strong foundation in cloud computing principles.\nExperienced React Developer and a key team member working in Agile methodology, proficient in building scalable and maintainable web applications. Successfully developed core functionalities from scratch, including file upload, download, updates, and implementing portal and central notifications.\nSkilled in modern front-end technologies and frameworks, including React JS, Next JS, and expertise with Forms, Events, Hooks, Router, Context API, Redux, and Redux Toolkit.\nBroad technical knowledge in Java, Python, HTML, CSS, JavaScript, and SQL. Adept at using Git and GitHub for version control and effective collaboration.\nDriven by a passion for continuous learning and professional growth. Recognized for strong communication skills, the ability to perform under pressure, and thriving in collaborative team environments."}

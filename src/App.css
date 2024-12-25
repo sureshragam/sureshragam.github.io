@@ -37,6 +37,57 @@ p{
   line-height: 2rem;
   text-overflow: ellipsis;
 }
+button{
+  background-color: var(--primaryColor,#f9004d);
+  color: var(--textColor,white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+a[role="button"]{
+  text-decoration: none;
+  color: var(--textColor,white);
+  background-color: var(--primaryColor,#f9004d);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #29bb42;
+  padding: 5px;
+  border-radius: 50%;
+  animation:alternate-reverse whatsappblink 2s infinite;
+}
+
+@keyframes whatsappblink {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 0 20px 10px #29bb42;
+  }
+}
+
+.whatsapp-float img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
 
 @media screen and (max-width:650px) {
   .App{

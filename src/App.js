@@ -6,18 +6,28 @@ import Certificates from './components/Certificates/certificates.tsx';
 import Contact from './components/Contact/Contact.tsx';
 import MobileAlert from './component-lib/MobileAlert.tsx';
 import Projects from './components/Projects/Projects.tsx';
+import whatsappicon from "./assets/images/WhatsApp_icon.png"
 
 function App() {
   
+  const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
+  const whatsappMessage = encodeURIComponent(process.env.REACT_APP_WHATSAPP_MESSAGE || "Hi! Let's chat!");
+
   return (
     <div className="App">
-    <MobileAlert/>
-    <Header/>
-    <Home/>
-    <About/>
-    <Projects/>
-    <Certificates/>
-    <Contact/>
+      <MobileAlert/>
+      <Header/>
+      <Home/>
+      <About/>
+      <Projects/>
+      <Certificates/>
+      <Contact/>
+      <a href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="whatsapp-float">
+          <img src={whatsappicon} alt="WhatsApp" />
+      </a>
     </div>
   );
 }

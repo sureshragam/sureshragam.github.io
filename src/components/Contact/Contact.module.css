@@ -5,6 +5,10 @@
 .col1{
     flex-basis: 40%;
     font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
 }
 .col1>h1{
     font-size: 3rem;
@@ -15,6 +19,16 @@
     color: white;
     margin-bottom: 1rem;
     display: inline-block;
+}
+.contactContainer [role='button']{
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--primaryColor);
+    font-weight: 400;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease-in;
+    margin-top: 0
 }
 .col2{
     flex-basis: 60%;

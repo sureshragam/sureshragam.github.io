@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
-import photo2 from "../../assets/images/photo2.png"
+import home from "../../assets/images/home.png"
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import classes from './Home.module.css'
-import { socialLinks } from "../../utils/dummyData.ts";
 
 const rolesData = [
     "FullStack Web Developer",
@@ -14,6 +13,9 @@ const rolesData = [
 const Home = () =>{
     const [role,setRole] =useState<any>(rolesData[0])
     const [currentIndex,setCurrentIndex] = useState<any>(0);
+
+    const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn} = process.env
+    console.log(github,linkedIn)
 
     useEffect(()=>{
         const interval = setInterval(()=>{
@@ -34,12 +36,16 @@ const Home = () =>{
                 <p style={{fontSize: "clamp(1rem, 4rem, 10vw)"}}>Suresh <span style={{color:'var(--primaryColor)'}}>Ragam</span></p>
                 <p className={classes.role}>{role}</p>
                 <div className={classes.iconsContainer}>
-                    <a href={socialLinks.github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
-                    <a href={socialLinks.linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                    <a href={github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
+                    <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                </div>
+                <div style={{display:'flex',gap:'2rem',justifyContent:'center',marginTop:'2rem'}}>
+                    <button>Resume</button>
+                    <a role="button" href="#contact">Contact Me</a>
                 </div>
             </div>
             <div className={classes.col2}>
-                <img src={photo2} alt="profile"/>   
+                <img src={home} alt="profile"/>   
             </div>
         </div>
     )

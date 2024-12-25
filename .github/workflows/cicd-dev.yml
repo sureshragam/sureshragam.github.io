@@ -42,19 +42,29 @@ jobs:
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci || (echo "npm ci failed, performing full install" && rm -rf node_modules package-lock.json && npm install)
+      
+      # Step 4: Inject Environment Variables
+      - name: Inject Environment Variables
+        run: |
+          echo "REACT_APP_WHATSAPP_NUMBER=${{ secrets.REACT_APP_WHATSAPP_NUMBER }}" >> .env
+          echo "REACT_APP_WHATSAPP_MESSAGE=${{ secrets.REACT_APP_WHATSAPP_MESSAGE }}" >> .env
+          echo "REACT_APP_MAIL_ID=${{ secrets.REACT_APP_MAIL_ID }}" >> .env
+          echo "REACT_APP_LINKEDIN_URL=${{ secrets.REACT_APP_LINKEDIN_URL }}" >> .env
+          echo "REACT_APP_GITHUB_URL=${{ secrets.REACT_APP_GITHUB_URL }}" >> .env
 
-      # Step 4: Build the project
+      
+      # Step 5: Build the project
       - name: Build project
         run: npm run build
 
-      # Step 5: Configure Git in the root directory
+      # Step 6: Configure Git in the root directory
       - name: Configure Git
         run: |
           git config --global user.name "Github Action"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      # Step 6: Deploy to GitHub Pages
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:

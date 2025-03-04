@@ -29,9 +29,14 @@ const Home = () =>{
     },[])
     console.log(currentIndex)
 
-    const handleDownloadResume = () =>{
-        window.open("https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/resume.pdf", "_blank")
-    }
+    const handleDownloadResume = () => {
+        window.open(
+          "https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/resume.pdf", 
+          "_blank", 
+          "noopener,noreferrer"
+        );
+      };
+      
 
     return(
         <div id="home" className={`${classes.homeContainer} scrollSection`}>

@@ -29,6 +29,15 @@ const Home = () =>{
     },[])
     console.log(currentIndex)
 
+    const handleDownloadResume = () => {
+        window.open(
+          "https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/resume.pdf", 
+          "_blank", 
+          "noopener,noreferrer"
+        );
+      };
+      
+
     return(
         <div id="home" className={`${classes.homeContainer} scrollSection`}>
             <div className={classes.col1}>
@@ -40,7 +49,7 @@ const Home = () =>{
                     <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
                 <div style={{display:'flex',gap:'2rem',justifyContent:'center',marginTop:'2rem'}}>
-                    <button>Resume</button>
+                    <button  onClick={handleDownloadResume}>Resume</button>
                     <a role="button" href="#contact">Contact Me</a>
                 </div>
             </div>

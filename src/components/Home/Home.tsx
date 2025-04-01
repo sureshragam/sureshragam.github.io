@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import home from "../../assets/images/home.png"
+import home from "../../assets/images/portfolio_home.png"
+import background from "../../assets/images/portfolio_background.png"
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import classes from './Home.module.css'
 
@@ -24,10 +25,9 @@ const Home = () =>{
                 setRole(rolesData[newIndex])
                 return(newIndex)
             })
-        },2000)
+        },3000)
         return ()=> clearInterval(interval)
     },[])
-    console.log(currentIndex)
 
     const handleDownloadResume = () => {
         window.open(
@@ -54,6 +54,7 @@ const Home = () =>{
                 </div>
             </div>
             <div className={classes.col2}>
+                <img src={background} alt="background solid"/>
                 <img src={home} alt="profile"/>   
             </div>
         </div>

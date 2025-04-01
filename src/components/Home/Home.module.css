@@ -8,7 +8,7 @@
 .col1{
     flex-basis: 50%;
     text-align: left;
-    text-align: center;    
+    text-align: center; 
 }
 .col1>h1>span{
     font-size: 4rem;
@@ -22,19 +22,32 @@
 }
 .col2{
     flex-basis: 50%;
-    align-self: flex-end;
+    align-self: flex-end;    
 }
-.col2>img{
+.col2>img:nth-child(1){
     display: block;
-    max-width: 50%;
+    max-width: 40%;
+    width: 40%;
+    position: absolute;
     bottom: 0;
     right: 0;
-    position: absolute;
     transition: transform 0.4s ease-in;
 }
-.col2>img:hover{
-  transform: translate(-0.3rem, -0.3rem);
+.col2:hover >img:nth-child(1){
+  transform: translate(0.3rem, -1rem);
 }
+.col2>img:nth-child(2){
+    display: block;
+    max-width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: transform 0.4s ease-in;
+}
+.col2:hover >img:nth-child(2){
+  transform: translate(-1rem, 0rem);
+}
+
 .iconsContainer{
     display: flex;
     gap:10px;

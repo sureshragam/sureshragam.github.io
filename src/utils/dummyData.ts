@@ -36,8 +36,8 @@ export const scrollSkillsData = [
 
 
 export const certificatesData = [
-    new ObjectGenerator({name:"Aws",description:"someting", image:''}),
-    new ObjectGenerator({name:"Python",description:"someting",image:''}),
+    new ObjectGenerator({name:"Aws",description:"Aws certifiedcloud practioner", image:'https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/Aws_certificate.png'}),
+    new ObjectGenerator({name:"Python HackerRank Certified",description:"Demonstrates my proficiency in Python, covering problem-solving, data structures, and algorithms.",image:'https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/hackerankPython.png'}),
 ]
 
 export const  projectsData =[

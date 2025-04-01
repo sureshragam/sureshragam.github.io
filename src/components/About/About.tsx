@@ -1,5 +1,5 @@
 import React from "react"
-import aboutImage from "../../assets/images/about.jpg"
+import aboutImage from "../../assets/images/about_cartoon.png"
 import classes from "./About.module.css"
 import { about} from "../../utils/dummyData.ts"
 import DOMPurify from 'dompurify'

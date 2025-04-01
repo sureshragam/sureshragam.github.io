@@ -13,21 +13,22 @@ const rolesData = [
 
 const Home = () =>{
     const [role,setRole] =useState<any>(rolesData[0])
-    const [currentIndex,setCurrentIndex] = useState<any>(0);
+    const [currentIndex, setCurrentIndex] = useState<any>(0);
 
     const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn} = process.env
-    console.log(github,linkedIn)
 
     useEffect(()=>{
         const interval = setInterval(()=>{
-            setCurrentIndex((prevIndex) =>{
-                const newIndex = (prevIndex+1)%rolesData.length
-                setRole(rolesData[newIndex])
-                return(newIndex)
-            })
+            setCurrentIndex((prevIndex) => {
+                const newIndex = (prevIndex + 1) % rolesData.length;
+                setRole(rolesData[newIndex]);
+                return newIndex;
+            });
         },3000)
         return ()=> clearInterval(interval)
     },[])
+
+    console.log(currentIndex)
 
     const handleDownloadResume = () => {
         window.open(

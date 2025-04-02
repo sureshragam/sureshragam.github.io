@@ -36,13 +36,13 @@ export const scrollSkillsData = [
 
 
 export const certificatesData = [
-    new ObjectGenerator({name:"Aws",description:"Aws certifiedcloud practioner", image:'https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/Aws_certificate.png'}),
+    new ObjectGenerator({name:"Aws",description:"Aws certified cloud practitioner", image:'https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/Aws_certificate.png'}),
     new ObjectGenerator({name:"Python HackerRank Certified",description:"Demonstrates my proficiency in Python, covering problem-solving, data structures, and algorithms.",image:'https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/hackerankPython.png'}),
 ]
 
 export const  projectsData =[
   new ObjectGenerator({name:'Ugaoo',path:"ugaoo-clone",description:'Ugaoo is an online plant nursery that sells a variety of plants, gardening supplies, and accessories:',image:ugaooClone}),
-  new ObjectGenerator({name:'Food Munch',path:"foodmunch",description:'something',image:foodMunch}),
+  new ObjectGenerator({name:'Food Munch',path:"foodmunch",description:'Static website focusing on responsiveness, showcasing various menu of a restaurant. ',image:foodMunch}),
 ]
 
 export const skills ={
@@ -56,14 +56,14 @@ export const skills ={
 export const experience = [
   {
       company:'Refining Design',
-      designation:"Civil Enginner",
+      designation:"Civil Engineer",
       role:'Site Engineer',
       period:"2021 - 2022",
       id:uuidV4()
   
   },
   {
-  company:'Tata Consutancy Services',
+  company:'Tata Consultancy Services',
   designation:"Assistant System Engineer",
   role:'React Developer',
   period:"2022 - Current",

@@ -60,6 +60,5 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(react-redux)/)"
     ],
-    "testEnvironment": "jsdom"
   }
 }

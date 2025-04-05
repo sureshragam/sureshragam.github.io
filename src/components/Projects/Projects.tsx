@@ -15,7 +15,7 @@ const Projects = () =>{
         window.open(path, "_blank")
     }
     return(
-        <div className={`${classes.projects} scrollSection`}>
+        <div id="projects" className={`${classes.projects} scrollSection`}>
             <h2>{staticData?.title}</h2>
             <ul>
                 {staticData?.projects.map((eachProject) =>{
@@ -23,7 +23,7 @@ const Projects = () =>{
                     return <li key={eachProject.id} style={{backgroundImage:`url(${eachProject.name==="Ugaoo"?Ugaoo:Food_Munch})`}}>
                         <h3>{eachProject.name}</h3>
                         <p>{eachProject.description}</p>
-                        <span className={classes.icon} role='button' onKeyDown={
+                        <span arial-label={`Navigate to ${eachProject.name}`} className={classes.icon} role='button' onKeyDown={
                             () =>handleClickIcon(eachProject.url)
                         } onClick={() =>{handleClickIcon(eachProject.url)}}>
                             <WiDirectionUpRight color='white' fontSize='4rem' />

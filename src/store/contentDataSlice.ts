@@ -116,6 +116,7 @@ const contentDataSlice = createSlice({
     builder
       .addCase(fetchData.pending, (state) => {
         state.loading = true;
+        state.data = fallBackData;
         state.error = null;
       })
       .addCase(fetchData.fulfilled, (state, action) => {

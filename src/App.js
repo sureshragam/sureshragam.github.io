@@ -4,7 +4,6 @@ import Home from "./components/Home/Home.tsx";
 import About from "./components/About/About.tsx";
 import Certificates from "./components/Certificates/certificates.tsx";
 import Contact from "./components/Contact/Contact.tsx";
-import MobileAlert from "./component-lib/MobileAlert.tsx";
 import Projects from "./components/Projects/Projects.tsx";
 import whatsappicon from "./assets/images/WhatsApp_icon.png";
 import { useEffect } from "react";

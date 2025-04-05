@@ -20,6 +20,15 @@
 .col1>h2{
     font-size: 40px;
 }
+.homeButtonContainer{
+    display:flex;
+    gap:2rem;
+    justify-content:center;
+    margin-top:2rem
+}
+.homeButtonContainer> button a{
+    background-color: var(--primaryColor,#f9004d);
+}
 .col2{
     flex-basis: 50%;
     align-self: flex-end;    

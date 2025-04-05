@@ -3,7 +3,7 @@
 
 
 :root{
-  --primaryColor:#f9004d;
+  --primaryColor:rgb(170, 0, 50);
   --backgroundColor:black;
   --textColor:white;
   --animationDuration:30s;

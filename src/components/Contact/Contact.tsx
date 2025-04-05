@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer"
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
+import NotifyUserComponent from "../../component-lib/NotifyUserComponent.tsx"
+import { getLinkFromLinks } from "../../utils/helperFunctions.ts";
 
 const Contact = () =>{
     const  [formData,setFormData] = useState({
@@ -18,12 +20,16 @@ const Contact = () =>{
       email: '',
       message: ''
     });
+    const [open, setOpen] = useState(false);
+    const [alertType, setAlertType] = useState("success");
+    const [message, setMessage] = useState("");
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const {data} = useSelector((state:RootState) => state.data)
     const staticData = data?.Contact
     const buttonStaticData = data?.buttons
-
-    const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn,REACT_APP_MAIL_ID:mailID} = process.env
+    const links = data?.externalLinks
+    const {REACT_APP_MAIL_ID:mailID} = process.env
     
     const validateForm = () => {
       const newErrors:{name:any,email:any,message:any} = {name:"",email:"",message:""};
@@ -62,12 +68,14 @@ const Contact = () =>{
 
       const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitted(true)
         if (!validateForm()) {
+          setIsSubmitted(false)
           return;
         }
       
         try {
-          const response = await fetch(" https://zep1f7tlgb.execute-api.ap-south-1.amazonaws.com/contact", {
+          const response = await fetch(getLinkFromLinks(links,"contactform"), {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -80,30 +88,44 @@ const Contact = () =>{
           });
           const result = await response.json();
           if (response.ok) {
+            setIsSubmitted(true)
             setFormData({
               name: '',
               email: '',
               message: ''
             });
-            alert("Your message has been sent successfully!");
+            setAlertType("success")
+            setMessage("Your message has been sent successfully!")
+            setOpen(true)
           }
           console.log(result.message);
         } catch (error) {
           console.error('Error submitting form:', error);
+          setMessage("Error submitting form, Please try again later or contact me directly using the email provided")
+          setAlertType("error")
+          setOpen(true)
+          setFormData({
+            name: '',
+            email: '',
+            message: ''
+          });
+          
         }
+        setIsSubmitted(false)
       };
       
 
     return (
         <div id="contact" className={`${classes.contactContainer} scrollSection`}>
+          <NotifyUserComponent message={message} open={open} setOpen ={(value) =>setOpen(value)} alertType={alertType}/>
           <div style={{display:'flex'}}>
             <div className={classes.col1}>
                 <h2>{staticData?.title}</h2>
                 <p style={{paddingRight:'1rem'}}>{staticData?.description}</p>
                 <a href={`mailTo:${mailID}`}>{staticData?.mailDescription}</a>
                 <div className={classes.iconsContainer}>
-                  <a href={github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
-                  <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                  <a href={getLinkFromLinks(links,links ?links[1]?.name:"")} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
+                  <a href={getLinkFromLinks(links,links ?links[0]?.name:"")}  target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
                 <div style={{marginTop:"auto",display:'flex',alignItems:'center',justifyContent:'center'}} >
                   <IoArrowBackOutline color="#f9004d"/>
@@ -112,10 +134,11 @@ const Contact = () =>{
             </div>
             <div className={classes.col2}>
                 <form className={classes.form} onSubmit={(event) =>handleSubmit(event)}>
-                    <input type="text" placeholder={staticData?.namelabel} name={staticData?.namelabel} className={classes.inputField} onChange={handleChange} value={formData.name} required/>
-                    <input type="mail" placeholder={staticData?.emaillabel} name={staticData?.emaillabel} className={classes.inputField} onChange={handleChange} value={formData.email} required/>
-                    <textarea placeholder={staticData?.messagelabel} name={staticData?.messagelabel}className={classes.textField} onChange={handleChange} value={formData.message} required/>            
-                    <button type="submit" className={classes.submitButton}>Submit</button>
+                    <input type="text" placeholder={staticData?.namelabel} name={staticData?.namelabel?.toLowerCase()} className={classes.inputField} onChange={handleChange} value={formData.name} required/>
+                    <input type="mail" placeholder={staticData?.emaillabel} name={staticData?.emaillabel?.toLowerCase()} className={classes.inputField} onChange={handleChange} value={formData.email} required/>
+                    <textarea placeholder={staticData?.messagelabel} name={staticData?.messagelabel?.toLowerCase()}className={classes.textField} onChange={handleChange} value={formData.message} required/>            
+                    {!isSubmitted && <button type="submit" className={classes.submitButton}>{buttonStaticData?.submitBtn}</button>}
+                    {isSubmitted && <button type="submit" className={classes.submitButton}>{"Sending...."}</button>}
                     {errors.name && <p className={classes.errorText}>*{errors.name}</p>}
                     {errors.email && <p className={classes.errorText}>*{errors.email}</p>}
                     {errors.message && <p className={classes.errorText}>*{errors.message}</p>}

@@ -1,15 +1,20 @@
 import React from "react";
 import classes from './certificates.module.css';
-import { certificatesData } from "../../utils/dummyData.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/appStore";
 
 const Certificates:React.FC = () =>{
+
+    const {data} = useSelector((state:RootState) => state.data)
+    const staticData = data?.certifcates
+
     return (
         <div id="certificates" className={`${classes.certificatesContainer} scrollSection`}>
-            <h2 className={classes.title}>My Certificates</h2>
+            <h2 className={classes.title}>{staticData?.title}</h2>
             <ul className={classes.certificates}>
-                {certificatesData.map(eachCertificate =>{
-                    return <li className={classes.certificate} key={eachCertificate.id}>
-                        <img src={eachCertificate.image} alt={eachCertificate.name} />
+                {staticData?.certificates.map(eachCertificate =>{
+                    return <li className={classes.certificate} key={eachCertificate.name}>
+                        <img src={eachCertificate.url} alt={eachCertificate.alt} />
                     </li>
                 })}
 

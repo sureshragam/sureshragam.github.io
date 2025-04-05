@@ -21,7 +21,7 @@ const RoleGenerator = ({roles}) => {
             });
         },3000)
         return ()=> clearInterval(interval)
-    },[])
+    },[roles])
 
     console.log(currentIndex)
     return (

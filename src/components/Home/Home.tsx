@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import home from "../../assets/images/portfolio_home.png"
 import background from "../../assets/images/portfolio_background.png"
 import { FaGithub,FaLinkedin } from "react-icons/fa";

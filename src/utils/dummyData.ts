@@ -44,14 +44,14 @@ export const skills ={
 export const experience = [
   {
       company:'Refining Design',
-      designation:"Civil Enginner",
+      designation:"Civil Engineer",
       role:'Site Engineer',
       period:"2021 - 2022",
       id:uuidV4()
   
   },
   {
-  company:'Tata Consutancy Services',
+  company:'Tata Consultancy Services',
   designation:"Assistant System Engineer",
   role:'React Developer',
   period:"2022 - Current",

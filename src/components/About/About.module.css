@@ -43,7 +43,7 @@ display: flex;
     background-color: var(--primaryColor,#f9004d);
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:920px) {
     .aboutContainer{
         flex-direction: column;
     }

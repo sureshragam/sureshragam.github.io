@@ -25,21 +25,22 @@ function App() {
 
 	return (
 		<div className="App">
-			<MobileAlert />
 			<Header />
-			<Home />
-			<About />
-			<Projects />
-			<Certificates />
-			<Contact />
-			<a
-				href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="whatsapp-float"
-			>
-				<img src={whatsappicon} alt="WhatsApp" />
-			</a>
+			<div className="content">
+				<Home />
+				<About />
+				<Projects />
+				<Certificates />
+				<Contact />
+				<a
+					href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="whatsapp-float"
+				>
+					<img src={whatsappicon} alt="WhatsApp" />
+				</a>
+			</div>
 		</div>
 	);
 }

@@ -1,5 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+/* --variableName: value */
+/* var(--variableName,fallbackValue) */
+
+
+:root{
+  --primaryColor:rgb(170, 0, 50);
+  --backgroundColor:black;
+  --textColor:white;
+  --animationDuration:30s;
+  --pageHeight:100vh;
+  --scrollAlign:start;
+  --scrollMarginTop:0px
+}
+
 html{
-  scroll-padding-top: 100px;
+  /* scroll-padding-top: 100px; */
 }
 body {
   margin: 0;
@@ -27,4 +44,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width:920px) {
+  ::-webkit-scrollbar{
+    width: 0
+  }
 }

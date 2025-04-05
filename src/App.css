@@ -1,31 +1,19 @@
-/* --variableName: value */
-/* var(--variableName,fallbackValue) */
-
-
-:root{
-  --primaryColor:rgb(170, 0, 50);
-  --backgroundColor:black;
-  --textColor:white;
-  --animationDuration:30s;
-  --pageHeight:100vh;
-  --scrollAlign:start;
-  --scrollMarginTop:100px
-}
-
 .App {
   text-align: center;
   background-color: var(--backgroundColor,black);
   color: var(--textColor,white);
-  height: 100vh;
-  overflow: hidden;
-  padding: 0px 30px;
+  padding: 0px 5px 0px 20px;
   font-family: "Josefin Sans", sans-serif;
+  height:100vh
+}
+.content{
+  height: calc(100vh - 150px);
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 .scrollSection{
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
     scroll-snap-align: var(--scrollAlign);
     scroll-margin-top:var(--scrollMarginTop) ;
     scroll-margin-bottom: -100px;
@@ -89,11 +77,15 @@ a[role="button"]{
 }
 
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:920px) {
   .App{
     scroll-snap-type: none;
   }
   .scrollSection{
     height: fit-content;
+  }
+  .content{
+    scroll-snap-type: none;
+    scroll-behavior:smooth;
   }
 }

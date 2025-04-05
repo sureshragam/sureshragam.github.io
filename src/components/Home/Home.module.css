@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100vh;
 }
 .col1{
     flex-basis: 50%;
@@ -35,11 +34,11 @@
 }
 .col2>img:nth-child(1){
     display: block;
-    max-width: 40%;
-    width: 40%;
+    max-width: 50%;
+    width: 38%;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 2rem;
     transition: transform 0.4s ease-in;
 }
 .col2:hover >img:nth-child(1){
@@ -47,7 +46,7 @@
 }
 .col2>img:nth-child(2){
     display: block;
-    max-width: 100%;
+    max-width: 90%;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -76,20 +75,13 @@
 
 
 /* //////// for small screen */
-@media screen and (max-width:600px){
+@media screen and (max-width:920px){
     .homeContainer{
-        width: 100vw;
-        display: block
-
-    }
-    .col2{
-        width: 100%;
-    }
-    .col2>img{
-        display:block;
-        position: relative;
-        width: 100% ;
-        max-width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap:3rem;
+        align-items: center;
+        position: static;
 
     }
     .col1{
@@ -98,6 +90,15 @@
         align-self: flex-start;
         padding-top: 10px;
         position: relative;
-        margin-top: 50px;
+    }
+    .col2>img:nth-child(1){
+        display: none
+    }
+    .col2>img:nth-child(2){
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        position: static;
+        transition: transform 0.4s ease-in;
     }
 }

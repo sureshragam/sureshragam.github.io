@@ -3,32 +3,17 @@ import home from "../../assets/images/portfolio_home.png"
 import background from "../../assets/images/portfolio_background.png"
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import classes from './Home.module.css'
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/appStore";
+import RoleGenerator from "../../component-lib/RoleGenerator.tsx";
 
-const rolesData = [
-    "FullStack Web Developer",
-    "React Developer",
-    'Front-End Developer',
-    'Back-End Developer'
-]
 
 const Home = () =>{
-    const [role,setRole] =useState<any>(rolesData[0])
-    const [currentIndex, setCurrentIndex] = useState<any>(0);
+    const {data} = useSelector((state:RootState) => state.data)
+    const staticData = data?.home
+    const buttonStaticData = data?.buttons
 
     const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn} = process.env
-
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            setCurrentIndex((prevIndex) => {
-                const newIndex = (prevIndex + 1) % rolesData.length;
-                setRole(rolesData[newIndex]);
-                return newIndex;
-            });
-        },3000)
-        return ()=> clearInterval(interval)
-    },[])
-
-    console.log(currentIndex)
 
     const handleDownloadResume = () => {
         window.open(
@@ -38,20 +23,19 @@ const Home = () =>{
         );
       };
       
-
     return(
         <div id="home" className={`${classes.homeContainer} scrollSection`}>
             <div className={classes.col1}>
-                <p>Hi, Im </p>
-                <p style={{fontSize: "clamp(1rem, 4rem, 10vw)"}}>Suresh <span style={{color:'var(--primaryColor)'}}>Ragam</span></p>
-                <p className={classes.role}>{role}</p>
+                <p>{staticData?.miniTitle}</p>
+                <p style={{fontSize: "clamp(1rem, 4rem, 10vw)"}}>{staticData?.title.split(" ")[0]}<span style={{color:'var(--primaryColor)'}}> {staticData?.title.split(" ")[1]}</span></p>
+                <RoleGenerator roles={staticData?.roles}/>
                 <div className={classes.iconsContainer}>
                     <a href={github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
                     <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
                 <div style={{display:'flex',gap:'2rem',justifyContent:'center',marginTop:'2rem'}}>
-                    <button  onClick={handleDownloadResume}>Resume</button>
-                    <a role="button" href="#contact">Contact Me</a>
+                    <button  onClick={handleDownloadResume}>{buttonStaticData?.resumeBtn}</button>
+                    <a role="button" href="#contact">{buttonStaticData?.contactBtn}</a>
                 </div>
             </div>
             <div className={classes.col2}>

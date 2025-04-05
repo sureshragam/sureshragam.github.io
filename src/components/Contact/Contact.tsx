@@ -3,6 +3,8 @@ import classes from "./Contact.module.css";
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import Footer from "../Footer/Footer"
 import { IoArrowBackOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/appStore";
 
 const Contact = () =>{
     const  [formData,setFormData] = useState({
@@ -17,8 +19,12 @@ const Contact = () =>{
       message: ''
     });
 
-    const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn,REACT_APP_MAIL_ID:mailID} = process.env
+    const {data} = useSelector((state:RootState) => state.data)
+    const staticData = data?.Contact
+    const buttonStaticData = data?.buttons
 
+    const {REACT_APP_GITHUB_URL:github,REACT_APP_LINKEDIN_URL:linkedIn,REACT_APP_MAIL_ID:mailID} = process.env
+    
     const validateForm = () => {
       const newErrors:{name:any,email:any,message:any} = {name:"",email:"",message:""};
       let formIsValid = true;
@@ -92,22 +98,23 @@ const Contact = () =>{
         <div id="contact" className={`${classes.contactContainer} scrollSection`}>
           <div style={{display:'flex'}}>
             <div className={classes.col1}>
-                <h2>Contact Me</h2>
-                <a href={`mailTo:${mailID}`}>want to send a mail click here.</a>
+                <h2>{staticData?.title}</h2>
+                <p style={{paddingRight:'1rem'}}>{staticData?.description}</p>
+                <a href={`mailTo:${mailID}`}>{staticData?.mailDescription}</a>
                 <div className={classes.iconsContainer}>
                   <a href={github} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
                   <a href={linkedIn} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
                 <div style={{marginTop:"auto",display:'flex',alignItems:'center',justifyContent:'center'}} >
                   <IoArrowBackOutline color="#f9004d"/>
-                  <a role="button" href='#home' >Back to Home</a>
+                  <a role="button" href='#home' >{buttonStaticData?.backBtn}</a>
                 </div>
             </div>
             <div className={classes.col2}>
                 <form className={classes.form} onSubmit={(event) =>handleSubmit(event)}>
-                    <input type="text" placeholder="Your Name" name="name" className={classes.inputField} onChange={handleChange} value={formData.name} required/>
-                    <input type="mail" placeholder="Your Email" name="email" className={classes.inputField} onChange={handleChange} value={formData.email} required/>
-                    <textarea placeholder="Your Message" name="message" className={classes.textField} onChange={handleChange} value={formData.message} required/>            
+                    <input type="text" placeholder={staticData?.namelabel} name={staticData?.namelabel} className={classes.inputField} onChange={handleChange} value={formData.name} required/>
+                    <input type="mail" placeholder={staticData?.emaillabel} name={staticData?.emaillabel} className={classes.inputField} onChange={handleChange} value={formData.email} required/>
+                    <textarea placeholder={staticData?.messagelabel} name={staticData?.messagelabel}className={classes.textField} onChange={handleChange} value={formData.message} required/>            
                     <button type="submit" className={classes.submitButton}>Submit</button>
                     {errors.name && <p className={classes.errorText}>*{errors.name}</p>}
                     {errors.email && <p className={classes.errorText}>*{errors.email}</p>}

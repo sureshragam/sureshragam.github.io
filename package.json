@@ -59,6 +59,6 @@
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!(react-redux)/)"
-    ],
+    ]
   }
 }

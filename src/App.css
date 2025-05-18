@@ -27,7 +27,7 @@ p{
 }
 button{
   background-color: var(--primaryColor,#f9004d);
-  color: var(--textColor,white);
+  color: var(--textColor1,white);
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -37,7 +37,7 @@ button{
 }
 a[role="button"]{
   text-decoration: none;
-  color: var(--textColor,white);
+  color: var(--textColor1,white);
   background-color: var(--primaryColor,#f9004d);
   padding: 10px 20px;
   border: none;

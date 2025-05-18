@@ -16,12 +16,31 @@ const Home = () =>{
     const buttonStaticData = data?.buttons
 
     const handleDownloadResume = () => {
+        if (typeof window !== "undefined" && typeof window.gtag === "function") {
+            window.gtag("event", "resume_click", {
+              event_category: "engagement",
+              event_label: "Resume Button",
+            });
+          } else {
+            console.warn("gtag is not available");
+          }
         window.open(
           "https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/resume.pdf", 
           "_blank", 
           "noopener,noreferrer"
         );
       };
+
+      const handleContact = () =>{
+        if (typeof window !== "undefined" && typeof window.gtag === "function") {
+            window.gtag("event", "Contact_click", {
+              event_category: "engagement",
+              event_label: "Contact Button",
+            });
+          } else {
+            console.warn("gtag is not available");
+          }
+      }
 
     
     return(
@@ -31,12 +50,12 @@ const Home = () =>{
                 <p style={{fontSize: "clamp(1rem, 4rem, 10vw)"}}>{staticData?.title.split(" ")[0]}<span style={{color:'var(--primaryColor)'}}> {staticData?.title.split(" ")[1]}</span></p>
                 <RoleGenerator roles={staticData?.roles}/>
                 <div className={classes.iconsContainer}>
-                    <a aria-label={links ?links[1]?.name:""} href={getLinkFromLinks(links,links ?links[1]?.name:"")} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
-                    <a aria-label={links ?links[0]?.name:""} href={getLinkFromLinks(links,links ?links[0]?.name:"")} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
+                    <a aria-label={`Naviagte to - ${links ?links[1]?.name:"Github"}`} href={getLinkFromLinks(links,links ?links[1]?.name:"")} target="_blank" rel="noreferrer"><FaGithub className={classes.icon} /></a>
+                    <a aria-label={`Naviagte to - ${links ?links[0]?.name:"LinkedIn"}`} href={getLinkFromLinks(links,links ?links[0]?.name:"")} target="_blank" rel="noreferrer"><FaLinkedin className={classes.icon} /></a>
                 </div>
                 <div className={classes.homeButtonContainer}>
-                    <button  onClick={handleDownloadResume}>{buttonStaticData?.resumeBtn}</button>
-                    <a role="button" href="#contact">{buttonStaticData?.contactBtn}</a>
+                    <button id="resume" onClick={handleDownloadResume}>{buttonStaticData?.resumeBtn}</button>
+                    <a role="button" href="#contact" onClick={handleContact}>{buttonStaticData?.contactBtn}</a>
                 </div>
             </div>
             <div className={classes.col2}>

@@ -23,8 +23,11 @@ const Projects = () =>{
                     return <li key={eachProject.id} style={{backgroundImage:`url(${eachProject.name==="Ugaoo"?Ugaoo:Food_Munch})`}}>
                         <h3>{eachProject.name}</h3>
                         <p>{eachProject.description}</p>
-                        <span arial-label={`Navigate to ${eachProject.name}`} className={classes.icon} role='button' onKeyDown={
-                            () =>handleClickIcon(eachProject.url)
+                        <span aria-label={`Navigate to ${eachProject.name}`} tabIndex={0} className={classes.icon} role='button' onKeyDown={
+                            (event) =>{
+                                if(event.key==='Enter' || event.key===' ')
+                                handleClickIcon(eachProject.url)
+                            }
                         } onClick={() =>{handleClickIcon(eachProject.url)}}>
                             <WiDirectionUpRight color='white' fontSize='4rem' />
                         </span>

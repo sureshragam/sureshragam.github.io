@@ -6,9 +6,10 @@
 
 
 :root{
-  --primaryColor:rgb(170, 0, 50);
+  --primaryColor:rgb(2 171 130);
   --backgroundColor:black;
   --textColor:white;
+  --textColor1:#010101;
   --animationDuration:30s;
   --pageHeight:100vh;
   --scrollAlign:start;

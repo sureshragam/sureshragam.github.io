@@ -71,7 +71,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     background-color: var(--primaryColor,#f9004d);
-    color:white;
+    color:var(---textColor1,010101);
     font-weight: 400;
     font-size: 1rem;
     border-style: none;

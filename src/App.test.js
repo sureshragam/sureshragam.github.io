@@ -1,14 +1,13 @@
-// App.test.js or Home.test.tsx
 import { render, screen } from "@testing-library/react";
+import { useSelector } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
-// Mock the entire react-redux module
+// Mock react-redux
 jest.mock("react-redux", () => ({
 	useSelector: jest.fn(),
 	useDispatch: () => jest.fn(),
 }));
-
-import { useSelector } from "react-redux";
 
 beforeEach(() => {
 	useSelector.mockImplementation(() => ({
@@ -27,7 +26,12 @@ beforeEach(() => {
 });
 
 test("renders Ragam", async () => {
-	render(<App />);
+	render(
+		<MemoryRouter>
+			<App />
+		</MemoryRouter>
+	);
+
 	const name = await screen.findByText("Ragam");
 	expect(name).toBeInTheDocument();
 });

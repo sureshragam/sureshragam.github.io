@@ -1,199 +1,81 @@
-import { useState, Fragment } from "react";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { ButtonGroup } from "@mui/material";
+import Button from "@mui/material/Button";
 
-const FormModal = ({ setAlert, formType, setFormType }) => {
-	const [open, setOpen] = useState(false);
-
-	const handleClickOpen = (type: String) => {
-		setFormType(type);
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
-
-	const fetchAPI = async (url: string, options: any) => {
-		try {
-			const res = await fetch(url, options);
-			console.log(res, "res");
-			if (res.status == 200) {
-				setAlert(true);
-			}
-		} catch (e) {
-			console.log(e);
-		}
-	};
-
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const formData = new FormData(event.currentTarget);
-		const formJson = Object.fromEntries((formData as any).entries());
-
-		let URL = "";
-		let options = {};
-		if (formType === "Certificate") {
-			URL = "http://localhost:8080/certificate";
-			options = {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formJson),
-			};
-		}
-		if (formType === "Project") {
-			URL = "http://localhost:8080/project";
-			options = {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formJson),
-			};
-		}
-
-		fetchAPI(URL, options);
-		handleClose();
-	};
-
+type FormModalTypes = {
+	setAlert: React.Dispatch<React.SetStateAction<boolean>>;
+	open: boolean;
+	formType: string;
+	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	handleClose: () => void;
+	handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+};
+const FormModal = ({
+	setAlert,
+	open,
+	formType,
+	setOpen,
+	handleClose,
+	handleSubmit,
+}: FormModalTypes) => {
 	return (
-		<Fragment>
-			<ButtonGroup>
+		<Dialog open={open} onClose={handleClose}>
+			<DialogTitle> Add {formType}</DialogTitle>
+			<DialogContent>
+				<form onSubmit={handleSubmit} id={`${formType}-form`}>
+					<TextField
+						autoFocus
+						required
+						margin="dense"
+						id={`${formType}Name`}
+						name="name"
+						label={`${formType} Name`}
+						type="text"
+						fullWidth
+						variant="standard"
+					/>
+					<TextField
+						autoFocus
+						required
+						margin="dense"
+						id={`${formType}URL`}
+						name={"url"}
+						label={`${formType} URL`}
+						type="url"
+						fullWidth
+						variant="standard"
+					/>
+					<TextField
+						autoFocus
+						margin="dense"
+						id={"altField"}
+						name={"alt"}
+						label={"ALT value"}
+						type="text"
+						fullWidth
+						variant="standard"
+					/>
+				</form>
+			</DialogContent>
+			<DialogActions>
 				<Button
 					sx={{ color: "var(--primaryColor,#f9004d)" }}
-					variant="outlined"
-					onClick={() => handleClickOpen("Certificate")}
+					onClick={handleClose}
 				>
-					Add Certificate
+					Cancel
 				</Button>
 				<Button
 					sx={{ color: "var(--primaryColor,#f9004d)" }}
-					variant="outlined"
-					onClick={() => handleClickOpen("Project")}
+					type="submit"
+					form={`${formType}-form`}
 				>
-					Add Project
+					Add {formType}
 				</Button>
-			</ButtonGroup>
-
-			{formType === "Project" ? (
-				<Dialog open={open && formType === "Project"} onClose={handleClose}>
-					<DialogTitle> Add {formType}</DialogTitle>
-					<DialogContent>
-						<form onSubmit={handleSubmit} id="project-form">
-							<TextField
-								autoFocus
-								required
-								margin="dense"
-								id="projectName"
-								name="name"
-								label="Project Name"
-								type="text"
-								fullWidth
-								variant="standard"
-							/>
-							<TextField
-								autoFocus
-								required
-								margin="dense"
-								id={"projectUrl"}
-								name={"url"}
-								label={"Project URL"}
-								type="url"
-								fullWidth
-								variant="standard"
-							/>
-							<TextField
-								autoFocus
-								margin="dense"
-								id={"altField"}
-								name={"alt"}
-								label={"ALT value"}
-								type="text"
-								fullWidth
-								variant="standard"
-							/>
-						</form>
-					</DialogContent>
-					<DialogActions>
-						<Button
-							sx={{ color: "var(--primaryColor,#f9004d)" }}
-							onClick={handleClose}
-						>
-							Cancel
-						</Button>
-						<Button
-							sx={{ color: "var(--primaryColor,#f9004d)" }}
-							type="submit"
-							form="project-form"
-						>
-							Add Project
-						</Button>
-					</DialogActions>
-				</Dialog>
-			) : (
-				<Dialog open={open && formType === "Certificate"} onClose={handleClose}>
-					<DialogTitle> Add {formType}</DialogTitle>
-					<DialogContent>
-						<form onSubmit={handleSubmit} id="certificate-form">
-							<TextField
-								autoFocus
-								required
-								margin="dense"
-								id={"certificateName"}
-								name={"name"}
-								label={"Certificate Name"}
-								type="text"
-								fullWidth
-								variant="standard"
-							/>
-							<TextField
-								autoFocus
-								required
-								margin="dense"
-								id={"certificateURL"}
-								name={"url"}
-								label={"Certificate URL"}
-								type="url"
-								fullWidth
-								variant="standard"
-							/>
-							<TextField
-								autoFocus
-								margin="dense"
-								id={"altField"}
-								name={"alt"}
-								label={"ALT value"}
-								type="text"
-								fullWidth
-								variant="standard"
-							/>
-						</form>
-					</DialogContent>
-					<DialogActions>
-						<Button
-							sx={{ color: "var(--primaryColor,#f9004d)" }}
-							onClick={handleClose}
-						>
-							Cancel
-						</Button>
-						<Button
-							sx={{ color: "var(--primaryColor,#f9004d)" }}
-							type="submit"
-							form="certificate-form"
-						>
-							Add Certificate
-						</Button>
-					</DialogActions>
-				</Dialog>
-			)}
-		</Fragment>
+			</DialogActions>
+		</Dialog>
 	);
 };
 

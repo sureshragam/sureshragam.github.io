@@ -25,7 +25,7 @@ export const Admin = () => {
 		try {
 			const res = await fetch(url, options);
 			console.log(res, "res");
-			if (res.status == 200) {
+			if (res.status === 200) {
 				setAlert(true);
 			}
 		} catch (e) {

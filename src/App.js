@@ -9,6 +9,9 @@ import whatsappicon from "./assets/images/WhatsApp_icon.png";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchData } from "./store/contentDataSlice.ts";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Admin } from "./components/Admin/Admin.tsx";
+import { ResumePreview } from "./components/ResumePreview/ResumePreview.tsx";
 
 function App() {
 	const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
@@ -24,22 +27,33 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
-			<div className="content">
-				<Home />
-				<About />
-				<Projects />
-				<Certificates />
-				<Contact />
-				<a
-					href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="whatsapp-float"
-				>
-					<img src={whatsappicon} alt="WhatsApp" />
-				</a>
-			</div>
+			<BrowserRouter>
+				<Header />
+				<Routes>
+					<Route path="/admin" element={<Admin />} />
+					<Route
+						path="/*"
+						element={
+							<div className="content">
+								<Home />
+								<About />
+								<Projects />
+								<Certificates />
+								<Contact />
+								<a
+									href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="whatsapp-float"
+								>
+									<img src={whatsappicon} alt="WhatsApp" />
+								</a>
+							</div>
+						}
+					/>
+					<Route path="/resume_preview" element={<ResumePreview />}></Route>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

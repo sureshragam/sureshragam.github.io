@@ -7,27 +7,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
 import RoleGenerator from "../../component-lib/RoleGenerator.tsx";
 import { getLinkFromLinks } from "../../utils/helperFunctions.ts";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 	const { data } = useSelector((state: RootState) => state.data);
 	const staticData = data?.home;
 	const links = data?.externalLinks;
 	const buttonStaticData = data?.buttons;
-
-	const handleDownloadResume = () => {
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			event: "resume_click",
-			event_category: "engagement",
-			event_label: "Resume Button",
-		});
-
-		window.open(
-			"https://sragamimages.s3.ap-south-1.amazonaws.com/portfolio/resume.pdf",
-			"_blank",
-			"noopener,noreferrer"
-		);
-	};
 
 	const handleContact = () => {
 		window.dataLayer = window.dataLayer || [];
@@ -69,9 +55,9 @@ const Home = () => {
 					</a>
 				</div>
 				<div className={classes.homeButtonContainer}>
-					<button id="resume" onClick={handleDownloadResume}>
+					<Link role="button" id="resume" to="/resume_preview">
 						{buttonStaticData?.resumeBtn}
-					</button>
+					</Link>
 					<a role="button" href="#contact" onClick={handleContact}>
 						{buttonStaticData?.contactBtn}
 					</a>

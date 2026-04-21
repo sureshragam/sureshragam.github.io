@@ -1,23 +1,57 @@
-.skillScroll{
-    width: 80%;
-    margin: auto;
-    position: relative;
-    height: 30px;
-    overflow: hidden;
+.skillScroll {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+
+	/* 👇 merge this here */
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 10%,
+		black 90%,
+		transparent
+	);
 }
+
+/* scrolling track */
+.track {
+	display: flex;
+	gap: 24px;
+	width: max-content;
+	animation: scrollLeft linear infinite;
+}
+
+/* animation */
 @keyframes scrollLeft {
-    to{
-        left: -100px;
-    }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
-.skill{
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    position:absolute;
-    left: 100%;
-    display: flex;
-    align-items: center;
-    gap:0.3rem;
-    animation: scrollLeft var(--animationDuration) linear infinite;
+
+/* each skill */
+.skill {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.05);
+	white-space: nowrap;
+	font-size: 0.9rem;
+}
+
+/* hover */
+.skill:hover {
+	background: rgba(0, 255, 170, 0.15);
+	transform: translateY(-2px);
+	transition: 0.3s;
+}
+
+/* pause animation */
+.skillScroll:hover .track {
+	animation-play-state: paused;
 }

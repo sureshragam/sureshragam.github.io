@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ButtonGroup } from "@mui/material";
 import Button from "@mui/material/Button";
 
-import FormModal from "../../component-lib/FormModal.tsx";
-import NotifyUserComponent from "../../component-lib/NotifyUserComponent.tsx";
+import FormModal from "../../component-lib/FormModal";
+import NotifyUserComponent from "../../component-lib/NotifyUserComponent";
 
 export const Admin = () => {
 	const [alert, setAlert] = useState(false);

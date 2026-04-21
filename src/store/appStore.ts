@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import dataReducer from './contentDataSlice.ts';
+import { configureStore } from "@reduxjs/toolkit";
+import dataReducer from "./contentDataSlice";
 
 export const store = configureStore({
-  reducer: {
-    data: dataReducer,
-  },
+	reducer: {
+		data: dataReducer,
+	},
 });
 
 // Infer types for usage

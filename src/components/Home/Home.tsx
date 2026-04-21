@@ -5,8 +5,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import classes from "./Home.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
-import RoleGenerator from "../../component-lib/RoleGenerator.tsx";
-import { getLinkFromLinks } from "../../utils/helperFunctions.ts";
+import RoleGenerator from "../../component-lib/RoleGenerator";
+import { getLinkFromLinks } from "../../utils/helperFunctions";
 import { Link } from "react-router-dom";
 
 const Home = () => {

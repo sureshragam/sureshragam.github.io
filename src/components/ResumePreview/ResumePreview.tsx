@@ -1,3 +1,9 @@
+declare global {
+	interface Window {
+		dataLayer?: Array<Record<string, unknown>>;
+	}
+}
+
 export const ResumePreview = () => {
 	const handleDownloadResume = () => {
 		window.dataLayer = window.dataLayer || [];

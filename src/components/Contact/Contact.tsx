@@ -93,7 +93,7 @@ const Contact = () => {
 				}),
 			});
 			const result = await response.json();
-			if (response.ok) {
+			if (result.ok) {
 				setIsSubmitted(true);
 				setFormData({
 					name: "",
@@ -104,7 +104,6 @@ const Contact = () => {
 				setMessage("Your message has been sent successfully!");
 				setOpen(true);
 			}
-			console.log(result.message);
 		} catch (error) {
 			console.error("Error submitting form:", error);
 			setMessage(

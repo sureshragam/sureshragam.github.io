@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.4a4642ce.css",
-    "main.js": "/static/js/main.149353b9.js",
-    "static/js/453.5d42bb9a.chunk.js": "/static/js/453.5d42bb9a.chunk.js",
+    "main.css": "/static/css/main.094b210c.css",
+    "main.js": "/static/js/main.778c99e3.js",
+    "static/js/453.1066321f.chunk.js": "/static/js/453.1066321f.chunk.js",
     "static/media/desktop-view.png": "/static/media/desktop-view.31b3689df547f0954d5a.png",
     "static/media/about_cartoon.png": "/static/media/about_cartoon.7a58a9791bf7194a7c35.png",
     "static/media/foodmunch.jpg": "/static/media/foodmunch.140975cc7628fb1a421b.jpg",
@@ -10,12 +10,12 @@
     "static/media/WhatsApp_icon.png": "/static/media/WhatsApp_icon.31d4b1d27126bcc1f665.png",
     "static/media/portfolio_background.png": "/static/media/portfolio_background.aef5afef62f4068ad93b.png",
     "index.html": "/index.html",
-    "main.4a4642ce.css.map": "/static/css/main.4a4642ce.css.map",
-    "main.149353b9.js.map": "/static/js/main.149353b9.js.map",
-    "453.5d42bb9a.chunk.js.map": "/static/js/453.5d42bb9a.chunk.js.map"
+    "main.094b210c.css.map": "/static/css/main.094b210c.css.map",
+    "main.778c99e3.js.map": "/static/js/main.778c99e3.js.map",
+    "453.1066321f.chunk.js.map": "/static/js/453.1066321f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a4642ce.css",
-    "static/js/main.149353b9.js"
+    "static/css/main.094b210c.css",
+    "static/js/main.778c99e3.js"
   ]
 }

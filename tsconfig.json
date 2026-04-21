@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2021",
+    "lib": ["dom", "es2021"],
     "module": "esnext",
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
+
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true

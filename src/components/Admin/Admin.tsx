@@ -21,7 +21,6 @@ export const Admin = () => {
 	};
 
 	const fetchAPI = async (url: string, options: any) => {
-		url = "";
 		try {
 			const res = await fetch(url, options);
 			console.log(res, "res");

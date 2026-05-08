@@ -1,10 +1,8 @@
-// src/components/CommandPalette/CommandPalette.tsx
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
-import React, { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import classes from "./CommandPalette.module.css";
-
-import { motion, AnimatePresence } from "framer-motion";
 
 const commands = [
 	{
@@ -36,7 +34,8 @@ const commands = [
 const CommandPalette = () => {
 	const [open, setOpen] = useState(false);
 
-	/* PLATFORM SHORTCUT */
+	/* ---------- Platform Shortcut ---------- */
+
 	const shortcutKey = useMemo(() => {
 		if (typeof window === "undefined") return "Ctrl";
 
@@ -51,10 +50,14 @@ const CommandPalette = () => {
 		return isMac ? "⌘" : "Ctrl";
 	}, []);
 
-	/* KEYBOARD SHORTCUTS */
+	/* ---------- Keyboard Shortcuts ---------- */
+
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+			const isShortcut =
+				(event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k";
+
+			if (isShortcut) {
 				event.preventDefault();
 
 				setOpen((prev) => !prev);
@@ -65,28 +68,32 @@ const CommandPalette = () => {
 			}
 		};
 
-		window.addEventListener("keydown", handleKeyDown);
+		window.addEventListener("keydown", handleKeyDown, {
+			passive: true,
+		});
 
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, []);
 
-	/* NAVIGATION */
-	const handleNavigate = (id: string) => {
+	/* ---------- Navigation ---------- */
+
+	const handleNavigate = useCallback((id: string) => {
 		const section = document.getElementById(id);
 
 		if (section) {
 			section.scrollIntoView({
 				behavior: "smooth",
+				block: "start",
 			});
 		}
 
 		setOpen(false);
-	};
+	}, []);
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode="wait">
 			{open && (
 				<motion.div
 					className={classes.overlay}
@@ -99,42 +106,42 @@ const CommandPalette = () => {
 					exit={{
 						opacity: 0,
 					}}
+					transition={{
+						duration: 0.18,
+					}}
 				>
 					<motion.div
 						className={classes.palette}
 						initial={{
 							opacity: 0,
-
-							scale: 0.9,
-
-							y: 20,
+							y: 16,
+							scale: 0.96,
 						}}
 						animate={{
 							opacity: 1,
-
-							scale: 1,
-
 							y: 0,
+							scale: 1,
 						}}
 						exit={{
 							opacity: 0,
-
-							scale: 0.9,
-
-							y: 20,
+							y: 16,
+							scale: 0.96,
 						}}
 						transition={{
-							duration: 0.25,
+							duration: 0.22,
+							ease: "easeOut",
 						}}
 					>
-						{/* HEADER */}
+						{/* Header */}
+
 						<div className={classes.header}>
 							<span>Command Menu</span>
 
 							<div className={classes.shortcut}>{shortcutKey} + K</div>
 						</div>
 
-						{/* COMMANDS */}
+						{/* Commands */}
+
 						<div className={classes.commands}>
 							{commands.map((command) => (
 								<button
@@ -147,7 +154,8 @@ const CommandPalette = () => {
 							))}
 						</div>
 
-						{/* FOOTER */}
+						{/* Footer */}
+
 						<p className={classes.footer}>
 							{shortcutKey} + K to open • ESC to close
 						</p>
@@ -158,4 +166,4 @@ const CommandPalette = () => {
 	);
 };
 
-export default CommandPalette;
+export default React.memo(CommandPalette);

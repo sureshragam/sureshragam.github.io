@@ -1,8 +1,13 @@
-// src/components/Terminal/Terminal.tsx
+import React, { useCallback, useMemo, useState } from "react";
 
-import React, { useState } from "react";
-import classes from "./Terminal.module.css";
 import { motion } from "framer-motion";
+
+import classes from "./Terminal.module.css";
+
+type HistoryItem = {
+	command: string;
+	output: string;
+};
 
 const commandMap: Record<string, string> = {
 	help: `
@@ -28,44 +33,61 @@ socials
 		"GitHub: github.com/sureshragam | LinkedIn: linkedin.com/in/suresh-ragam",
 };
 
+const INITIAL_HISTORY: HistoryItem[] = [
+	{
+		command: "welcome",
+		output: "Type 'help' to view available commands.",
+	},
+];
+
 const Terminal = () => {
 	const [input, setInput] = useState("");
 
-	const [history, setHistory] = useState<{ command: string; output: string }[]>(
-		[
-			{
-				command: "welcome",
-				output: "Type 'help' to view available commands.",
-			},
-		],
-	);
+	const [history, setHistory] = useState<HistoryItem[]>(INITIAL_HISTORY);
 
-	const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (event.key !== "Enter") return;
+	const handleCommand = useCallback(
+		(event: React.KeyboardEvent<HTMLInputElement>) => {
+			if (event.key !== "Enter") return;
 
-		const trimmedInput = input.trim().toLowerCase();
+			const trimmedInput = input.trim().toLowerCase();
 
-		if (trimmedInput === "clear") {
-			setHistory([]);
+			if (!trimmedInput) return;
+
+			if (trimmedInput === "clear") {
+				setHistory(INITIAL_HISTORY);
+
+				setInput("");
+
+				return;
+			}
+
+			const output =
+				commandMap[trimmedInput] || `Command not found: ${trimmedInput}`;
+
+			setHistory((prev) => [
+				...prev,
+				{
+					command: trimmedInput,
+					output,
+				},
+			]);
 
 			setInput("");
+		},
+		[input],
+	);
 
-			return;
-		}
+	const renderedHistory = useMemo(() => {
+		return history.map((item, index) => (
+			<div key={`${item.command}-${index}`} className={classes.historyBlock}>
+				<p className={classes.command}>
+					<span>$</span> {item.command}
+				</p>
 
-		const output =
-			commandMap[trimmedInput] || `Command not found: ${trimmedInput}`;
-
-		setHistory((prev) => [
-			...prev,
-			{
-				command: trimmedInput,
-				output,
-			},
-		]);
-
-		setInput("");
-	};
+				<pre className={classes.output}>{item.output}</pre>
+			</div>
+		));
+	}, [history]);
 
 	return (
 		<section
@@ -76,14 +98,19 @@ const Terminal = () => {
 				className={classes.terminal}
 				initial={{
 					opacity: 0,
-					y: 60,
+					y: 40,
 				}}
 				whileInView={{
 					opacity: 1,
 					y: 0,
 				}}
+				viewport={{
+					once: true,
+					amount: 0.2,
+				}}
 				transition={{
-					duration: 0.7,
+					duration: 0.6,
+					ease: "easeOut",
 				}}
 			>
 				<div className={classes.topBar}>
@@ -97,27 +124,20 @@ const Terminal = () => {
 				</div>
 
 				<div className={classes.body}>
-					{history.map((item, index) => (
-						<div key={index} className={classes.historyBlock}>
-							<p className={classes.command}>
-								<span>$</span> {item.command}
-							</p>
-
-							<pre className={classes.output}>{item.output}</pre>
-						</div>
-					))}
+					{renderedHistory}
 
 					<div className={classes.inputLine}>
 						<span>$</span>
 
 						<input
-							autoFocus
 							type="text"
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
 							onKeyDown={handleCommand}
 							className={classes.input}
 							placeholder="Type a command..."
+							spellCheck={false}
+							autoComplete="off"
 						/>
 					</div>
 				</div>
@@ -126,4 +146,4 @@ const Terminal = () => {
 	);
 };
 
-export default Terminal;
+export default React.memo(Terminal);

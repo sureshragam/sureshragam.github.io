@@ -226,7 +226,7 @@
 
 			background: color-mix(in srgb, var(--primaryColor) 10%, transparent);
 
-			filter: blur(100px);
+			filter: blur(35px);
 
 			top: -100px;
 

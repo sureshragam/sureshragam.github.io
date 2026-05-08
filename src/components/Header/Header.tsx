@@ -1,4 +1,4 @@
-// Header.tsx
+// src/components/Header/Header.tsx
 
 import React, { useEffect, useState } from "react";
 
@@ -23,20 +23,28 @@ const Header = () => {
 
 	const [activeSection, setActiveSection] = useState("home");
 
-	/* ACTIVE SECTION */
+	const isMac =
+		typeof navigator !== "undefined" && navigator.userAgent.includes("Mac");
+
+	/* ---------- ACTIVE SECTION ---------- */
+
 	useEffect(() => {
-		const sections = document.querySelectorAll("section[id], div[id]");
+		const sections = document.querySelectorAll(".scrollSection");
 
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						setActiveSection(entry.target.id);
+						const id = entry.target.id;
+
+						setActiveSection((prev) => (prev === id ? prev : id));
 					}
 				});
 			},
 			{
-				threshold: 0.4,
+				threshold: 0.5,
+
+				rootMargin: "-20% 0px -30% 0px",
 			},
 		);
 
@@ -45,9 +53,7 @@ const Header = () => {
 		});
 
 		return () => {
-			sections.forEach((section) => {
-				observer.unobserve(section);
-			});
+			observer.disconnect();
 		};
 	}, []);
 
@@ -55,7 +61,7 @@ const Header = () => {
 		<motion.header
 			className={classes.header}
 			initial={{
-				y: -80,
+				y: -50,
 				opacity: 0,
 			}}
 			animate={{
@@ -63,16 +69,19 @@ const Header = () => {
 				opacity: 1,
 			}}
 			transition={{
-				duration: 0.8,
+				duration: 0.5,
+				ease: "easeOut",
 			}}
 		>
-			{/* LOGO */}
+			{/* ---------- LOGO ---------- */}
+
 			<h1 className={classes.title}>
 				Portfo
 				<span>lio</span>
 			</h1>
 
-			{/* NAVIGATION */}
+			{/* ---------- NAVIGATION ---------- */}
+
 			<ul className={classes.navigation}>
 				{staticData?.map((item: any) => (
 					<li key={item.name} className={classes.navItem}>
@@ -88,7 +97,8 @@ const Header = () => {
 					</li>
 				))}
 
-				{/* ADMIN */}
+				{/* ---------- ADMIN ---------- */}
+
 				{isAdmin && (
 					<li className={classes.navItem}>
 						<Link to="/admin" className={classes.navLink}>
@@ -98,12 +108,11 @@ const Header = () => {
 				)}
 			</ul>
 
-			{/* COMMAND HINT */}
-			<div className={classes.commandHint}>
-				{navigator.userAgent.includes("Mac") ? "⌘ + K" : "Ctrl + K"}
-			</div>
+			{/* ---------- COMMAND HINT ---------- */}
+
+			<div className={classes.commandHint}>{isMac ? "⌘ + K" : "Ctrl + K"}</div>
 		</motion.header>
 	);
 };
 
-export default Header;
+export default React.memo(Header);

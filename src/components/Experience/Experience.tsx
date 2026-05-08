@@ -1,8 +1,11 @@
 // src/components/Experience/Experience.tsx
 
 import React from "react";
-import classes from "./Experience.module.css";
+
 import { motion } from "framer-motion";
+
+import classes from "./Experience.module.css";
+
 import { experience } from "../../utils/dummyData";
 
 const Experience = () => {
@@ -13,10 +16,21 @@ const Experience = () => {
 		>
 			<div className={classes.container}>
 				<motion.h2
-					initial={{ opacity: 0, y: 40 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					viewport={{ once: false, amount: 0.2 }}
+					initial={{
+						opacity: 0,
+						y: 30,
+					}}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+					}}
+					transition={{
+						duration: 0.5,
+					}}
+					viewport={{
+						once: true,
+						amount: 0.2,
+					}}
 					className={classes.title}
 				>
 					Experience
@@ -30,15 +44,22 @@ const Experience = () => {
 								className={classes.timelineItem}
 								initial={{
 									opacity: 0,
-									x: index % 2 === 0 ? -80 : 80,
+
+									x: index % 2 === 0 ? -40 : 40,
 								}}
 								whileInView={{
 									opacity: 1,
 									x: 0,
 								}}
-								transition={{ duration: 0.7 }}
+								transition={{
+									duration: 0.55,
+
+									delay: index * 0.08,
+
+									ease: "easeOut",
+								}}
 								viewport={{
-									once: false,
+									once: true,
 									amount: 0.2,
 								}}
 							>
@@ -53,32 +74,20 @@ const Experience = () => {
 
 									<p className={classes.role}>{item.role}</p>
 
+									{/* RESPONSIBILITIES */}
+
 									<ul>
-										<li>
-											Built scalable React UI components and reusable modules.
-										</li>
-
-										<li>
-											Worked on file upload, download and update features.
-										</li>
-
-										<li>
-											Implemented notifications and portal functionalities.
-										</li>
-
-										<li>
-											Collaborated in Agile teams and participated in sprint
-											planning.
-										</li>
+										{item.responsibilities.map((point: string) => (
+											<li key={point}>{point}</li>
+										))}
 									</ul>
 
+									{/* TECH STACK */}
+
 									<div className={classes.techStack}>
-										<span>React</span>
-										<span>Redux</span>
-										<span>JavaScript</span>
-										<span>MUI</span>
-										<span>Azure</span>
-										<span>Git</span>
+										{item.techStack.map((tech: string) => (
+											<span key={tech}>{tech}</span>
+										))}
 									</div>
 								</div>
 							</motion.div>
@@ -90,4 +99,4 @@ const Experience = () => {
 	);
 };
 
-export default Experience;
+export default React.memo(Experience);

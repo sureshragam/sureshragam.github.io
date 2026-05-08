@@ -5,8 +5,8 @@ import { WiDirectionUpRight } from "react-icons/wi";
 import classes from "./Projects.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
-import Ugaoo from "../../assets/portfolio-images/desktop-view.png";
-import Food_Munch from "../../assets/portfolio-images/foodmunch.jpg";
+import Ugaoo from "../../assets/portfolio-images/desktop-view.webp";
+import Food_Munch from "../../assets/portfolio-images/foodmunch.webp";
 
 import ProjectDetailsModal from "../ProjectDetailsModal/ProjectDetailsModal";
 

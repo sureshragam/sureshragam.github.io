@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from "../../assets/images/about_cartoon.png";
+import aboutImage from "../../assets/images/about_cartoon.webp";
 import classes from "./About.module.css";
 import DOMPurify from "dompurify";
 import { useSelector } from "react-redux";

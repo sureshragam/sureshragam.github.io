@@ -1,8 +1,8 @@
-// src/components/JarvisVision/JarvisVision.tsx
-
 import React from "react";
-import classes from "./JarvisVision.module.css";
+
 import { motion } from "framer-motion";
+
+import classes from "./JarvisVision.module.css";
 
 const JarvisVision = () => {
 	return (
@@ -11,33 +11,34 @@ const JarvisVision = () => {
 				className={classes.container}
 				initial={{
 					opacity: 0,
-					scale: 0.92,
+					y: 40,
 				}}
 				whileInView={{
 					opacity: 1,
-					scale: 1,
+					y: 0,
+				}}
+				viewport={{
+					once: true,
+					amount: 0.25,
 				}}
 				transition={{
 					duration: 0.7,
-				}}
-				viewport={{
-					once: false,
-					amount: 0.2,
+					ease: "easeOut",
 				}}
 			>
-				{/* GLOW */}
-				<div className={classes.glow}></div>
+				{/* Glow */}
+				<div className={classes.glow} />
 
-				{/* SMALL LABEL */}
+				{/* Label */}
 				<p className={classes.label}>FUTURE VISION</p>
 
-				{/* TITLE */}
+				{/* Title */}
 				<h2>
 					Building My Own
 					<span> Jarvis</span>
 				</h2>
 
-				{/* DESCRIPTION */}
+				{/* Description */}
 				<p className={classes.description}>
 					My long-term vision is to build a personal AI assistant ecosystem
 					inspired by Jarvis from Iron Man — combining AI, automation, real-time
@@ -45,7 +46,7 @@ const JarvisVision = () => {
 					interfaces into one intelligent platform.
 				</p>
 
-				{/* TECH PILLS */}
+				{/* Tech Stack */}
 				<div className={classes.techStack}>
 					<span>React</span>
 					<span>Java</span>
@@ -57,7 +58,7 @@ const JarvisVision = () => {
 					<span>Microservices</span>
 				</div>
 
-				{/* QUOTE */}
+				{/* Quote */}
 				<div className={classes.quoteBox}>
 					<p>“Technology should feel alive, intelligent and personal.”</p>
 				</div>
@@ -66,4 +67,4 @@ const JarvisVision = () => {
 	);
 };
 
-export default JarvisVision;
+export default React.memo(JarvisVision);

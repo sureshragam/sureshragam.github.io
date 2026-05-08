@@ -1,19 +1,28 @@
-// src/components/MouseGlow/MouseGlow.tsx
+import React, { useEffect, useRef } from "react";
 
-import React, { useEffect, useState } from "react";
 import classes from "./MouseGlow.module.css";
 
 const MouseGlow = () => {
-	const [position, setPosition] = useState({
-		x: 0,
-		y: 0,
-	});
+	const glowRef = useRef<HTMLDivElement | null>(null);
+
+	const frameRef = useRef<number | null>(null);
 
 	useEffect(() => {
 		const handleMouseMove = (event: MouseEvent) => {
-			setPosition({
-				x: event.clientX,
-				y: event.clientY,
+			if (frameRef.current) return;
+
+			frameRef.current = requestAnimationFrame(() => {
+				if (glowRef.current) {
+					glowRef.current.style.transform = `
+							translate3d(
+								${event.clientX - 150}px,
+								${event.clientY - 150}px,
+								0
+							)
+						`;
+				}
+
+				frameRef.current = null;
 			});
 		};
 
@@ -21,18 +30,14 @@ const MouseGlow = () => {
 
 		return () => {
 			window.removeEventListener("mousemove", handleMouseMove);
+
+			if (frameRef.current) {
+				cancelAnimationFrame(frameRef.current);
+			}
 		};
 	}, []);
 
-	return (
-		<div
-			className={classes.glow}
-			style={{
-				left: `${position.x}px`,
-				top: `${position.y}px`,
-			}}
-		/>
-	);
+	return <div ref={glowRef} className={classes.glow} />;
 };
 
-export default MouseGlow;
+export default React.memo(MouseGlow);

@@ -1,41 +1,29 @@
-/* src/components/MouseGlow/MouseGlow.module.css */
-
 .glow {
 	position: fixed;
 
-	width: 320px;
-
-	height: 320px;
+	width: 300px;
+	height: 300px;
 
 	border-radius: 50%;
-
-	background: radial-gradient(
-		circle,
-		color-mix(in srgb, var(--primaryColor) 18%, transparent) 0%,
-		color-mix(in srgb, var(--primaryColor) 10%, transparent) 30%,
-		transparent 72%
-	);
-
-	transform: translate(-50%, -50%);
 
 	pointer-events: none;
 
 	z-index: 0;
 
-	filter: blur(34px);
+	background: radial-gradient(
+		circle,
+		rgba(0, 255, 255, 0.18) 0%,
+		rgba(0, 255, 255, 0.08) 30%,
+		transparent 70%
+	);
 
-	opacity: 0.95;
+	transform: translate3d(-9999px, -9999px, 0);
 
-	will-change: left, top, transform;
+	will-change: transform;
 
-	transition:
-		left 0.08s linear,
-		top 0.08s linear;
-}
+	filter: blur(40px);
 
-/* MOBILE */
-@media screen and (max-width: 920px) {
-	.glow {
-		display: none;
-	}
+	transition: opacity 0.2s ease;
+
+	contain: layout style paint;
 }

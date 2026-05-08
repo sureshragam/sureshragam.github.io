@@ -1,73 +1,61 @@
-/* src/components/BackgroundGrid/BackgroundGrid.module.css */
-
 .gridContainer {
 	position: fixed;
-
 	inset: 0;
 
 	pointer-events: none;
 
-	z-index: -1;
+	z-index: -2;
 
 	overflow: hidden;
+
+	contain: layout style paint;
 }
 
-/* GRID */
 .grid {
 	position: absolute;
-
 	inset: 0;
 
 	background-image:
-		linear-gradient(
-			color-mix(in srgb, var(--primaryColor) 8%, transparent) 1px,
-			transparent 1px
-		),
-		linear-gradient(
-			90deg,
-			color-mix(in srgb, var(--primaryColor) 8%, transparent) 1px,
-			transparent 1px
-		);
+		linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px);
 
 	background-size: 50px 50px;
 
-	mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
+	transform: translateZ(0);
 
-	-webkit-mask-image: radial-gradient(
-		circle at center,
-		black 20%,
-		transparent 85%
-	);
+	will-change: transform;
 
-	animation: moveGrid 20s linear infinite;
+	opacity: 0.4;
+
+	animation: gridMove 18s linear infinite;
 }
 
-/* EXTRA GLOW LAYER */
-.grid::before {
-	content: "";
-
-	position: absolute;
-
-	inset: 0;
-
-	background: radial-gradient(
-		circle at top right,
-		color-mix(in srgb, var(--primaryColor) 10%, transparent),
-		transparent 40%
-	);
-
-	filter: blur(80px);
-
-	opacity: 0.8;
-}
-
-/* SUBTLE GRID MOVEMENT */
-@keyframes moveGrid {
-	0% {
-		transform: translateY(0px);
+@keyframes gridMove {
+	from {
+		transform: translate3d(0, 0, 0);
 	}
 
-	100% {
-		transform: translateY(50px);
+	to {
+		transform: translate3d(0, 50px, 0);
+	}
+}
+
+/* ---------- Mobile Optimization ---------- */
+
+@media (max-width: 768px) {
+	.grid {
+		background-size: 35px 35px;
+
+		opacity: 0.2;
+
+		animation-duration: 28s;
+	}
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.grid {
+		animation: none;
 	}
 }

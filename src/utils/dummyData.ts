@@ -53,25 +53,51 @@ export const scrollSkillsData = [
 
 export const experience = [
 	{
-		company: "Refining Design",
-		designation: "Civil Engineer",
-		role: "Site Engineer",
-		period: "2021 - 2022",
-		id: uuidV4(),
-	},
-	{
 		company: "Tata Consultancy Services",
+
 		designation: "Assistant System Engineer",
+
 		role: "React Developer",
+
 		period: "2022 - 2026",
+
 		id: uuidV4(),
+
+		responsibilities: [
+			"Built scalable React UI components and reusable modules.",
+
+			"Worked on file upload, download and update features.",
+
+			"Implemented notifications and portal functionalities.",
+
+			"Collaborated in Agile teams and participated in sprint planning.",
+		],
+
+		techStack: ["React", "Redux", "JavaScript", "MUI", "Azure", "Git"],
 	},
+
 	{
 		company: "Safran Groups",
+
 		designation: "System Engineer",
+
 		role: "Full Stack Developer",
+
 		period: "2026 - Current",
+
 		id: uuidV4(),
+
+		responsibilities: [
+			"Developing scalable frontend and backend systems.",
+
+			"Working on React and Spring Boot applications.",
+
+			"Building reusable enterprise modules and APIs.",
+
+			"Collaborating with cross-functional Agile teams.",
+		],
+
+		techStack: ["React", "TypeScript", "Spring Boot", "Java", "AWS", "Git"],
 	},
 ];
 

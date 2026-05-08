@@ -1,72 +1,253 @@
-.projects{
-    display: block;
-    text-align: left;
-}
-.projects>ul{
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap:10px;
+/* Projects.module.css */
 
-}
-.projects>ul>li{
-    width: 500px;
-    height: 300px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    flex-grow: 1;
-    aspect-ratio: 16/9;
-    color:white;
-    position: relative;
-    overflow: hidden;
-}
-.projects>ul>li::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 1;
+.projects {
+	display: block;
+
+	text-align: left;
 }
 
-.projects>ul>li:hover::after{
-    background-color: rgba(0,0,0,.8);
-    opacity: 1;
+/* LIST */
+.projects > ul {
+	list-style-type: none;
+
+	padding-left: 0;
+
+	display: flex;
+
+	justify-content: space-between;
+
+	flex-wrap: wrap;
+
+	gap: 20px;
 }
 
-.projects>ul>li>h3{
-    font-size: 2rem;
-    margin-bottom: 0;
+/* PROJECT CARD */
+.projects > ul > li {
+	width: 500px;
 
+	height: 300px;
+
+	padding: 20px;
+
+	display: flex;
+
+	flex-direction: column;
+
+	justify-content: flex-end;
+
+	align-items: flex-start;
+
+	background-size: 100%;
+
+	background-position: center;
+
+	background-repeat: no-repeat;
+
+	flex-grow: 1;
+
+	aspect-ratio: 16/9;
+
+	color: white;
+
+	position: relative;
+
+	overflow: hidden;
+
+	border-radius: 20px;
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	isolation: isolate;
+
+	transition:
+		transform 0.5s ease,
+		box-shadow 0.5s ease,
+		background-size 0.6s ease,
+		border-color 0.5s ease,
+		filter 0.5s ease;
 }
-.projects>ul>li>p,
-.projects>ul>li>h3,
-.projects>ul>li>.icon{
- opacity: 0;
+
+/* GLOW */
+.projects > ul > li::before {
+	content: "";
+
+	position: absolute;
+
+	width: 220px;
+
+	height: 220px;
+
+	background: color-mix(in srgb, var(--primaryColor) 10%, transparent);
+
+	filter: blur(80px);
+
+	top: -80px;
+
+	right: -80px;
+
+	z-index: 0;
+
+	opacity: 0;
+
+	transition: opacity 0.5s ease;
 }
-.projects>ul>li:hover p,
-.projects>ul>li:hover h3,
-.projects>ul>li:hover .icon{
-    opacity: 1;
-    z-index: 2;
+
+/* HOVER EFFECT */
+.projects > ul > li:hover {
+	transform: translateY(-10px);
+
+	background-size: 110%;
+
+	border-color: color-mix(in srgb, var(--primaryColor) 40%, transparent);
+
+	box-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 20%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+
+	filter: brightness(1.03);
 }
-.icon{
-    position: absolute;
-    bottom: -10%;
-    right: 46%;
-    border-radius: 50%;
-    background-color: var(--primaryColor);
-    transition: bottom 1s ease;
-    display: block;
+
+/* SHOW GLOW */
+.projects > ul > li:hover::before {
+	opacity: 1;
 }
-.projects>ul>li:hover .icon{
-    position: absolute;
-    bottom: 30%;
+
+/* GLASS OVERLAY */
+.projects > ul > li::after {
+	content: "";
+
+	position: absolute;
+
+	inset: 0;
+
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.92),
+		rgba(0, 0, 0, 0.5),
+		rgba(0, 0, 0, 0.15)
+	);
+
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+
+	opacity: 0;
+
+	z-index: 1;
+
+	transition: opacity 0.5s ease;
+}
+
+/* SHOW OVERLAY */
+.projects > ul > li:hover::after {
+	opacity: 1;
+}
+
+/* TITLE */
+.projects > ul > li > h3 {
+	font-size: 2rem;
+
+	margin-bottom: 10px;
+
+	position: relative;
+
+	z-index: 2;
+
+	opacity: 0;
+
+	transform: translateY(40px);
+
+	transition:
+		opacity 0.5s ease,
+		transform 0.5s ease;
+}
+
+/* DESCRIPTION */
+.projects > ul > li > p {
+	font-size: 1rem;
+
+	line-height: 1.6rem;
+
+	position: relative;
+
+	z-index: 2;
+
+	opacity: 0;
+
+	transform: translateY(40px);
+
+	transition:
+		opacity 0.6s ease,
+		transform 0.6s ease;
+
+	transition-delay: 0.1s;
+}
+
+/* SHOW TEXT */
+.projects > ul > li:hover h3,
+.projects > ul > li:hover p {
+	opacity: 1;
+
+	transform: translateY(0);
+}
+
+/* ICON BUTTON */
+.icon {
+	position: absolute;
+
+	bottom: -20%;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	border-radius: 50%;
+
+	background: linear-gradient(
+		135deg,
+		var(--primaryColor),
+		color-mix(in srgb, var(--primaryColor) 70%, black)
+	);
+
+	padding: 10px;
+
+	z-index: 2;
+
+	cursor: pointer;
+
+	opacity: 0;
+
+	box-shadow: 0 0 18px color-mix(in srgb, var(--primaryColor) 25%, transparent);
+
+	transition:
+		bottom 0.5s ease,
+		opacity 0.5s ease,
+		transform 0.4s ease,
+		box-shadow 0.4s ease;
+}
+
+/* ICON SHOW */
+.projects > ul > li:hover .icon {
+	bottom: 18%;
+
+	opacity: 1;
+}
+
+/* ICON HOVER */
+.icon:hover {
+	transform: translateX(-50%) scale(1.1);
+
+	box-shadow: 0 0 24px color-mix(in srgb, var(--primaryColor) 40%, transparent);
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.projects > ul {
+		flex-direction: column;
+	}
+
+	.projects > ul > li {
+		width: 100%;
+
+		height: 260px;
+	}
 }

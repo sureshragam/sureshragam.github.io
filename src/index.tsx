@@ -1,23 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { store } from './store/appStore.ts'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { store } from "./store/appStore";
+import { HelmetProvider } from "react-helmet-async";
 
-const rootElement = document.getElementById('root')
-if(rootElement){
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>
-  );
-}else{
-  console.error("root elemnt not found")
+const rootElement = document.getElementById("root");
+if (rootElement) {
+	const root = ReactDOM.createRoot(document.getElementById("root"));
+	root.render(
+		<React.StrictMode>
+			<HelmetProvider>
+				<Provider store={store}>
+					<App />
+				</Provider>
+			</HelmetProvider>
+		</React.StrictMode>,
+	);
+} else {
+	console.error("root elemnt not found");
 }
 
 // If you want to start measuring performance in your app, pass a function

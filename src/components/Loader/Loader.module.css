@@ -1,0 +1,207 @@
+/* src/components/Loader/Loader.module.css */
+
+.loaderContainer {
+	position: fixed;
+
+	inset: 0;
+
+	z-index: 99999;
+
+	background: var(--backgroundColor, black);
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	overflow: hidden;
+}
+
+/* AMBIENT GLOW */
+.loaderContainer::before {
+	content: "";
+
+	position: absolute;
+
+	width: 500px;
+
+	height: 500px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(
+		circle,
+		color-mix(in srgb, var(--primaryColor) 14%, transparent),
+		transparent 70%
+	);
+
+	filter: blur(100px);
+
+	animation: ambientPulse 5s ease-in-out infinite;
+}
+
+/* CONTENT */
+.logoContainer {
+	display: flex;
+
+	flex-direction: column;
+
+	align-items: center;
+
+	justify-content: center;
+
+	position: relative;
+
+	z-index: 1;
+}
+
+/* LOGO */
+.logo {
+	font-size: 6rem;
+
+	font-weight: 700;
+
+	letter-spacing: 4px;
+
+	margin: 0;
+
+	color: white;
+
+	text-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 25%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 12%, transparent);
+
+	animation: logoFloat 4s ease-in-out infinite;
+}
+
+/* ACCENT */
+.logo span {
+	color: var(--primaryColor);
+
+	text-shadow: 0 0 20px color-mix(in srgb, var(--primaryColor) 40%, transparent);
+}
+
+/* LINE */
+.line {
+	width: 220px;
+
+	height: 3px;
+
+	margin-top: 18px;
+
+	border-radius: 999px;
+
+	background: linear-gradient(
+		to right,
+		transparent,
+		var(--primaryColor),
+		transparent
+	);
+
+	box-shadow: 0 0 16px color-mix(in srgb, var(--primaryColor) 30%, transparent);
+
+	animation: pulse 1.8s infinite;
+}
+
+/* TEXT */
+.logoContainer p {
+	margin-top: 20px;
+
+	font-size: 1rem;
+
+	letter-spacing: 2px;
+
+	text-transform: uppercase;
+
+	color: rgba(255, 255, 255, 0.65);
+
+	animation: fadeText 2s ease-in-out infinite;
+}
+
+/* LINE PULSE */
+@keyframes pulse {
+	0% {
+		transform: scaleX(0.6);
+
+		opacity: 0.4;
+	}
+
+	50% {
+		transform: scaleX(1);
+
+		opacity: 1;
+	}
+
+	100% {
+		transform: scaleX(0.6);
+
+		opacity: 0.4;
+	}
+}
+
+/* BACKGROUND AMBIENT */
+@keyframes ambientPulse {
+	0% {
+		transform: scale(0.9);
+
+		opacity: 0.6;
+	}
+
+	50% {
+		transform: scale(1.05);
+
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(0.9);
+
+		opacity: 0.6;
+	}
+}
+
+/* FLOAT */
+@keyframes logoFloat {
+	0% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-6px);
+	}
+
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+/* TEXT ANIMATION */
+@keyframes fadeText {
+	0% {
+		opacity: 0.5;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.5;
+	}
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.logo {
+		font-size: 4rem;
+	}
+
+	.line {
+		width: 160px;
+	}
+
+	.logoContainer p {
+		font-size: 0.85rem;
+	}
+}

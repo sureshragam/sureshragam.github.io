@@ -1,104 +1,319 @@
-.homeContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.col1{
-    flex-basis: 50%;
-    text-align: left;
-    text-align: center; 
-}
-.col1>h1>span{
-    font-size: 4rem;
-    color:var(--primaryColor,#f9004d);
-}
-.col1>h4{
-    font-size: 30px;
-}
-.col1>h2{
-    font-size: 40px;
-}
-.homeButtonContainer{
-    display:flex;
-    gap:2rem;
-    justify-content:center;
-    margin-top:2rem
-}
-.homeButtonContainer> button a{
-    background-color: var(--primaryColor,#f9004d);
-}
-.col2{
-    flex-basis: 50%;
-    align-self: flex-end;    
-}
-.col2>img:nth-child(1){
-    display: block;
-    max-width: 50%;
-    width: 38%;
-    position: absolute;
-    bottom: 0;
-    right: 2rem;
-    transition: transform 0.4s ease-in;
-}
-.col2:hover >img:nth-child(1){
-  transform: translate(0.3rem, -1rem);
-}
-.col2>img:nth-child(2){
-    display: block;
-    max-width: 90%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transition: transform 0.4s ease-in;
-}
-.col2:hover >img:nth-child(2){
-  transform: translate(-1rem, 0rem);
+/* Home.module.css */
+
+.homeContainer {
+	display: flex;
+
+	justify-content: space-between;
+
+	align-items: center;
+
+	position: relative;
+
+	min-height: calc(100vh - 110px);
+
+	gap: 3rem;
 }
 
-.iconsContainer{
-    display: flex;
-    gap:10px;
-    justify-content: center;
-}
-.icon{
-    font-size: 30px;
-    display: inline-block ;
-    cursor: pointer;
-    transition: transform 0.3s ease ,visibility 3s ease ;
-    position: relative;
-    color: var(--primaryColor);
-}
-.icon:hover{
-    transform: translateY(-0.5rem) scale(1.1);
+/* LEFT */
+.col1 {
+	flex-basis: 50%;
+
+	text-align: center;
+
+	position: relative;
+
+	z-index: 1;
+
+	min-width: 0;
 }
 
+/* PREVENT TEXT COMPRESSION */
+.col1 h1,
+.col1 h2,
+.col1 h4,
+.col1 p {
+	word-break: keep-all;
+}
 
-/* //////// for small screen */
-@media screen and (max-width:920px){
-    .homeContainer{
-        flex-direction: column;
-        justify-content: center;
-        gap:3rem;
-        align-items: center;
-        position: static;
+/* MAIN TITLE */
+.nameTitle {
+	font-size: clamp(3rem, 6vw, 5rem);
 
-    }
-    .col1{
-        width: 100%;
-        text-align: left;
-        align-self: flex-start;
-        padding-top: 10px;
-        position: relative;
-    }
-    .col2>img:nth-child(1){
-        display: none
-    }
-    .col2>img:nth-child(2){
-        display: block;
-        max-width: 100%;
-        width: 100%;
-        position: static;
-        transition: transform 0.4s ease-in;
-    }
+	font-weight: 700;
+
+	line-height: 1.1;
+
+	margin-top: 1.5rem;
+
+	margin-bottom: 1.5rem;
+}
+
+/* NAME ACCENT */
+.nameTitle span {
+	color: var(--primaryColor);
+}
+
+/* ROLE GENERATOR */
+.roleText {
+	min-height: 70px;
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	width: 100%;
+
+	padding-inline: 1rem;
+
+	text-align: center;
+
+	margin-top: 0.5rem;
+}
+
+/* ROLE TEXT */
+.roleText h2,
+.roleText span,
+.roleText p {
+	font-size: clamp(1.6rem, 2.5vw, 3rem);
+
+	line-height: 1.3;
+
+	white-space: nowrap;
+
+	color: var(--primaryColor);
+}
+
+/* BUTTONS */
+.homeButtonContainer {
+	display: flex;
+
+	gap: 2rem;
+
+	justify-content: center;
+
+	margin-top: 2rem;
+
+	flex-wrap: wrap;
+}
+
+/* RIGHT */
+.col2 {
+	flex-basis: 50%;
+
+	align-self: flex-end;
+
+	position: relative;
+
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	min-height: 650px;
+}
+
+/* MORPH SHAPE */
+.col2::before {
+	content: "";
+
+	position: absolute;
+
+	width: 480px;
+
+	height: 480px;
+
+	border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+
+	background: linear-gradient(
+		135deg,
+		color-mix(in srgb, var(--primaryColor) 30%, transparent),
+		color-mix(in srgb, var(--primaryColor) 8%, black)
+	);
+
+	filter: blur(25px);
+
+	animation: morphBlob 10s ease-in-out infinite;
+
+	z-index: 0;
+
+	opacity: 0.7;
+}
+
+/* EXTRA AMBIENT GLOW */
+.col2::after {
+	content: "";
+
+	position: absolute;
+
+	width: 620px;
+
+	height: 620px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(
+		circle,
+		color-mix(in srgb, var(--primaryColor) 18%, transparent),
+		transparent 70%
+	);
+
+	filter: blur(90px);
+
+	z-index: 0;
+
+	opacity: 0.8;
+}
+
+/* PROFILE IMAGE */
+.col2 > img {
+	display: block;
+
+	max-width: 72%;
+
+	position: relative;
+
+	z-index: 2;
+
+	filter: drop-shadow(
+		0 0 30px color-mix(in srgb, var(--primaryColor) 35%, transparent)
+	);
+
+	transition:
+		transform 0.4s ease,
+		filter 0.4s ease;
+}
+
+/* IMAGE HOVER */
+.col2:hover > img {
+	transform: translateY(-8px);
+
+	filter: drop-shadow(
+		0 0 50px color-mix(in srgb, var(--primaryColor) 50%, transparent)
+	);
+}
+
+/* ICONS */
+.iconsContainer {
+	display: flex;
+
+	gap: 10px;
+
+	justify-content: center;
+
+	margin-top: 1rem;
+}
+
+/* ICON */
+.icon {
+	font-size: 30px;
+
+	display: inline-block;
+
+	cursor: pointer;
+
+	position: relative;
+
+	color: var(--primaryColor);
+
+	filter: drop-shadow(
+		0 0 8px color-mix(in srgb, var(--primaryColor) 25%, transparent)
+	);
+
+	transition:
+		transform 0.3s ease,
+		filter 0.3s ease;
+}
+
+/* ICON HOVER */
+.icon:hover {
+	transform: translateY(-0.5rem) scale(1.1);
+
+	filter: drop-shadow(
+		0 0 14px color-mix(in srgb, var(--primaryColor) 50%, transparent)
+	);
+}
+
+/* MORPH ANIMATION */
+@keyframes morphBlob {
+	0% {
+		border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+
+		transform: rotate(0deg);
+	}
+
+	50% {
+		border-radius: 60% 40% 32% 68% / 38% 64% 36% 62%;
+
+		transform: rotate(180deg);
+	}
+
+	100% {
+		border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+
+		transform: rotate(360deg);
+	}
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.homeContainer {
+		flex-direction: column;
+
+		justify-content: center;
+
+		gap: 3rem;
+
+		align-items: center;
+
+		position: static;
+	}
+
+	.col1 {
+		width: 100%;
+
+		text-align: center;
+
+		align-self: center;
+
+		padding-top: 10px;
+
+		position: relative;
+	}
+
+	.roleText {
+		min-height: auto;
+
+		padding-inline: 0.5rem;
+	}
+
+	.roleText h2,
+	.roleText span,
+	.roleText p {
+		white-space: normal;
+	}
+
+	.col2 {
+		min-height: 420px;
+	}
+
+	.col2::before {
+		width: 300px;
+
+		height: 300px;
+	}
+
+	.col2::after {
+		width: 420px;
+
+		height: 420px;
+	}
+
+	.col2 > img {
+		max-width: 95%;
+
+		width: 100%;
+	}
 }

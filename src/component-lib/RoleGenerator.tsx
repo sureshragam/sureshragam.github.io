@@ -1,32 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import { TypeAnimation } from "react-type-animation";
 
-const styles = {
-    role: {
-    },
-  };
-
-
-
-const RoleGenerator = ({roles}) => {
-    const [role,setRole] =useState<any>("React Developer");
-    const [currentIndex, setCurrentIndex] = useState<any>(0);
-
-
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            setCurrentIndex((prevIndex) => {
-                const newIndex = (prevIndex + 1) % roles?.length;
-                setRole(roles?roles[newIndex]:'React Developer');
-                return newIndex;
-            });
-        },3000)
-        return ()=> clearInterval(interval)
-    },[roles])
-
-    console.log(currentIndex)
-    return (
-        <p style={styles.role}>{role}</p>
-    )
+interface RoleGeneratorProps {
+	roles?: string[];
 }
+
+const RoleGenerator: React.FC<RoleGeneratorProps> = ({ roles = [] }) => {
+	const sequence: (string | number)[] = [];
+
+	roles.forEach((role) => {
+		sequence.push(role);
+		sequence.push(2000);
+	});
+
+	// fallback if roles empty
+	if (sequence.length === 0) {
+		sequence.push("React Developer");
+		sequence.push(2000);
+	}
+
+	return (
+		<div
+			style={{
+				fontSize: "2rem",
+				fontWeight: 600,
+				color: "var(--primaryColor)",
+				textShadow: "0 0 12px rgba(2,171,130,0.5)",
+				minHeight: "50px",
+			}}
+		>
+			<TypeAnimation
+				sequence={sequence}
+				speed={40}
+				repeat={Infinity}
+				wrapper="span"
+				cursor={true}
+			/>
+		</div>
+	);
+};
 
 export default RoleGenerator;

@@ -1,0 +1,131 @@
+/* src/components/CommandPalette/CommandPalette.module.css */
+
+.overlay {
+	position: fixed;
+
+	inset: 0;
+
+	z-index: 99999;
+
+	background: rgba(0, 0, 0, 0.55);
+
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+
+	display: flex;
+
+	align-items: flex-start;
+
+	justify-content: center;
+
+	padding-top: 10vh;
+}
+
+.palette {
+	width: min(650px, 92%);
+
+	background: rgba(15, 15, 15, 0.92);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	border-radius: 28px;
+
+	overflow: hidden;
+
+	box-shadow:
+		0 0 40px rgba(0, 0, 0, 0.35),
+		0 0 60px rgba(2, 171, 130, 0.08);
+}
+
+/* HEADER */
+.header {
+	padding: 22px 26px;
+
+	font-size: 1.2rem;
+
+	font-weight: 600;
+
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: space-between;
+}
+
+/* SHORTCUT BADGE */
+.shortcut {
+	padding: 8px 12px;
+
+	border-radius: 10px;
+
+	background: rgba(255, 255, 255, 0.04);
+
+	border: 1px solid rgba(255, 255, 255, 0.06);
+
+	font-size: 0.85rem;
+
+	color: rgba(255, 255, 255, 0.65);
+}
+
+/* COMMANDS */
+.commands {
+	display: flex;
+
+	flex-direction: column;
+
+	padding: 12px;
+}
+
+/* COMMAND BUTTON */
+.command {
+	width: 100%;
+
+	background: transparent;
+
+	border: none;
+
+	text-align: left;
+
+	padding: 18px 20px;
+
+	border-radius: 16px;
+
+	color: white;
+
+	font-size: 1rem;
+
+	cursor: pointer;
+
+	margin-top: 0;
+
+	transition:
+		background 0.3s ease,
+		transform 0.3s ease;
+}
+
+/* HOVER */
+.command:hover {
+	background: rgba(255, 255, 255, 0.05);
+
+	transform: translateX(4px);
+}
+
+/* FOOTER */
+.footer {
+	padding: 18px;
+
+	text-align: center;
+
+	color: rgba(255, 255, 255, 0.5);
+
+	font-size: 0.9rem;
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.overlay {
+		padding-top: 6vh;
+	}
+}

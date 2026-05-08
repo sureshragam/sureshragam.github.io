@@ -1,0 +1,162 @@
+/* src/components/Services/Services.module.css */
+
+.servicesSection {
+	width: 100%;
+
+	display: flex;
+
+	justify-content: center;
+
+	padding-block: 4rem;
+}
+
+.container {
+	width: 90%;
+
+	margin: auto;
+}
+
+/* TITLE */
+.title {
+	font-size: 3rem;
+
+	text-align: center;
+
+	margin-bottom: 4rem;
+}
+
+/* GRID */
+.grid {
+	display: grid;
+
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+	gap: 24px;
+}
+
+/* CARD */
+.card {
+	position: relative;
+
+	overflow: hidden;
+
+	padding: 32px;
+
+	border-radius: 28px;
+
+	background: rgba(255, 255, 255, 0.03);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+
+	transition:
+		transform 0.4s ease,
+		box-shadow 0.4s ease,
+		border-color 0.4s ease,
+		background 0.4s ease;
+}
+
+/* GLOW */
+.card::before {
+	content: "";
+
+	position: absolute;
+
+	width: 220px;
+
+	height: 220px;
+
+	background: color-mix(in srgb, var(--primaryColor) 8%, transparent);
+
+	filter: blur(80px);
+
+	top: -80px;
+
+	right: -80px;
+
+	opacity: 0.9;
+
+	transition: opacity 0.4s ease;
+}
+
+/* HOVER */
+.card:hover {
+	transform: translateY(-10px);
+
+	background: color-mix(
+		in srgb,
+		var(--primaryColor) 4%,
+		rgba(255, 255, 255, 0.03)
+	);
+
+	border-color: color-mix(in srgb, var(--primaryColor) 40%, transparent);
+
+	box-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 15%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+}
+
+/* ICON */
+.icon {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 3rem;
+
+	color: var(--primaryColor);
+
+	margin-bottom: 1.5rem;
+
+	filter: drop-shadow(
+		0 0 10px color-mix(in srgb, var(--primaryColor) 25%, transparent)
+	);
+
+	transition:
+		transform 0.3s ease,
+		filter 0.3s ease;
+}
+
+/* ICON HOVER */
+.card:hover .icon {
+	transform: translateY(-4px) scale(1.05);
+
+	filter: drop-shadow(
+		0 0 18px color-mix(in srgb, var(--primaryColor) 40%, transparent)
+	);
+}
+
+/* TITLE */
+.card h3 {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 1.5rem;
+
+	margin-bottom: 1rem;
+}
+
+/* DESCRIPTION */
+.card p {
+	position: relative;
+
+	z-index: 1;
+
+	color: rgba(255, 255, 255, 0.75);
+
+	line-height: 1.9rem;
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.title {
+		font-size: 2.3rem;
+	}
+
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

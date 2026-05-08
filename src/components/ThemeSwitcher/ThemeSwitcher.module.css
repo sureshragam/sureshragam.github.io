@@ -1,0 +1,178 @@
+/* src/components/ThemeSwitcher/ThemeSwitcher.module.css */
+
+.wrapper {
+	position: fixed;
+
+	top: 110px;
+
+	left: 24px;
+
+	z-index: 9999;
+}
+
+/* TOGGLE */
+.toggleButton {
+	width: 58px;
+
+	height: 58px;
+
+	border-radius: 18px;
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	background: rgba(255, 255, 255, 0.04);
+
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	font-size: 1.3rem;
+
+	color: white;
+
+	cursor: pointer;
+
+	box-shadow:
+		0 0 20px rgba(0, 0, 0, 0.25),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease,
+		background 0.3s ease;
+}
+
+/* HOVER */
+.toggleButton:hover {
+	transform: translateY(-4px);
+
+	background: color-mix(
+		in srgb,
+		var(--primaryColor) 6%,
+		rgba(255, 255, 255, 0.04)
+	);
+
+	border-color: color-mix(in srgb, var(--primaryColor) 25%, transparent);
+
+	box-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 20%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 10%, transparent);
+}
+
+/* PANEL */
+.panel {
+	position: absolute;
+
+	top: 70px;
+
+	left: 0;
+
+	width: 220px;
+
+	padding: 14px;
+
+	border-radius: 22px;
+
+	background: rgba(15, 15, 15, 0.92);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+
+	display: flex;
+
+	flex-direction: column;
+
+	gap: 10px;
+
+	opacity: 0;
+
+	pointer-events: none;
+
+	transform: translateY(-10px);
+
+	box-shadow:
+		0 0 30px rgba(0, 0, 0, 0.3),
+		0 0 60px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+/* OPEN */
+.open {
+	opacity: 1;
+
+	pointer-events: auto;
+
+	transform: translateY(0);
+}
+
+/* BUTTONS */
+.panel button {
+	margin-top: 0;
+
+	width: 100%;
+
+	display: flex;
+
+	align-items: center;
+
+	gap: 10px;
+
+	justify-content: flex-start;
+
+	padding: 14px 16px;
+
+	border-radius: 14px;
+
+	background: rgba(255, 255, 255, 0.04);
+
+	border: 1px solid rgba(255, 255, 255, 0.06);
+
+	font-size: 0.95rem;
+
+	color: white;
+
+	backdrop-filter: blur(10px);
+
+	transition:
+		background 0.3s ease,
+		transform 0.3s ease,
+		border-color 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.panel button:hover {
+	background: color-mix(
+		in srgb,
+		var(--primaryColor) 8%,
+		rgba(255, 255, 255, 0.04)
+	);
+
+	transform: translateX(4px);
+
+	border-color: color-mix(in srgb, var(--primaryColor) 22%, transparent);
+
+	box-shadow: 0 0 14px color-mix(in srgb, var(--primaryColor) 10%, transparent);
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.wrapper {
+		top: auto;
+
+		bottom: 90px;
+
+		left: 18px;
+	}
+}

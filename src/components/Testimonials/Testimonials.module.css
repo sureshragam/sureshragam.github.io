@@ -1,0 +1,172 @@
+/* src/components/Testimonials/Testimonials.module.css */
+
+.testimonialSection {
+	width: 100%;
+
+	display: flex;
+
+	justify-content: center;
+
+	padding-block: 4rem;
+}
+
+.container {
+	width: 90%;
+
+	margin: auto;
+}
+
+/* TITLE */
+.title {
+	font-size: 3rem;
+
+	text-align: center;
+
+	margin-bottom: 4rem;
+}
+
+/* GRID */
+.grid {
+	display: grid;
+
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+	gap: 24px;
+}
+
+/* CARD */
+.card {
+	position: relative;
+
+	overflow: hidden;
+
+	padding: 32px;
+
+	border-radius: 28px;
+
+	background: rgba(255, 255, 255, 0.03);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+
+	transition:
+		transform 0.4s ease,
+		box-shadow 0.4s ease,
+		border-color 0.4s ease,
+		background 0.4s ease;
+}
+
+/* GLOW */
+.card::before {
+	content: "";
+
+	position: absolute;
+
+	width: 220px;
+
+	height: 220px;
+
+	background: color-mix(in srgb, var(--primaryColor) 8%, transparent);
+
+	filter: blur(80px);
+
+	top: -80px;
+
+	right: -80px;
+
+	opacity: 0.9;
+}
+
+/* HOVER */
+.card:hover {
+	transform: translateY(-10px);
+
+	background: color-mix(
+		in srgb,
+		var(--primaryColor) 4%,
+		rgba(255, 255, 255, 0.03)
+	);
+
+	border-color: color-mix(in srgb, var(--primaryColor) 40%, transparent);
+
+	box-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 15%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+}
+
+/* QUOTE ICON */
+.quote {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 2rem;
+
+	color: var(--primaryColor);
+
+	margin-bottom: 1.5rem;
+
+	filter: drop-shadow(
+		0 0 12px color-mix(in srgb, var(--primaryColor) 30%, transparent)
+	);
+
+	transition:
+		transform 0.3s ease,
+		filter 0.3s ease;
+}
+
+/* QUOTE HOVER */
+.card:hover .quote {
+	transform: translateY(-4px);
+
+	filter: drop-shadow(
+		0 0 18px color-mix(in srgb, var(--primaryColor) 45%, transparent)
+	);
+}
+
+/* MESSAGE */
+.message {
+	position: relative;
+
+	z-index: 1;
+
+	color: rgba(255, 255, 255, 0.78);
+
+	line-height: 2rem;
+
+	margin-bottom: 2rem;
+}
+
+/* FOOTER */
+.footer {
+	position: relative;
+
+	z-index: 1;
+}
+
+/* NAME */
+.footer h3 {
+	font-size: 1.2rem;
+
+	margin-bottom: 0.4rem;
+}
+
+/* ROLE */
+.footer span {
+	color: rgba(255, 255, 255, 0.6);
+
+	font-size: 0.95rem;
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.title {
+		font-size: 2.3rem;
+	}
+
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

@@ -40,7 +40,7 @@ const SEO = () => {
 
 			<meta property="og:type" content="website" />
 
-			<meta property="og:image" content="/preview.png" />
+			<meta property="og:image" content="/preview.webp" />
 
 			<meta property="og:url" content="https://yourdomain.com" />
 
@@ -57,7 +57,7 @@ const SEO = () => {
 				content="React.js + Spring Boot Full Stack Developer with 4+ years of experience building scalable modern applications."
 			/>
 
-			<meta name="twitter:image" content="/preview.png" />
+			<meta name="twitter:image" content="/preview.webp" />
 
 			{/* EXTRA */}
 			<meta name="theme-color" content="#02ab82" />

@@ -1,7 +1,7 @@
 // Home.tsx
 
 import React from "react";
-import home from "../../assets/images/portfolio_home.png";
+import home from "../../assets/images/portfolio_home.webp";
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 

@@ -47,6 +47,11 @@ const Projects = () => {
 								backgroundImage: `url(${projectData.image})`,
 							}}
 							onClick={() => handleOpen(projectData)}
+							onKeyDown={(e) => {
+								if (e.key === "Enter" || e.key === " ") {
+									handleOpen(projectData);
+								}
+							}}
 						>
 							<h3>{eachProject.name}</h3>
 

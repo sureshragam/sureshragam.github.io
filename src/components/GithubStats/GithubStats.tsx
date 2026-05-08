@@ -1,19 +1,83 @@
-// src/components/GithubStats/GithubStats.tsx
+import React, { useEffect, useMemo, useState } from "react";
 
-import React from "react";
-import classes from "./GithubStats.module.css";
 import { motion } from "framer-motion";
+
 import { FaGithub } from "react-icons/fa";
 
+import classes from "./GithubStats.module.css";
+
+type Repo = {
+	stargazers_count: number;
+	language: string;
+};
+
 const GithubStats = () => {
+	const [repos, setRepos] = useState<Repo[]>([]);
+
+	useEffect(() => {
+		const fetchRepos = async () => {
+			try {
+				const response = await fetch(
+					"https://api.github.com/users/sureshragam/repos?per_page=100",
+				);
+
+				const data = await response.json();
+
+				setRepos(data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchRepos();
+	}, []);
+
+	const stats = useMemo(() => {
+		const totalRepos = repos.length;
+
+		const languages = new Set(
+			repos.map((repo) => repo.language).filter(Boolean),
+		);
+
+		return [
+			{
+				label: "Repositories",
+				value: totalRepos,
+			},
+			{
+				label: "Languages",
+				value: languages.size,
+			},
+			{
+				label: "Projects",
+				value: "10+",
+			},
+			{
+				label: "Experience",
+				value: "3+ Years",
+			},
+		];
+	}, [repos]);
+
 	return (
 		<section id="github" className={`${classes.githubSection} scrollSection`}>
 			<div className={classes.container}>
 				<motion.h2
-					initial={{ opacity: 0, y: 40 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					viewport={{ once: false, amount: 0.2 }}
+					initial={{
+						opacity: 0,
+						y: 30,
+					}}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+					}}
+					transition={{
+						duration: 0.5,
+					}}
+					viewport={{
+						once: true,
+						amount: 0.2,
+					}}
 					className={classes.title}
 				>
 					GitHub Activity
@@ -23,17 +87,17 @@ const GithubStats = () => {
 					className={classes.card}
 					initial={{
 						opacity: 0,
-						y: 60,
+						y: 40,
 					}}
 					whileInView={{
 						opacity: 1,
 						y: 0,
 					}}
 					transition={{
-						duration: 0.7,
+						duration: 0.6,
 					}}
 					viewport={{
-						once: false,
+						once: true,
 						amount: 0.2,
 					}}
 				>
@@ -43,36 +107,26 @@ const GithubStats = () => {
 						<div>
 							<h3>Suresh Ragam</h3>
 
-							<p>Frontend Developer • React • Spring Boot</p>
+							<p>Frontend Developer • React • Java • AWS</p>
 						</div>
 					</div>
 
 					<div className={classes.statsGrid}>
-						<div>
-							<h2>50+</h2>
-							<p>Repositories</p>
-						</div>
+						{stats.map((stat, index) => (
+							<div key={index}>
+								<h2>{stat.value}</h2>
 
-						<div>
-							<h2>500+</h2>
-							<p>Commits</p>
-						</div>
-
-						<div>
-							<h2>10+</h2>
-							<p>Projects</p>
-						</div>
-
-						<div>
-							<h2>AWS</h2>
-							<p>Certified</p>
-						</div>
+								<p>{stat.label}</p>
+							</div>
+						))}
 					</div>
 
 					<div className={classes.graphContainer}>
 						<img
 							src="https://ghchart.rshah.org/02ab82/sureshragam"
 							alt="GitHub Contributions"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 
@@ -90,4 +144,4 @@ const GithubStats = () => {
 	);
 };
 
-export default GithubStats;
+export default React.memo(GithubStats);

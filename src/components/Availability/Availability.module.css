@@ -1,0 +1,380 @@
+/* src/components/Availability/Availability.module.css */
+
+.availabilitySection {
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding-block: 5rem;
+}
+
+.card {
+	width: min(950px, 100%);
+
+	position: relative;
+
+	overflow: hidden;
+
+	padding: 60px 40px;
+
+	border-radius: 32px;
+
+	background: rgba(255, 255, 255, 0.03);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+
+	text-align: center;
+
+	box-shadow:
+		0 0 30px rgba(2, 171, 130, 0.08),
+		0 0 60px rgba(2, 171, 130, 0.03);
+}
+
+.card::before {
+	content: "";
+
+	position: absolute;
+
+	width: 320px;
+	height: 320px;
+
+	background: rgba(2, 171, 130, 0.1);
+
+	filter: blur(100px);
+
+	top: -100px;
+	right: -100px;
+}
+
+.status {
+	position: relative;
+
+	z-index: 1;
+
+	display: inline-flex;
+
+	align-items: center;
+
+	gap: 10px;
+
+	padding: 10px 18px;
+
+	border-radius: 999px;
+
+	background: rgba(2, 171, 130, 0.12);
+
+	border: 1px solid rgba(2, 171, 130, 0.18);
+
+	margin-bottom: 2rem;
+}
+
+.status svg {
+	color: #39ff88;
+
+	font-size: 0.8rem;
+
+	animation: pulse 1.5s infinite;
+}
+
+.status span {
+	color: rgba(255, 255, 255, 0.9);
+
+	font-size: 0.95rem;
+}
+
+.card h2 {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 3.2rem;
+
+	margin-bottom: 1.5rem;
+}
+
+.card p {
+	position: relative;
+
+	z-index: 1;
+
+	max-width: 700px;
+
+	margin: auto;
+
+	color: rgba(255, 255, 255, 0.76);
+
+	line-height: 2rem;
+
+	margin-bottom: 2.5rem;
+}
+
+.actions {
+	position: relative;
+
+	z-index: 1;
+
+	display: flex;
+
+	justify-content: center;
+
+	flex-wrap: wrap;
+
+	gap: 18px;
+}
+
+.actions a {
+	min-width: 180px;
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 0.4;
+		transform: scale(0.9);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	100% {
+		opacity: 0.4;
+		transform: scale(0.9);
+	}
+}
+
+@media screen and (max-width: 920px) {
+	.card {
+		padding: 40px 24px;
+	}
+
+	.card h2 {
+		font-size: 2.2rem;
+	}
+
+	.actions {
+		/* src/components/Availability/Availability.module.css */
+
+		.availabilitySection {
+			width: 100%;
+
+			display: flex;
+
+			justify-content: center;
+
+			align-items: center;
+
+			padding-block: 5rem;
+		}
+
+		/* CARD */
+		.card {
+			width: min(950px, 100%);
+
+			position: relative;
+
+			overflow: hidden;
+
+			padding: 60px 40px;
+
+			border-radius: 32px;
+
+			background: rgba(255, 255, 255, 0.03);
+
+			border: 1px solid rgba(255, 255, 255, 0.08);
+
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+
+			text-align: center;
+
+			box-shadow:
+				0 0 30px color-mix(in srgb, var(--primaryColor) 8%, transparent),
+				0 0 60px color-mix(in srgb, var(--primaryColor) 3%, transparent);
+
+			transition:
+				transform 0.4s ease,
+				box-shadow 0.4s ease,
+				border-color 0.4s ease;
+		}
+
+		/* CARD HOVER */
+		.card:hover {
+			transform: translateY(-6px);
+
+			border-color: color-mix(in srgb, var(--primaryColor) 20%, transparent);
+
+			box-shadow:
+				0 0 40px color-mix(in srgb, var(--primaryColor) 14%, transparent),
+				0 0 80px color-mix(in srgb, var(--primaryColor) 6%, transparent);
+		}
+
+		/* GLOW */
+		.card::before {
+			content: "";
+
+			position: absolute;
+
+			width: 320px;
+
+			height: 320px;
+
+			background: color-mix(in srgb, var(--primaryColor) 10%, transparent);
+
+			filter: blur(100px);
+
+			top: -100px;
+
+			right: -100px;
+		}
+
+		/* STATUS */
+		.status {
+			position: relative;
+
+			z-index: 1;
+
+			display: inline-flex;
+
+			align-items: center;
+
+			gap: 10px;
+
+			padding: 10px 18px;
+
+			border-radius: 999px;
+
+			background: color-mix(in srgb, var(--primaryColor) 12%, transparent);
+
+			border: 1px solid color-mix(in srgb, var(--primaryColor) 18%, transparent);
+
+			margin-bottom: 2rem;
+
+			backdrop-filter: blur(10px);
+
+			transition:
+				transform 0.3s ease,
+				box-shadow 0.3s ease;
+		}
+
+		/* STATUS HOVER */
+		.status:hover {
+			transform: translateY(-2px);
+
+			box-shadow: 0 0 16px
+				color-mix(in srgb, var(--primaryColor) 12%, transparent);
+		}
+
+		/* STATUS ICON */
+		.status svg {
+			color: var(--primaryColor);
+
+			font-size: 0.8rem;
+
+			animation: pulse 1.5s infinite;
+
+			filter: drop-shadow(
+				0 0 8px color-mix(in srgb, var(--primaryColor) 40%, transparent)
+			);
+		}
+
+		/* STATUS TEXT */
+		.status span {
+			color: rgba(255, 255, 255, 0.9);
+
+			font-size: 0.95rem;
+		}
+
+		/* TITLE */
+		.card h2 {
+			position: relative;
+
+			z-index: 1;
+
+			font-size: 3.2rem;
+
+			margin-bottom: 1.5rem;
+		}
+
+		/* DESCRIPTION */
+		.card p {
+			position: relative;
+
+			z-index: 1;
+
+			max-width: 700px;
+
+			margin: auto;
+
+			color: rgba(255, 255, 255, 0.76);
+
+			line-height: 2rem;
+
+			margin-bottom: 2.5rem;
+		}
+
+		/* ACTIONS */
+		.actions {
+			position: relative;
+
+			z-index: 1;
+
+			display: flex;
+
+			justify-content: center;
+
+			flex-wrap: wrap;
+
+			gap: 18px;
+		}
+
+		.actions a {
+			min-width: 180px;
+		}
+
+		/* PULSE */
+		@keyframes pulse {
+			0% {
+				opacity: 0.4;
+
+				transform: scale(0.9);
+			}
+
+			50% {
+				opacity: 1;
+
+				transform: scale(1);
+			}
+
+			100% {
+				opacity: 0.4;
+
+				transform: scale(0.9);
+			}
+		}
+
+		/* MOBILE */
+		@media screen and (max-width: 920px) {
+			.card {
+				padding: 40px 24px;
+			}
+
+			.card h2 {
+				font-size: 2.2rem;
+			}
+
+			.actions {
+				flex-direction: column;
+
+				align-items: center;
+			}
+		}
+		flex-direction: column;
+		align-items: center;
+	}
+}

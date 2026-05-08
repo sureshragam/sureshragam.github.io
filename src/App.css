@@ -1,91 +1,312 @@
+/* App.css */
+
 .App {
-  text-align: center;
-  background-color: var(--backgroundColor,black);
-  color: var(--textColor,white);
-  padding: 0px 5px 0px 20px;
-  font-family: "Josefin Sans", sans-serif;
-  height:100vh
+	text-align: center;
+
+	background-color: var(--backgroundColor, black);
+
+	color: var(--textColor, white);
+
+	padding: 0 10px 0 20px;
+
+	font-family: "Josefin Sans", sans-serif;
+
+	height: 100vh;
+
+	overflow-x: hidden;
+
+	position: relative;
+
+	z-index: 1;
+
+	transition:
+		background-color 0.4s ease,
+		color 0.4s ease;
 }
-.content{
-  height: calc(100vh - 150px);
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  scroll-behavior:smooth;
+
+/* MAIN CONTENT */
+.content {
+	height: calc(100vh - 110px);
+
+	overflow-y: auto;
+
+	overflow-x: hidden;
+
+	scroll-behavior: smooth;
+
+	padding-right: 6px;
+
+	position: relative;
+
+	z-index: 2;
 }
-.scrollSection{
-    height: calc(100vh - 150px);
-    scroll-snap-align: var(--scrollAlign);
-    scroll-margin-top:var(--scrollMarginTop) ;
-    scroll-margin-bottom: -100px;
-    text-align: left;
-    display: flex;
+
+/* ONLY MAIN SCROLLBAR */
+.content::-webkit-scrollbar {
+	width: 10px;
 }
-p{
-  font-size: 1rem;
-  line-height: 2rem;
-  text-overflow: ellipsis;
+
+/* TRACK */
+.content::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.03);
+
+	border-radius: 999px;
 }
-button{
-  background-color: var(--primaryColor,#f9004d);
-  color: var(--textColor1,white);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 20px;
+
+/* THUMB */
+.content::-webkit-scrollbar-thumb {
+	background: color-mix(in srgb, var(--primaryColor) 65%, transparent);
+
+	border-radius: 999px;
+
+	border: 2px solid transparent;
+
+	background-clip: content-box;
 }
-a[role="button"]{
-  text-decoration: none;
-  color: var(--textColor1,white);
-  background-color: var(--primaryColor,#f9004d);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 20px;
+
+/* THUMB HOVER */
+.content::-webkit-scrollbar-thumb:hover {
+	background: var(--primaryColor);
 }
+
+/* SECTION */
+.scrollSection {
+	min-height: calc(100vh - 110px);
+
+	scroll-margin-top: var(--scrollMarginTop);
+
+	text-align: left;
+
+	display: flex;
+
+	padding-block: 2rem;
+
+	width: 100%;
+
+	overflow-x: hidden;
+}
+
+/* GLOBAL PARAGRAPH */
+p {
+	font-size: 1rem;
+
+	line-height: 2rem;
+
+	text-overflow: ellipsis;
+
+	color: rgba(255, 255, 255, 0.88);
+}
+
+/* GLOBAL BUTTON */
+button {
+	background: linear-gradient(
+		135deg,
+		var(--primaryColor),
+		color-mix(in srgb, var(--primaryColor) 70%, black)
+	);
+
+	color: white;
+
+	padding: 12px 22px;
+
+	border: none;
+
+	border-radius: 12px;
+
+	cursor: pointer;
+
+	font-size: 1rem;
+
+	font-weight: 600;
+
+	margin-top: 20px;
+
+	box-shadow: 0 0 12px color-mix(in srgb, var(--primaryColor) 15%, transparent);
+
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease,
+		filter 0.3s ease,
+		background 0.3s ease;
+}
+
+/* BUTTON HOVER */
+button:hover {
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 18px color-mix(in srgb, var(--primaryColor) 30%, transparent),
+		0 0 36px color-mix(in srgb, var(--primaryColor) 10%, transparent);
+
+	filter: brightness(1.05);
+}
+
+/* BUTTON ACTIVE */
+button:active {
+	transform: scale(0.98);
+}
+
+/* LINK BUTTONS */
+a[role="button"] {
+	text-decoration: none;
+
+	color: white;
+
+	background: linear-gradient(
+		135deg,
+		var(--primaryColor),
+		color-mix(in srgb, var(--primaryColor) 70%, black)
+	);
+
+	padding: 12px 22px;
+
+	border-radius: 12px;
+
+	cursor: pointer;
+
+	font-size: 1rem;
+
+	font-weight: 600;
+
+	margin-top: 20px;
+
+	display: inline-flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	box-shadow: 0 0 12px color-mix(in srgb, var(--primaryColor) 15%, transparent);
+
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease,
+		filter 0.3s ease,
+		background 0.3s ease;
+}
+
+/* LINK BUTTON HOVER */
+a[role="button"]:hover {
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 18px color-mix(in srgb, var(--primaryColor) 30%, transparent),
+		0 0 36px color-mix(in srgb, var(--primaryColor) 10%, transparent);
+
+	filter: brightness(1.05);
+}
+
+/* WHATSAPP FLOAT */
 .whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background-color: #29bb42;
-  padding: 5px;
-  border-radius: 50%;
-  animation:alternate-reverse whatsappblink 2s infinite;
+	position: fixed;
+
+	bottom: 24px;
+
+	right: 24px;
+
+	z-index: 1000;
+
+	background: linear-gradient(135deg, #29bb42, #1ea734);
+
+	padding: 8px;
+
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 20px rgba(41, 187, 66, 0.4),
+		0 0 40px rgba(41, 187, 66, 0.15);
+
+	animation: whatsappFloat 3s ease-in-out infinite;
+
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
-@keyframes whatsappblink {
-  0% {
-    box-shadow: none;
-  }
-  100% {
-    box-shadow: 0 0 20px 10px #29bb42;
-  }
+/* HEADER */
+header {
+	position: relative;
+
+	z-index: 10;
 }
 
+/* FLOATING ANIMATION */
+@keyframes whatsappFloat {
+	0% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-8px);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/* IMAGE */
 .whatsapp-float img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+	width: 58px;
+
+	height: 58px;
+
+	border-radius: 50%;
+
+	display: block;
 }
 
-.whatsapp-float img:hover {
-  transform: scale(1.1);
+/* HOVER */
+.whatsapp-float:hover {
+	transform: scale(1.08);
+
+	box-shadow:
+		0 0 24px rgba(41, 187, 66, 0.5),
+		0 0 50px rgba(41, 187, 66, 0.2);
 }
 
+/* TEXT SELECTION */
+::selection {
+	background: color-mix(in srgb, var(--primaryColor) 35%, transparent);
 
-@media screen and (max-width:920px) {
-  .App{
-    scroll-snap-type: none;
-  }
-  .scrollSection{
-    height: fit-content;
-  }
-  .content{
-    scroll-snap-type: none;
-    scroll-behavior:smooth;
-  }
+	color: white;
+}
+
+/* SMOOTH THEME TRANSITION */
+* {
+	transition:
+		background-color 0.25s ease,
+		border-color 0.25s ease,
+		color 0.25s ease;
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.App {
+		padding: 0 14px;
+	}
+
+	.scrollSection {
+		min-height: fit-content;
+
+		padding-block: 3rem;
+	}
+
+	.content {
+		height: auto;
+
+		overflow-y: visible;
+	}
+
+	.whatsapp-float {
+		bottom: 18px;
+
+		right: 18px;
+	}
+
+	.whatsapp-float img {
+		width: 52px;
+
+		height: 52px;
+	}
 }

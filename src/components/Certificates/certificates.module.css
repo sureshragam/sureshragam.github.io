@@ -1,39 +1,179 @@
-.certificatesContainer{
-    display: block;
-} 
-.title{
-    color: white;
-    text-align: start;
+.certificatesContainer {
+	display: block;
 }
-.certificates{
-    list-style-type: none;
-    padding-left: 0px;
-    display: flex;
-    width: 80%;
-    margin: auto;
-    gap: 10px;
-    overflow-x: scroll;
+
+/* TITLE */
+.title {
+	color: white;
+
+	text-align: start;
+
+	margin-bottom: 2rem;
 }
-.certificate{
-    height: 300px;
-    width: 400px;
-    opacity: 1;
-    border:1px solid rgba(255, 255, 255, 0.2);
-    color: black;
-    background-color: white;
-    flex-shrink: 0;
-    position: relative;
+
+/* CERTIFICATES WRAPPER */
+.certificates {
+	list-style-type: none;
+
+	padding-left: 0;
+
+	display: flex;
+
+	width: 90%;
+
+	margin: auto;
+
+	gap: 20px;
+
+	overflow-x: auto;
+
+	scroll-behavior: smooth;
+
+	scroll-snap-type: x mandatory;
+
+	-webkit-overflow-scrolling: touch;
+
+	/* HIDE SCROLLBAR */
+	scrollbar-width: none;
+
+	/* EDGE FADE EFFECT */
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 8%,
+		black 92%,
+		transparent
+	);
+
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 8%,
+		black 92%,
+		transparent
+	);
 }
-.certificate>img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+
+/* HIDE SCROLLBAR */
+.certificates::-webkit-scrollbar {
+	display: none;
 }
-.certificate:hover>img{
-    opacity: 1;
+
+/* CERTIFICATE CARD */
+.certificate {
+	height: 300px;
+
+	width: 400px;
+
+	flex-shrink: 0;
+
+	position: relative;
+
+	overflow: hidden;
+
+	border-radius: 20px;
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	background: rgba(255, 255, 255, 0.03);
+
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+
+	scroll-snap-align: center;
+
+	cursor: grab;
+
+	transition:
+		transform 0.5s ease,
+		box-shadow 0.5s ease,
+		border-color 0.5s ease;
+}
+
+/* GLOW */
+.certificate::before {
+	content: "";
+
+	position: absolute;
+
+	width: 220px;
+
+	height: 220px;
+
+	background: color-mix(in srgb, var(--primaryColor) 10%, transparent);
+
+	filter: blur(80px);
+
+	top: -80px;
+
+	right: -80px;
+
+	z-index: 0;
+
+	opacity: 0;
+
+	transition: opacity 0.5s ease;
+}
+
+/* ACTIVE DRAG */
+.certificate:active {
+	cursor: grabbing;
+}
+
+/* HOVER */
+.certificate:hover {
+	border-color: color-mix(in srgb, var(--primaryColor) 40%, transparent);
+
+	transform: translateY(-8px) scale(1.02);
+
+	box-shadow:
+		0 0 20px color-mix(in srgb, var(--primaryColor) 20%, transparent),
+		0 0 40px color-mix(in srgb, var(--primaryColor) 8%, transparent);
+}
+
+/* SHOW GLOW */
+.certificate:hover::before {
+	opacity: 1;
+}
+
+/* IMAGE */
+.certificate > img {
+	width: 100%;
+
+	height: 100%;
+
+	object-fit: cover;
+
+	position: relative;
+
+	z-index: 1;
+
+	transition:
+		transform 0.6s ease,
+		opacity 0.5s ease,
+		filter 0.5s ease;
+}
+
+/* IMAGE HOVER */
+.certificate:hover > img {
+	transform: scale(1.08);
+
+	filter: brightness(1.05);
+
+	opacity: 1;
+}
+
+/* MOBILE */
+@media screen and (max-width: 920px) {
+	.certificates {
+		width: 100%;
+
+		gap: 16px;
+	}
+
+	.certificate {
+		width: 300px;
+
+		height: 220px;
+	}
 }

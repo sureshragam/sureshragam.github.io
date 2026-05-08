@@ -63,7 +63,14 @@ export const experience = [
 		company: "Tata Consultancy Services",
 		designation: "Assistant System Engineer",
 		role: "React Developer",
-		period: "2022 - Current",
+		period: "2022 - 2026",
+		id: uuidV4(),
+	},
+	{
+		company: "Safran Groups",
+		designation: "System Engineer",
+		role: "Full Stack Developer",
+		period: "2026 - Current",
 		id: uuidV4(),
 	},
 ];
@@ -91,6 +98,16 @@ export const fallBackData = {
 		{
 			name: "Contact",
 			url: "contact",
+		},
+		{
+			name: "Experience",
+			url: "experience",
+		},
+		// navigation array
+
+		{
+			name: "Tech",
+			url: "techstack",
 		},
 	],
 	home: {

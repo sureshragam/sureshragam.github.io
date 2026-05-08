@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
 import NotifyUserComponent from "../../component-lib/NotifyUserComponent";
 import { getLinkFromLinks } from "../../utils/helperFunctions";
-
+import { motion } from "framer-motion";
 const Contact = () => {
 	const [formData, setFormData] = useState({
 		name: "",
@@ -121,7 +121,14 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className={`${classes.contactContainer} scrollSection`}>
+		<motion.div
+			id="contact"
+			className={`${classes.contactContainer} scrollSection`}
+			initial={{ opacity: 0, y: 100 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.8 }}
+			viewport={{ amount: 0.2 }}
+		>
 			<NotifyUserComponent
 				message={message}
 				open={open}
@@ -129,7 +136,13 @@ const Contact = () => {
 				alertType={alertType}
 			/>
 			<div style={{ display: "flex" }}>
-				<div className={classes.col1}>
+				<motion.div
+					className={classes.col1}
+					initial={{ opacity: 0, x: -80 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ amount: 0.3 }}
+				>
 					<h2>{staticData?.title}</h2>
 					<p style={{ paddingRight: "1rem" }}>{staticData?.description}</p>
 					<a href={`mailTo:${mailID}`}>{staticData?.mailDescription}</a>
@@ -166,8 +179,14 @@ const Contact = () => {
 							{buttonStaticData?.backBtn}
 						</a>
 					</div>
-				</div>
-				<div className={classes.col2}>
+				</motion.div>
+				<motion.div
+					className={classes.col2}
+					initial={{ opacity: 0, x: 80 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					transition={{ duration: 0.8, delay: 0.2 }}
+					viewport={{ amount: 0.3 }}
+				>
 					<form
 						className={classes.form}
 						onSubmit={(event) => handleSubmit(event)}
@@ -216,10 +235,10 @@ const Contact = () => {
 							<p className={classes.errorText}>*{errors.message}</p>
 						)}
 					</form>
-				</div>
+				</motion.div>
 			</div>
 			<Footer />
-		</div>
+		</motion.div>
 	);
 };
 

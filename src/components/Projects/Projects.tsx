@@ -57,9 +57,11 @@ const Projects = () => {
 
 							<p>{eachProject.description}</p>
 
-							<span className={classes.icon}>
-								<WiDirectionUpRight color="white" fontSize="4rem" />
-							</span>
+							<div className={classes.projectAction}>
+								<span>View Project</span>
+
+								<WiDirectionUpRight />
+							</div>
 						</li>
 					);
 				})}

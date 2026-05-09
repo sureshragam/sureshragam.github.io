@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./certificates.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
 import { motion } from "framer-motion";
 
+interface CertificateImageProps {
+	src: string;
+	alt: string;
+}
+
+const CertificateImage: React.FC<CertificateImageProps> = ({ src, alt }) => {
+	const [hasError, setHasError] = useState(false);
+
+	if (hasError) {
+		return (
+			<div className={classes.fallbackCard}>
+				<div className={classes.fallbackGlow}></div>
+
+				<h3>{alt}</h3>
+
+				<p>Certificate Preview Unavailable</p>
+			</div>
+		);
+	}
+
+	return (
+		<img src={src} alt={alt} onError={() => setHasError(true)} loading="lazy" />
+	);
+};
+
 const Certificates: React.FC = () => {
 	const { data } = useSelector((state: RootState) => state.data);
+
 	const staticData = data?.certificates;
 
 	return (
@@ -37,7 +63,10 @@ const Certificates: React.FC = () => {
 								scale: 1.03,
 							}}
 						>
-							<img src={eachCertificate.url} alt={eachCertificate.alt} />
+							<CertificateImage
+								src={eachCertificate.url}
+								alt={eachCertificate.alt}
+							/>
 						</motion.li>
 					);
 				})}

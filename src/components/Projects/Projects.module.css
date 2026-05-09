@@ -239,6 +239,48 @@
 	box-shadow: 0 0 24px color-mix(in srgb, var(--primaryColor) 40%, transparent);
 }
 
+.projectAction {
+	position: absolute;
+
+	top: 20px;
+	right: 20px;
+
+	display: flex;
+	align-items: center;
+	gap: 4px;
+
+	font-size: 0.9rem;
+
+	color: rgba(255, 255, 255, 0.7);
+
+	z-index: 2;
+
+	opacity: 0;
+
+	transform: translateY(-10px);
+
+	transition:
+		opacity 0.4s ease,
+		transform 0.4s ease,
+		color 0.3s ease;
+
+	cursor: pointer;
+}
+
+.projectAction svg {
+	font-size: 1.4rem;
+}
+
+.projects > ul > li:hover .projectAction {
+	opacity: 1;
+
+	transform: translateY(0);
+}
+
+.projectAction:hover {
+	color: white;
+}
+
 /* MOBILE */
 @media screen and (max-width: 920px) {
 	.projects > ul {

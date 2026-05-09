@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import aboutImage from "../../assets/images/about_cartoon.webp";
 import classes from "./About.module.css";
 import DOMPurify from "dompurify";
@@ -7,49 +7,78 @@ import { RootState } from "../../store/appStore";
 import { motion } from "framer-motion";
 
 const About = () => {
-	const { data } = useSelector((state: RootState) => state.data);
-	const staticData = data?.about;
+	const aboutData = useSelector((state: RootState) => state.data.data?.about);
+
+	const sanitizedDescription = useMemo(() => {
+		if (!aboutData?.description) return "";
+
+		return DOMPurify.sanitize(aboutData.description.replace(/\n/g, "<br />"));
+	}, [aboutData?.description]);
 
 	return (
-		<div id="about" className={`${classes.aboutContainer} scrollSection`}>
+		<section id="about" className={`${classes.aboutContainer} scrollSection`}>
 			{/* LEFT IMAGE SECTION */}
 			<motion.div
 				className={classes.col1}
-				initial={{ opacity: 0, x: -100 }}
+				initial={{ opacity: 0, x: -80 }}
 				whileInView={{ opacity: 1, x: 0 }}
 				transition={{
 					duration: 0.8,
 					ease: "easeOut",
 				}}
-				viewport={{ once: false, amount: 0.3 }}
+				viewport={{ once: true, amount: 0.3 }}
 			>
-				<img src={aboutImage} alt="About Suresh Ragam" />
+				<img
+					src={aboutImage}
+					alt="Illustration representing Suresh Ragam"
+					loading="lazy"
+				/>
 			</motion.div>
 
 			{/* RIGHT TEXT SECTION */}
 			<motion.div
 				className={classes.col2}
-				initial={{ opacity: 0, x: 100 }}
+				initial={{ opacity: 0, x: 80 }}
 				whileInView={{ opacity: 1, x: 0 }}
 				transition={{
 					duration: 0.8,
 					delay: 0.2,
 					ease: "easeOut",
 				}}
-				viewport={{ once: false, amount: 0.3 }}
+				viewport={{ once: true, amount: 0.3 }}
 			>
-				<h2>{staticData?.title}</h2>
+				<div className={classes.glassCard}>
+					<h2>{aboutData?.title}</h2>
 
-				<p
-					dangerouslySetInnerHTML={{
-						__html: DOMPurify.sanitize(
-							staticData?.description.replaceAll(/\n/g, "<br/>"),
-						),
-					}}
-				></p>
+					<p
+						dangerouslySetInnerHTML={{
+							__html: sanitizedDescription,
+						}}
+					/>
+
+					<div className={classes.techStack}>
+						{["React", "TypeScript", "Redux", "MUI", "JavaScript", "CSS"].map(
+							(tech, index) => (
+								<motion.span
+									key={tech}
+									className={classes.techPill}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{
+										delay: index * 0.1,
+										duration: 0.4,
+									}}
+									viewport={{ once: true }}
+								>
+									{tech}
+								</motion.span>
+							),
+						)}
+					</div>
+				</div>
 			</motion.div>
-		</div>
+		</section>
 	);
 };
 
-export default About;
+export default React.memo(About);

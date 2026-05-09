@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import classes from "./Contact.module.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Footer from "../Footer/Footer";
-import { IoArrowBackOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/appStore";
 import NotifyUserComponent from "../../component-lib/NotifyUserComponent";
@@ -145,39 +144,40 @@ const Contact = () => {
 				>
 					<h2>{staticData?.title}</h2>
 					<p style={{ paddingRight: "1rem" }}>{staticData?.description}</p>
-					<a href={`mailTo:${mailID}`}>{staticData?.mailDescription}</a>
-					<div className={classes.iconsContainer}>
-						<a
-							aria-label={`Naviagte to - ${links ? links[1]?.name : "Github"}`}
-							href={getLinkFromLinks(links, links ? links[1]?.name : "")}
-							target="_blank"
-							rel="noreferrer"
+					<div className={classes.contactMeta}>
+						<a href={`mailTo:${mailID}`}>{staticData?.mailDescription}</a>
+						<div className={classes.iconsContainer}>
+							<a
+								aria-label={`Naviagte to - ${links ? links[1]?.name : "Github"}`}
+								href={getLinkFromLinks(links, links ? links[1]?.name : "")}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<FaGithub className={classes.icon} />
+							</a>
+							<a
+								aria-label={`Naviagte to - ${
+									links ? links[0]?.name : "LinkedIn"
+								}`}
+								href={getLinkFromLinks(links, links ? links[0]?.name : "")}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<FaLinkedin className={classes.icon} />
+							</a>
+						</div>
+						<div
+							style={{
+								marginTop: "auto",
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+							}}
 						>
-							<FaGithub className={classes.icon} />
-						</a>
-						<a
-							aria-label={`Naviagte to - ${
-								links ? links[0]?.name : "LinkedIn"
-							}`}
-							href={getLinkFromLinks(links, links ? links[0]?.name : "")}
-							target="_blank"
-							rel="noreferrer"
-						>
-							<FaLinkedin className={classes.icon} />
-						</a>
-					</div>
-					<div
-						style={{
-							marginTop: "auto",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-						}}
-					>
-						<IoArrowBackOutline color="#f9004d" />
-						<a role="button" href="#home">
-							{buttonStaticData?.backBtn}
-						</a>
+							<a className={classes.backHomeBtn} href="#home">
+								↑ Back to Top
+							</a>
+						</div>
 					</div>
 				</motion.div>
 				<motion.div
@@ -236,6 +236,10 @@ const Contact = () => {
 						)}
 					</form>
 				</motion.div>
+			</div>
+			<div className={classes.backgroundText}>
+				LET'S <br />
+				BUILD
 			</div>
 			<Footer />
 		</motion.div>

@@ -30,7 +30,7 @@
 
 	--scrollAlign: start;
 
-	--scrollMarginTop: 0px;
+	--scrollMarginTop: 120px;
 
 	/* GLOWS */
 	--primaryGlowSoft: color-mix(in srgb, var(--primaryColor) 8%, transparent);

@@ -5,7 +5,7 @@ import CountUp from "react-countup";
 
 const metricsData = [
 	{
-		number: 3,
+		number: 4,
 		suffix: "+",
 		label: "Years Experience",
 	},

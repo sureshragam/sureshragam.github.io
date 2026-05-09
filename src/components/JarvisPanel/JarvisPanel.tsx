@@ -1,10 +1,8 @@
 // JarvisPanel.tsx
 
 import { useEffect, useRef, useState } from "react";
-
+import { HashLink } from "react-router-hash-link";
 import {
-	HiOutlineUser,
-	HiOutlineFolder,
 	HiOutlineDocumentText,
 	HiOutlineMail,
 	HiOutlineX,
@@ -17,8 +15,8 @@ import classes from "./JarvisPanel.module.css";
 
 const messages = [
 	"Initializing Jarvis Core...",
-	"System Online.",
-	"Hello Suresh 👋",
+	"Neural Systems Online.",
+	"Awaiting Command.",
 ];
 
 const knowledgeBase = [
@@ -385,29 +383,28 @@ const JarvisPanel = () => {
 							messageIndex >= messages.length ? classes.actionsShow : ""
 						}`}
 					>
-						<a href="#about">
-							<HiOutlineUser />
-
-							<span>About</span>
-						</a>
-
-						<a href="#projects">
-							<HiOutlineFolder />
-
-							<span>Projects</span>
-						</a>
-
-						<a href="/resume_preview">
+						<HashLink
+							smooth
+							to="/resume_preview"
+							onClick={() => {
+								setOpen(false);
+							}}
+						>
 							<HiOutlineDocumentText />
 
 							<span>Resume</span>
-						</a>
+						</HashLink>
 
-						<a href="#contact">
+						<HashLink
+							smooth
+							to="/#contact"
+							onClick={() => {
+								setOpen(false);
+							}}
+						>
 							<HiOutlineMail />
-
 							<span>Contact</span>
-						</a>
+						</HashLink>
 					</div>
 				</div>
 			</div>

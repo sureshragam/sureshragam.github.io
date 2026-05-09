@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: 20
 
-      # Cache dependencies
+      # Cache npm dependencies
       - name: Cache Node.js dependencies
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -62,11 +62,11 @@ jobs:
         with:
           node-version: 20
 
-      # Step 3: Cache dependencies
+      # Step 3: Cache npm dependencies
       - name: Cache Node.js dependencies
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-

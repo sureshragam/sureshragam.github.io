@@ -54,7 +54,7 @@ const GithubStats = () => {
 			},
 			{
 				label: "Experience",
-				value: "3+ Years",
+				value: "4+ Years",
 			},
 		];
 	}, [repos]);

@@ -168,3 +168,100 @@
 		flex-basis: 100%;
 	}
 }
+.glassCard {
+	position: relative;
+	padding: 2rem;
+	border-radius: 24px;
+
+	background: rgba(255, 255, 255, 0.06);
+
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.3),
+		inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+	overflow: hidden;
+}
+
+/* subtle glow */
+.glassCard::before {
+	content: "";
+
+	position: absolute;
+	inset: 0;
+
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
+
+	pointer-events: none;
+}
+
+.techStack {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+
+	margin-top: 1.8rem;
+}
+
+.techPill {
+	padding: 10px 18px;
+
+	border-radius: 999px;
+
+	font-size: 0.9rem;
+	font-weight: 500;
+
+	background: rgba(255, 255, 255, 0.06);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(10px);
+
+	color: white;
+
+	transition:
+		transform 0.3s ease,
+		background 0.3s ease,
+		border 0.3s ease,
+		box-shadow 0.3s ease;
+
+	cursor: default;
+
+	animation: floatPill 4s ease-in-out infinite;
+}
+
+.techPill:hover {
+	transform: translateY(-4px) scale(1.05);
+
+	background: rgba(255, 255, 255, 0.12);
+
+	border: 1px solid rgba(255, 255, 255, 0.2);
+
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.techPill:nth-child(odd) {
+	animation-delay: 0.5s;
+}
+
+.techPill:nth-child(even) {
+	animation-delay: 1s;
+}
+
+@keyframes floatPill {
+	0% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-3px);
+	}
+
+	100% {
+		transform: translateY(0px);
+	}
+}

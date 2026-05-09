@@ -90,9 +90,9 @@ function App() {
 	const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
 
 	const whatsappMessage = encodeURIComponent(
-		process.env.REACT_APP_WHATSAPP_MESSAGE || "Hi! Let's chat!",
+		process.env.REACT_APP_WHATSAPP_MESSAGE ||
+			"Hi Suresh, I visited your portfolio and would like to connect.",
 	);
-
 	/* ---------- Fetch Data ---------- */
 
 	useEffect(() => {

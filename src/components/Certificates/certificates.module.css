@@ -1,5 +1,7 @@
 .certificatesContainer {
 	display: block;
+
+	position: relative;
 }
 
 /* TITLE */
@@ -33,10 +35,8 @@
 
 	-webkit-overflow-scrolling: touch;
 
-	/* HIDE SCROLLBAR */
 	scrollbar-width: none;
 
-	/* EDGE FADE EFFECT */
 	mask-image: linear-gradient(
 		to right,
 		transparent,
@@ -161,6 +161,72 @@
 	filter: brightness(1.05);
 
 	opacity: 1;
+}
+
+/* FALLBACK CARD */
+.fallbackCard {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+
+	padding: 2rem;
+
+	position: relative;
+
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.04),
+		rgba(255, 255, 255, 0.02)
+	);
+
+	backdrop-filter: blur(12px);
+
+	overflow: hidden;
+}
+
+/* FALLBACK GLOW */
+.fallbackGlow {
+	position: absolute;
+
+	width: 220px;
+	height: 220px;
+
+	background: color-mix(in srgb, var(--primaryColor) 12%, transparent);
+
+	filter: blur(90px);
+
+	border-radius: 50%;
+}
+
+/* FALLBACK TITLE */
+.fallbackCard h3 {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 1.3rem;
+
+	color: white;
+
+	margin-bottom: 12px;
+}
+
+/* FALLBACK TEXT */
+.fallbackCard p {
+	position: relative;
+
+	z-index: 1;
+
+	font-size: 0.95rem;
+
+	color: rgba(255, 255, 255, 0.6);
 }
 
 /* MOBILE */

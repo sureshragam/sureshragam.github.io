@@ -40,9 +40,16 @@ const SEO = () => {
 
 			<meta property="og:type" content="website" />
 
-			<meta property="og:image" content="/preview.webp" />
+			<meta
+				property="og:image"
+				content="https://sureshragam.github.io/preview.webp"
+			/>
 
-			<meta property="og:url" content="https://yourdomain.com" />
+			<meta property="og:url" content="https://sureshragam.github.io" />
+
+			<meta property="og:image:width" content="1200" />
+
+			<meta property="og:image:height" content="630" />
 
 			{/* TWITTER */}
 			<meta name="twitter:card" content="summary_large_image" />
@@ -57,12 +64,15 @@ const SEO = () => {
 				content="React.js + Spring Boot Full Stack Developer with 4+ years of experience building scalable modern applications."
 			/>
 
-			<meta name="twitter:image" content="/preview.webp" />
+			<meta
+				name="twitter:image"
+				content="https://sureshragam.github.io/preview.webp"
+			/>
 
 			{/* EXTRA */}
 			<meta name="theme-color" content="#02ab82" />
 
-			<link rel="canonical" href="https://yourdomain.com" />
+			<link rel="canonical" href="https://sureshragam.github.io" />
 		</Helmet>
 	);
 };

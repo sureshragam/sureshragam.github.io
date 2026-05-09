@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code
-      - name: Get code
+      # Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       # Setup Node.js
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -57,12 +57,21 @@ jobs:
         uses: actions/checkout@v4
 
       # Step 2: Setup Node.js
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Step 3: Install dependencies
+      # Step 3: Cache dependencies
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Step 4: Install dependencies
       - name: Install dependencies
         run: |
           npm ci || (
@@ -71,7 +80,7 @@ jobs:
             npm install
           )
 
-      # Step 4: Inject Environment Variables
+      # Step 5: Inject Environment Variables
       - name: Inject Environment Variables
         env:
           REACT_APP_WHATSAPP_NUMBER: ${{ secrets.REACT_APP_WHATSAPP_NUMBER }}
@@ -89,20 +98,23 @@ jobs:
             echo "REACT_APP_GITHUB_URL=$REACT_APP_GITHUB_URL"
           } >> .env
 
-      # Step 5: Build project
+      # Step 6: Build project
       - name: Build project
         run: npm run build
 
-      # Step 6: Configure Git
+      # Step 7: Configure Git
       - name: Configure Git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
         run: |
           git config --global user.name "Github Action"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git remote set-url origin \
-          https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          https://x-access-token:$GITHUB_TOKEN@github.com/${{ github.repository }}.git
 
-      # Step 7: Deploy to GitHub Pages
+      # Step 8: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:

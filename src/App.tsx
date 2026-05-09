@@ -18,6 +18,14 @@ import Contact from "./components/Contact/Contact";
 import Loader from "./components/Loader/Loader";
 import SEO from "./components/SEO/SEO";
 
+/* ---------- NORMAL IMPORTS ---------- */
+
+import Metrics from "./components/Metrics/Metrics";
+import Services from "./components/Services/Services";
+import Certificates from "./components/Certificates/certificates";
+import Testimonials from "./components/Testimonials/Testimonials";
+import Availability from "./components/Availability/Availability";
+
 import whatsappicon from "./assets/images/WhatsApp_icon.png";
 
 import LazySection from "./LazySection/LazySection";
@@ -50,23 +58,7 @@ const ScrollProgress = lazy(
 	() => import("./components/ScrollProgress/ScrollProgress"),
 );
 
-const Metrics = lazy(() => import("./components/Metrics/Metrics"));
-
 const GithubStats = lazy(() => import("./components/GithubStats/GithubStats"));
-
-const Testimonials = lazy(
-	() => import("./components/Testimonials/Testimonials"),
-);
-
-const Services = lazy(() => import("./components/Services/Services"));
-
-const Availability = lazy(
-	() => import("./components/Availability/Availability"),
-);
-
-const Certificates = lazy(
-	() => import("./components/Certificates/certificates"),
-);
 
 const ResumePreview = lazy(() =>
 	import("./components/ResumePreview/ResumePreview").then((module) => ({
@@ -93,6 +85,7 @@ function App() {
 		process.env.REACT_APP_WHATSAPP_MESSAGE ||
 			"Hi Suresh, I visited your portfolio and would like to connect.",
 	);
+
 	/* ---------- Fetch Data ---------- */
 
 	useEffect(() => {
@@ -118,7 +111,7 @@ function App() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowEffects(true);
-		}, 1200);
+		}, 300);
 
 		return () => clearTimeout(timer);
 	}, []);
@@ -132,11 +125,15 @@ function App() {
 					{/* ---------- Delayed Effects ---------- */}
 
 					{showEffects && !isMobile && (
-						<Suspense fallback={null}>
+						<Suspense fallback={<div style={{ minHeight: "100px" }} />}>
 							<BackgroundGrid />
+
 							<MouseGlow />
+
 							<ThemeSwitcher />
+
 							<CommandPalette />
+
 							<ScrollProgress />
 						</Suspense>
 					)}
@@ -145,38 +142,42 @@ function App() {
 
 					<Header />
 
-					{/* ---------- Lazy Jarvis Panel ---------- */}
+					{/* ---------- Jarvis Panel ---------- */}
 
-					<LazySection>
-						<Suspense fallback={null}>
-							<JarvisPanel />
-						</Suspense>
-					</LazySection>
+					<Suspense fallback={<div style={{ minHeight: "120px" }} />}>
+						<JarvisPanel />
+					</Suspense>
 
 					<Routes>
+						{/* ---------- Admin ---------- */}
+
 						<Route
 							path="/admin"
 							element={
-								<Suspense fallback={null}>
+								<Suspense fallback={<div style={{ minHeight: "300px" }} />}>
 									<Admin />
 								</Suspense>
 							}
 						/>
 
+						{/* ---------- Resume Preview ---------- */}
+
 						<Route
 							path="/resume_preview"
 							element={
-								<Suspense fallback={null}>
+								<Suspense fallback={<div style={{ minHeight: "300px" }} />}>
 									<ResumePreview />
 								</Suspense>
 							}
 						/>
 
+						{/* ---------- Main Portfolio ---------- */}
+
 						<Route
 							path="/*"
 							element={
 								<div className="content">
-									{/* ---------- Immediate ---------- */}
+									{/* ---------- Immediate Sections ---------- */}
 
 									<Home />
 
@@ -190,53 +191,57 @@ function App() {
 
 									<Contact />
 
-									{/* ---------- Lazy Sections ---------- */}
+									<Metrics />
+
+									<Services />
+
+									<Certificates />
+
+									<Testimonials />
+
+									<Availability />
+
+									{/* ---------- Heavy Lazy Sections ---------- */}
 
 									<LazySection>
-										<Suspense fallback={null}>
+										<Suspense
+											fallback={
+												<div
+													style={{
+														minHeight: "300px",
+													}}
+												/>
+											}
+										>
 											<Terminal />
 										</Suspense>
 									</LazySection>
 
 									<LazySection>
-										<Suspense fallback={null}>
+										<Suspense
+											fallback={
+												<div
+													style={{
+														minHeight: "300px",
+													}}
+												/>
+											}
+										>
 											<JarvisVision />
 										</Suspense>
 									</LazySection>
 
 									<LazySection>
-										<Suspense fallback={null}>
-											<Metrics />
-										</Suspense>
-									</LazySection>
-
-									<LazySection>
-										<Suspense fallback={null}>
-											<Services />
-										</Suspense>
-									</LazySection>
-
-									<LazySection>
-										<Suspense fallback={null}>
+										<Suspense
+											fallback={
+												<div
+													style={{
+														minHeight: "300px",
+													}}
+												/>
+											}
+										>
 											<GithubStats />
-										</Suspense>
-									</LazySection>
-
-									<LazySection>
-										<Suspense fallback={null}>
-											<Certificates />
-										</Suspense>
-									</LazySection>
-
-									<LazySection>
-										<Suspense fallback={null}>
-											<Testimonials />
-										</Suspense>
-									</LazySection>
-
-									<LazySection>
-										<Suspense fallback={null}>
-											<Availability />
 										</Suspense>
 									</LazySection>
 
@@ -248,7 +253,7 @@ function App() {
 										rel="noopener noreferrer"
 										className="whatsapp-float"
 									>
-										<img src={whatsappicon} alt="WhatsApp" />
+										<img src={whatsappicon} alt="WhatsApp" loading="lazy" />
 									</a>
 								</div>
 							}

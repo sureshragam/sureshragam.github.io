@@ -70,11 +70,32 @@ const ThemeSwitcher = () => {
 					Cyber Green
 				</button>
 
-				<button onClick={() => applyTheme("blue")}>Blue Neon</button>
+				<button
+					onClick={() => {
+						applyTheme("blue");
+						setOpen(false);
+					}}
+				>
+					Blue Neon
+				</button>
 
-				<button onClick={() => applyTheme("purple")}>Purple Future</button>
+				<button
+					onClick={() => {
+						applyTheme("purple");
+						setOpen(false);
+					}}
+				>
+					Purple Future
+				</button>
 
-				<button onClick={() => applyTheme("red")}>Red Energy</button>
+				<button
+					onClick={() => {
+						applyTheme("red");
+						setOpen(false);
+					}}
+				>
+					Red Energy
+				</button>
 			</div>
 		</div>
 	);

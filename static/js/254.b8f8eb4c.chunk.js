@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[254],{7254:(e,s,a)=>{a.r(s),a.d(s,{default:()=>l});var r=a(5043);const i="BackgroundGrid_gridContainer__ipLu-",d="BackgroundGrid_grid__CX-QV";var n=a(579);const c=()=>(0,n.jsx)("div",{className:i,children:(0,n.jsx)("div",{className:d})}),l=r.memo(c)}}]);
+//# sourceMappingURL=254.b8f8eb4c.chunk.js.map

@@ -1,5 +1,8 @@
 name: cicd-prod
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:

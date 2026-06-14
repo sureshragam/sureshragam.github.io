@@ -76,8 +76,10 @@ const Header = () => {
 			{/* ---------- LOGO ---------- */}
 
 			<h1 className={classes.title}>
-				Portfo
-				<span>lio</span>
+				<HashLink smooth to="/#home">
+					Portfo
+					<span>lio</span>
+				</HashLink>
 			</h1>
 
 			{/* ---------- NAVIGATION ---------- */}

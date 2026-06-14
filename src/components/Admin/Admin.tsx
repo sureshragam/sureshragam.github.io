@@ -4,12 +4,14 @@ import Button from "@mui/material/Button";
 
 import FormModal from "../../component-lib/FormModal";
 import NotifyUserComponent from "../../component-lib/NotifyUserComponent";
+import { Navigate } from "react-router-dom";
 
 export const Admin = () => {
 	const [alert, setAlert] = useState(false);
 	const [formType, setFormType] = useState<any>("Certificate");
 
 	const [open, setOpen] = useState(false);
+	const token = sessionStorage.getItem("adminToken");
 
 	const handleClose = () => {
 		setOpen(false);
@@ -64,10 +66,15 @@ export const Admin = () => {
 		handleClose();
 	};
 
+	if (!token) {
+		return <Navigate to="/" replace />;
+	}
+
 	return (
-		<div>
-			<h1>Admin page</h1>
-			<ButtonGroup>
+		<div style={{ paddingTop: "80px", textAlign: "center" }}>
+			<h2>Portfolio Administration Console</h2>
+			<br style={{ marginBlock: "20px" }}></br>
+			<ButtonGroup style={{ marginTop: "24px", gap: "10px" }}>
 				<Button
 					sx={{ color: "var(--primaryColor,#f9004d)" }}
 					variant="outlined"
@@ -81,6 +88,14 @@ export const Admin = () => {
 					onClick={() => handleClickOpen("Project")}
 				>
 					Add Project
+				</Button>
+				<Button
+					onClick={() => {
+						sessionStorage.removeItem("adminToken");
+						window.location.href = "/";
+					}}
+				>
+					Logout
 				</Button>
 			</ButtonGroup>
 			<FormModal

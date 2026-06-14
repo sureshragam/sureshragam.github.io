@@ -4,8 +4,14 @@ import React from "react";
 import classes from "./Availability.module.css";
 import { motion } from "framer-motion";
 import { FaCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/appStore";
 
 const Availability = () => {
+	const { data } = useSelector((state: RootState) => state.data);
+
+	const buttonStaticData = data?.buttons;
 	return (
 		<section
 			id="availability"
@@ -48,9 +54,9 @@ const Availability = () => {
 						Contact Me
 					</a>
 
-					<a role="button" href="/resume_preview">
-						View Resume
-					</a>
+					<Link role="button" id="resume" to="/resume_preview">
+						{buttonStaticData?.resumeBtn}
+					</Link>
 				</div>
 			</motion.div>
 		</section>

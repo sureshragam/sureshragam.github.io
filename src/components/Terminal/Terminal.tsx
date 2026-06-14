@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./Terminal.module.css";
 
@@ -44,6 +45,9 @@ const Terminal = () => {
 	const [input, setInput] = useState("");
 
 	const [history, setHistory] = useState<HistoryItem[]>(INITIAL_HISTORY);
+	const navigate = useNavigate();
+	const [awaitingPassword, setAwaitingPassword] = useState(false);
+	const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
 	const handleCommand = useCallback(
 		(event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -53,11 +57,56 @@ const Terminal = () => {
 
 			if (!trimmedInput) return;
 
+			if (awaitingPassword) {
+				if (input === ADMIN_PASSWORD) {
+					sessionStorage.setItem("adminToken", "authenticated");
+					setHistory((prev) => [
+						...prev,
+						{
+							command: "********",
+							output: "Authentication successful. Redirecting...",
+						},
+					]);
+
+					setAwaitingPassword(false);
+
+					setTimeout(() => {
+						navigate("/admin");
+					}, 1000);
+				} else {
+					setHistory((prev) => [
+						...prev,
+						{
+							command: "********",
+							output: "Authentication failed.",
+						},
+					]);
+
+					setAwaitingPassword(false);
+				}
+
+				setInput("");
+				return;
+			}
+
 			if (trimmedInput === "clear") {
 				setHistory(INITIAL_HISTORY);
 
 				setInput("");
 
+				return;
+			}
+			if (trimmedInput === "sudo su admin") {
+				setHistory((prev) => [
+					...prev,
+					{
+						command: trimmedInput,
+						output: "Password:",
+					},
+				]);
+
+				setAwaitingPassword(true);
+				setInput("");
 				return;
 			}
 
@@ -130,7 +179,7 @@ const Terminal = () => {
 						<span>$</span>
 
 						<input
-							type="text"
+							type={awaitingPassword ? "password" : "text"}
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
 							onKeyDown={handleCommand}

@@ -57,7 +57,7 @@ export const experience = [
 
 		designation: "Assistant System Engineer",
 
-		role: "React Developer",
+		role: "FullStack Developer",
 
 		period: "2022 - 2026",
 
@@ -77,9 +77,9 @@ export const experience = [
 	},
 
 	{
-		company: "Safran Groups",
+		company: "Safran Digit",
 
-		designation: "System Engineer",
+		designation: "Java Full Stack Developer",
 
 		role: "Full Stack Developer",
 
@@ -97,7 +97,7 @@ export const experience = [
 			"Collaborating with cross-functional Agile teams.",
 		],
 
-		techStack: ["React", "TypeScript", "Spring Boot", "Java", "AWS", "Git"],
+		techStack: ["Spring Boot", "React", "Java", "TypeScript", "Git"],
 	},
 ];
 

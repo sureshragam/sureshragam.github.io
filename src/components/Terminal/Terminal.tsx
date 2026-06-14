@@ -49,82 +49,79 @@ const Terminal = () => {
 	const [awaitingPassword, setAwaitingPassword] = useState(false);
 	const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
-	const handleCommand = useCallback(
-		(event: React.KeyboardEvent<HTMLInputElement>) => {
-			if (event.key !== "Enter") return;
+	const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key !== "Enter") return;
 
-			const trimmedInput = input.trim().toLowerCase();
+		const trimmedInput = input.trim().toLowerCase();
 
-			if (!trimmedInput) return;
+		if (!trimmedInput) return;
 
-			if (awaitingPassword) {
-				if (input === ADMIN_PASSWORD) {
-					sessionStorage.setItem("adminToken", "authenticated");
-					setHistory((prev) => [
-						...prev,
-						{
-							command: "********",
-							output: "Authentication successful. Redirecting...",
-						},
-					]);
-
-					setAwaitingPassword(false);
-
-					setTimeout(() => {
-						navigate("/admin");
-					}, 1000);
-				} else {
-					setHistory((prev) => [
-						...prev,
-						{
-							command: "********",
-							output: "Authentication failed.",
-						},
-					]);
-
-					setAwaitingPassword(false);
-				}
-
-				setInput("");
-				return;
-			}
-
-			if (trimmedInput === "clear") {
-				setHistory(INITIAL_HISTORY);
-
-				setInput("");
-
-				return;
-			}
-			if (trimmedInput === "sudo su admin") {
+		if (awaitingPassword) {
+			if (input === ADMIN_PASSWORD) {
+				sessionStorage.setItem("adminToken", "authenticated");
 				setHistory((prev) => [
 					...prev,
 					{
-						command: trimmedInput,
-						output: "Password:",
+						command: "********",
+						output: "Authentication successful. Redirecting...",
 					},
 				]);
 
-				setAwaitingPassword(true);
-				setInput("");
-				return;
+				setAwaitingPassword(false);
+
+				setTimeout(() => {
+					navigate("/admin");
+				}, 1000);
+			} else {
+				setHistory((prev) => [
+					...prev,
+					{
+						command: "********",
+						output: "Authentication failed.",
+					},
+				]);
+
+				setAwaitingPassword(false);
 			}
 
-			const output =
-				commandMap[trimmedInput] || `Command not found: ${trimmedInput}`;
+			setInput("");
+			return;
+		}
 
+		if (trimmedInput === "clear") {
+			setHistory(INITIAL_HISTORY);
+
+			setInput("");
+
+			return;
+		}
+		if (trimmedInput === "sudo su admin") {
 			setHistory((prev) => [
 				...prev,
 				{
 					command: trimmedInput,
-					output,
+					output: "Password:",
 				},
 			]);
 
+			setAwaitingPassword(true);
 			setInput("");
-		},
-		[input],
-	);
+			return;
+		}
+
+		const output =
+			commandMap[trimmedInput] || `Command not found: ${trimmedInput}`;
+
+		setHistory((prev) => [
+			...prev,
+			{
+				command: trimmedInput,
+				output,
+			},
+		]);
+
+		setInput("");
+	};
 
 	const renderedHistory = useMemo(() => {
 		return history.map((item, index) => (
